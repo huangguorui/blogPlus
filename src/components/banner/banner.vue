@@ -1,6 +1,25 @@
+
+<style scoped>
+.banner {
+  background: #506b9e !important;
+}
+@media screen and (max-width: 1080px) {
+  .banner {
+    background: #506b9e !important;
+    height: 280px !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner {
+    background: #506b9e !important;
+    height: 190px !important;
+  }
+}
+</style>
 <template>
   <div class="container">
-    <Carousel v-model="value1"
+    <Carousel class="banner"
+              v-model="value1"
               loop
               style="height:350px;">
       <CarouselItem>

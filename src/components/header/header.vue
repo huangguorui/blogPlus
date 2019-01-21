@@ -26,6 +26,9 @@
   .nav {
     height: 30px !important;
   }
+  .logo {
+    width: 20% !important;
+  }
 }
 .nav {
   width: 100%;
@@ -46,14 +49,19 @@ ul {
   display: flex;
 }
 li {
+  width: 20%;
   margin: 0 1%;
+  cursor: pointer;
   text-align: center;
   list-style: none;
+  box-sizing: border-box;
+  border: 1px solid red;
 }
 </style>
 <template>
   <div class="container">
-    <div class="nav">
+    <div class="nav"
+         v-show="flag">
       <router-link tag="div"
                    class="logo"
                    :to="{ name: 'index'}"></router-link>
@@ -81,6 +89,12 @@ export default {
   components: {
     Reg,
     Login
+  },
+  props: {
+    flag: {
+      type: Boolean,
+      default: true
+    }
   },
   data () {
     return {

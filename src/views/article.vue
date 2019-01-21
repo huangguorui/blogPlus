@@ -63,6 +63,21 @@ h1 {
               </div>
             </div>
             <div class="box">
+              <MenuItem name="1-1">测试</MenuItem>
+              <Row align="top">
+                <Col class="a"
+                     :xs="24"
+                     :sm="12"
+                     :md="12"
+                     :lg="12">111</Col>
+                <Col class="a"
+                     :xs='24'
+                     :sm="12"
+                     :md="12"
+                     :lg="12">111</Col>
+              </Row>
+            </div>
+            <div class="box">
               <Comment></Comment>
             </div>
             </Col>

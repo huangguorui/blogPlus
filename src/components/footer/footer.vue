@@ -14,7 +14,8 @@
              :bottom="100">
       <div class="top">返回顶端</div>
     </BackTop>
-    <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>
+    <Footer v-show="flag"
+            class="layout-footer-center"> &copy; 2019-至今</Footer>
   </div>
 </template>
 <script>
@@ -22,6 +23,16 @@
 export default {
   name: 'footerNav',
   components: {
+  },
+  props: {
+    flag: {
+      type: Boolean,
+      default: true
+    }
+  },
+  data () {
+    return {
+    }
   }
 }
 </script>

@@ -4,23 +4,43 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <head-nav></head-nav>
+    <head-nav :flag="routerFlag"></head-nav>
     <router-view/>
-    <foot-nav></foot-nav>
+    <foot-nav :flag="routerFlag"></foot-nav>
   </div>
 </template>
 <script>
 import headNav from './components/header/header.vue'
 import footNav from './components/footer/footer.vue'
 export default {
+  data () {
+    return {
+      routerFlag: true
+    }
+  },
   created () {
-    this.load()
+    this.load(),
+      this.routerTo()
+  },
+  watch: {
+    "$route": "routerLink"
   },
   methods: {
-
+    routerTo () {
+      if (this.$route.path === "/user") {
+        this.routerFlag = false
+      }
+      console.log(this.$route.path === "/user")
+    },
     load () {
       console.log(1)
 
+    },
+    routerLink () {
+      console.log("aaa=", this.$route.path)
+      if (this.$route.path === "/user") {
+        this.routerFlag = false
+      }
     }
   },
   components: {

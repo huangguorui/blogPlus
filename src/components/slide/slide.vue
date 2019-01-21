@@ -133,7 +133,9 @@ li {
           <a href="javascript:;">
 
             <img src="@/assets/logo.png">
-            <p>{{item.text|interceptStr(item.text)}}</p>
+            <router-link exact
+                         tag="p"
+                         :to="{path:'/article/id/'+item.id}">{{item.text|interceptStr(item.text)}}</router-link>
           </a>
         </li>
       </ul>
