@@ -19,7 +19,6 @@ export default {
   name: "page",
   data () {
     return {
-
     }
   }
 }

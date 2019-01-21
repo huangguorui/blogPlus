@@ -4,6 +4,7 @@ import index from './views/index.vue'
 import about from './views/about.vue'
 import article from './views/article.vue'
 import anchor from './views/anchor.vue'
+import user from './views/user.vue'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/anchor',
       name: 'anchor',
       component: anchor
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: user
     }
   ]
 })

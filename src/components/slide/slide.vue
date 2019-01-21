@@ -76,6 +76,39 @@ li {
     line-height: 25px;
   }
 }
+.news {
+  width: 100%;
+  height: auto;
+  li:nth-child(1) {
+    margin-top: 3%;
+  }
+  li {
+    width: 100%;
+    margin-bottom: 3%;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+  }
+  img {
+    float: left;
+    width: 70px;
+    height: 40px;
+  }
+  p {
+    float: left;
+    margin-left: 30px;
+    line-height: 40px;
+  }
+}
+.uls {
+  height: auto;
+  li {
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+  }
+}
 </style>
 
 <template>
@@ -94,25 +127,36 @@ li {
     </div>
     <div class="slide-style">
       <div class="title-slide">测试测试</div>
+      <ul class="news">
+        <li v-for="item in list"
+            :key="item.id">
+          <a href="javascript:;">
+
+            <img src="@/assets/logo.png">
+            <p>{{item.text|interceptStr(item.text)}}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="slide-style">
+      <div class="title-slide">测试测试</div>
       <ul class="uls">
-        <li>1、</li>
+        <li v-for="(item,index) in list"
+            :key="item.id">
+          <p>
+            <span style="margin-right:30px;">第{{index+1}}个</span>{{item.text|interceptStr(item.text)}}</p>
+        </li>
         <li>1、</li>
         <li>1、</li>
         <li>1、</li>
         <li>1、</li>
       </ul>
     </div>
-
     <div class="slide-style">
       <div class="title-slide">测试测试</div>
       <ul class="tag">
-        <li>
-          <a href="##">测试</a>
-        </li>
-        <li>
-          <a href="##">测试</a>
-        </li>
-        <li>
+        <li v-for="item in 20"
+            :key="item">
           <a href="##">测试</a>
         </li>
       </ul>
@@ -137,7 +181,6 @@ li {
         </li>
       </ul>
     </div>
-
     </Col>
   </div>
 </template>
@@ -146,7 +189,22 @@ export default {
   name: 'Slide',
   data () {
     return {
-
+      list: [
+        { id: 1, text: '测试测试' },
+        { id: 2, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测' },
+        { id: 3, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
+        { id: 4, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
+        { id: 5, text: '试测试测试' }
+      ]
+    }
+  },
+  filters: {
+    interceptStr: function (value) {
+      if (value.length >= 10) {
+        return value.substr(0, 10) + "……"
+      } else {
+        return value
+      }
     }
   }
 }
