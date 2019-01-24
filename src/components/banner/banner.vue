@@ -1,6 +1,7 @@
 
 <style scoped>
 .banner {
+  margin: 2% 3% 2% 3%;
   background: #506b9e !important;
 }
 @media screen and (max-width: 1080px) {

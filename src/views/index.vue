@@ -25,9 +25,7 @@
 .layout-footer-center {
   text-align: center;
 }
-.a {
-  /* background: red; */
-}
+
 .b {
   background: #ccc;
 }
@@ -39,7 +37,7 @@
   height: auto;
   background: #fff;
   border-radius: 1%;
-  padding: 1%;
+  padding: 2%;
   margin-bottom: 2%;
   box-sizing: border-box;
 }

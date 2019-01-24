@@ -35,13 +35,25 @@ h1 {
   }
   height: auto;
 }
+.tag button {
+  margin: 3px 5px;
+}
+strong {
+  margin: 0.5% 0;
+  display: block;
+}
+.list a {
+  display: block;
+  margin: 0.5%;
+  padding: 1.5%;
+}
 </style>
 
 <template>
   <div>
     <div class="layout">
       <div class="container">
-        <Content :style="{padding: '0 3%',marginTop:'5%'}">
+        <Content :style="{padding: '0 3%',marginTop:'2%'}">
           <Row align="top">
             <Col class="a"
                  :xs="48"
@@ -61,20 +73,63 @@ h1 {
                   <img src="../assets/logo.png"> <img src="../assets/login-background.png"> 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……
                 </div>
               </div>
+              <money-pay></money-pay>
             </div>
             <div class="box">
-              <MenuItem name="1-1">测试</MenuItem>
+              <strong>tag</strong>
               <Row align="top">
-                <Col class="a"
-                     :xs="24"
+                <Col :xs="24"
+                     :sm="24"
+                     :md="24"
+                     :lg="24"
+                     class="tag">
+                <a href="javascript:;">
+                  <Button>Default</Button>
+                </a>
+                <a href="javascript:;">
+                  <Button>Default</Button>
+                </a>
+                <a href="javascript:;">
+                  <Button>Default</Button>
+                </a>
+                <a href="javascript:;">
+                  <Button>Default</Button>
+                </a>
+                </Col>
+                <Col :xs="24"
+                     :sm="24"
+                     :md="24"
+                     :lg="24">
+                <strong>tag</strong>
+                </Col>
+                <Col :xs="24"
                      :sm="12"
                      :md="12"
-                     :lg="12">111</Col>
-                <Col class="a"
-                     :xs='24'
+                     :lg="12"
+                     class="list">
+                <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                </Col>
+                <Col :xs="24"
                      :sm="12"
                      :md="12"
-                     :lg="12">111</Col>
+                     :lg="12"
+                     class="list">
+                <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                </Col>
+                <Col :xs="24"
+                     :sm="12"
+                     :md="12"
+                     :lg="12"
+                     class="list">
+                <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                </Col>
+                <Col :xs="24"
+                     :sm="12"
+                     :md="12"
+                     :lg="12"
+                     class="list">
+                <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                </Col>
               </Row>
             </div>
             <div class="box">
@@ -92,6 +147,7 @@ h1 {
 <script>
 import Comment from '@/components/comment/comment.vue'
 import Slide from '@/components/slide/slide.vue'
+import moneyPay from '@/components/money/money.vue'
 
 export default {
   name: 'Article',
@@ -118,7 +174,8 @@ export default {
   },
   components: {
     Comment,
-    Slide
+    Slide,
+    moneyPay
   }
 }
 </script>

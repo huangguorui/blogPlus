@@ -1,17 +1,20 @@
 <template>
   <div>
-    <Rate show-text
-          v-model="valueText" />
     <Form ref="formValidate"
           :model="formValidate"
           :rules="ruleValidate"
           label-position="left"
           :label-width="80">
+      <FormItem label="~score"
+                style="margin-bottom: 10px;">
+        <Rate show-text
+              v-model="valueText" />
+      </FormItem>
       <FormItem label="Desc"
                 prop="desc">
         <Input v-model="formValidate.desc"
                type="textarea"
-               :autosize="{minRows: 2,maxRows: 5}"
+               :autosize="{minRows: 5,maxRows: 10}"
                placeholder="Enter something..."></Input>
       </FormItem>
       <FormItem label="Name"

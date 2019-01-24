@@ -118,7 +118,7 @@ li {
          :sm="8"
          :md="7"
          :lg="7"
-         :style="{padding: '0 1%'}">
+         :style="{padding: '0 0 0 1%'}">
     <div class="slide-style">
       <div class="title">测试测试</div>
       <div class="guide">

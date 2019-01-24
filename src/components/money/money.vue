@@ -141,7 +141,7 @@
 </template>
 <script>
 export default {
-  name: 'pay',
+  name: 'moneyPay',
   data () {
     return {
       loading: false,

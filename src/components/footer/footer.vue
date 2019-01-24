@@ -10,8 +10,8 @@
 
 <template>
   <div>
-    <BackTop :height="100"
-             :bottom="100">
+    <BackTop :height="35"
+             :bottom="12">
       <div class="top">返回顶端</div>
     </BackTop>
     <Footer v-show="flag"
