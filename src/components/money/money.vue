@@ -71,6 +71,7 @@
             @click="moneyPay"
             type="success">测试测试</Button>
     <Modal title="Title"
+           :maskClosable="false"
            v-model="modelFlag"
            :footerHide="true"
            class-name="vertical-center-modal">

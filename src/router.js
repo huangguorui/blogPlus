@@ -6,10 +6,13 @@ import article from './views/article.vue'
 import anchor from './views/anchor.vue'
 import user from './views/user.vue'
 import order from './views/orderList.vue'
+import a from './views/additional.vue'
+import nofound from './views/404.vue'
 
 Vue.use(Router)
-
-export default new Router({
+import iView from 'iview';
+Vue.use(iView);
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
@@ -41,6 +44,27 @@ export default new Router({
       path: '/order',
       name: 'order',
       component: order
+    },
+    {
+      path: '/a',
+      name: 'a',
+      component: a
+    },
+    {
+      path: '*',
+      name: '404',
+      component: nofound
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  iView.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  iView.LoadingBar.finish();
+});
+
+export default router

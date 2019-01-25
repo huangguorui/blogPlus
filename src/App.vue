@@ -26,6 +26,15 @@ export default {
     "$route": "routerLink"
   },
   methods: {
+    start () {
+      this.$Loading.start();
+    },
+    finish () {
+      this.$Loading.finish();
+    },
+    error () {
+      this.$Loading.error();
+    },
     routerTo () {
       //order
       if (this.$route.path === "/user") {

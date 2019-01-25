@@ -9,11 +9,17 @@
   width: 1200px;
   margin: 0 auto;
   height: auto;
-  padding: 0px 3%;
+  padding: 0px 2.5%;
 }
-@media screen and (max-width: 1080px) {
+
+@media screen and (max-width: 1200px) {
   .container {
-    width: 868px !important;
+    width: 992px !important;
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    width: 768px !important;
   }
   .nav {
     height: 40px !important;
@@ -30,6 +36,7 @@
     width: 20% !important;
   }
 }
+
 .nav {
   width: 100%;
   height: 50px;
@@ -43,20 +50,23 @@
   border: 1px solid red;
 }
 ul {
-  width: 90%;
-  padding: 1% 0;
+  width: 100%;
   box-sizing: border-box;
   height: 100%;
   display: flex;
+  justify-content: center;
 }
 li {
   width: 20%;
-  margin: 0 1%;
   cursor: pointer;
   text-align: center;
+  padding: 1.2%;
   list-style: none;
   box-sizing: border-box;
-  border: 1px solid red;
+  transition: all 0.6s;
+}
+li:hover {
+  background: #ccc;
 }
 </style>
 <template>

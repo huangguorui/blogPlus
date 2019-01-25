@@ -18,6 +18,7 @@
     <Modal title="Title"
            v-model="modal10"
            :footerHide="true"
+           :maskClosable="false"
            class-name="vertical-center-modal">
       <p>当前正在进行第 {{ current + 1 }} 步</p>
       <Steps :current="current"

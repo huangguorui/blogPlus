@@ -14,6 +14,7 @@
     <div @click="modal10 = true">login</div>
     <Modal title="Title"
            v-model="modal10"
+           :maskClosable="false"
            :footerHide="true"
            class-name="vertical-center-modal">
       <Form ref="formInline"
