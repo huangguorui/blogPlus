@@ -37,6 +37,7 @@
   display: flex;
 }
 .logo {
+  cursor: pointer;
   width: 10%;
   height: 100%;
   border: 1px solid red;

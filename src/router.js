@@ -5,6 +5,7 @@ import about from './views/about.vue'
 import article from './views/article.vue'
 import anchor from './views/anchor.vue'
 import user from './views/user.vue'
+import order from './views/orderList.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/user',
       name: 'user',
       component: user
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: order
     }
   ]
 })

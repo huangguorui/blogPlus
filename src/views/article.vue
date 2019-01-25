@@ -35,8 +35,12 @@ h1 {
   }
   height: auto;
 }
-.tag button {
-  margin: 3px 5px;
+.tag {
+  a {
+    display: inline-block;
+    height: auto;
+    margin: 1% 2%;
+  }
 }
 strong {
   margin: 0.5% 0;
@@ -84,16 +88,16 @@ strong {
                      :lg="24"
                      class="tag">
                 <a href="javascript:;">
-                  <Button>Default</Button>
+                  <Tag type="dot">标签一</Tag>
                 </a>
                 <a href="javascript:;">
-                  <Button>Default</Button>
+                  <Tag type="dot">标签一</Tag>
                 </a>
                 <a href="javascript:;">
-                  <Button>Default</Button>
+                  <Tag type="dot">标签一</Tag>
                 </a>
                 <a href="javascript:;">
-                  <Button>Default</Button>
+                  <Tag type="dot">标签一</Tag>
                 </a>
                 </Col>
                 <Col :xs="24"

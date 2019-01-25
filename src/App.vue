@@ -27,6 +27,7 @@ export default {
   },
   methods: {
     routerTo () {
+      //order
       if (this.$route.path === "/user") {
         this.routerFlag = false
       }
