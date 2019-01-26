@@ -84,10 +84,14 @@ h3 {
                 <span>200views</span>
                 <span>200 当前传入的参数为:{{id}}
                 </span>
+                <Button @click="fonts('+')">+</Button>
+                <Button @click="fonts('-')">-</Button>
+                <Button @click="fonts('default')">Default</Button>
+                当前字体大小:{{styles.fontSize}}
               </div>
-
               <!-- contenteditable="true" -->
-              <div class="text">
+              <div class="text"
+                   :style="styles">
                 解决iview中表格变色问题，iview中提供了给表格修改颜色的功能，但是咋一看，还是不好理解的，接下来我就为大家来解析一下如何实现表格的隔行变色。
                 <h3>1、给Table添加一个自定义属性</h3>
                 <pre><table row-class-name="rowClassName"></table></pre>
@@ -197,7 +201,10 @@ export default {
   name: 'Article',
   data () {
     return {
-      id: ''
+      id: '',
+      styles: {
+        fontSize: '16px'
+      },
     }
   },
   created () {
@@ -213,6 +220,15 @@ export default {
     fetchData () {
       this.id = this.$route.params;
       console.log(this.$route.params)
+    },
+    fonts (e) {
+      console.log("parseInt", parseInt('16px'))
+      console.log(e)
+      let fontSize = parseInt(this.styles.fontSize)
+      this.styles.fontSize = (this.styles.fontSize = parseInt(e === '+' ? fontSize + 1 : fontSize - 1)) + "px"
+      if (e === 'default') {
+        this.styles.fontSize = "16px"
+      }
     }
   },
   components: {
