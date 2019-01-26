@@ -20,21 +20,27 @@
   margin: 0 1%;
 }
 .text {
-  line-height: 300%;
+  line-height: 200%;
 }
 h1 {
   text-align: center;
+  margin: 1% 0;
 }
 .text {
   width: 100%;
   text-indent: 2em;
+  height: auto;
   img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
   }
-  height: auto;
+  a {
+    display: block;
+    text-indent: 2em;
+  }
 }
+
 .tag {
   a {
     display: inline-block;
@@ -43,13 +49,20 @@ h1 {
   }
 }
 strong {
-  margin: 0.5% 0;
+  margin: 1% 0;
   display: block;
 }
 .list a {
   display: block;
   margin: 0.5%;
   padding: 1.5%;
+}
+.hots {
+  padding: 1.5% 0;
+  text-align: center;
+}
+h3 {
+  text-indent: 0em;
 }
 </style>
 
@@ -65,17 +78,44 @@ strong {
                  :md="17"
                  :lg="17">
             <div class="box">
-              <h1>测试demo</h1>
+              <h1>解决iview中表格变色问题</h1>
               <div class="hots">
                 <span>2019年01月01日</span>
                 <span>200views</span>
-                <span>200
-                  <Button type="primary">OK</Button>
-                  当前传入的参数为:{{id}}
+                <span>200 当前传入的参数为:{{id}}
                 </span>
-                <div class="text">
-                  <img src="../assets/logo.png"> <img src="../assets/login-background.png"> 测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试……
-                </div>
+              </div>
+
+              <!-- contenteditable="true" -->
+              <div class="text">
+                解决iview中表格变色问题，iview中提供了给表格修改颜色的功能，但是咋一看，还是不好理解的，接下来我就为大家来解析一下如何实现表格的隔行变色。
+                <h3>1、给Table添加一个自定义属性</h3>
+                <pre><table :row-class-name="rowClassName"></table></pre>
+                <h3>2、在methods中添加rowClassName事件</h3>
+                <p>详细代码如下：</p>
+                <pre> 
+    rowClassName (row, index) {
+      if (index % 2 === 1) {
+        return 'demo-table-info-row';
+      } else if (index % 2 !== 1) {
+        return 'demo-table-error-row';
+      }
+      return '';
+    }
+                  </pre>
+                <h3>3、给表格上色</h3>
+                <p>详细代码如下：</p>
+                <pre>
+    .demo-table-info-row {
+      background: #ccc;
+    }
+    .demo-table-error-row {
+      background: #f1f1f1;
+    }
+                  </pre>
+                <h3>4、如果还不了解，可以访问</h3>
+                <a href="https://www.iviewui.com/components/table#TDYS"
+                   target="_blank">https://www.iviewui.com/components/table#TDYS</a>
               </div>
               <money-pay></money-pay>
             </div>
@@ -145,14 +185,14 @@ strong {
         </Content>
       </div>
     </div>
-
   </div>
+
 </template>
 <script>
+//  <img src="../assets/logo.png"> <img src="../assets/login-background.png"> -->
 import Comment from '@/components/comment/comment.vue'
 import Slide from '@/components/slide/slide.vue'
 import moneyPay from '@/components/money/money.vue'
-
 export default {
   name: 'Article',
   data () {
@@ -171,7 +211,6 @@ export default {
   },
   methods: {
     fetchData () {
-
       this.id = this.$route.params;
       console.log(this.$route.params)
     }

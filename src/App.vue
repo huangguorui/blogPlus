@@ -4,9 +4,12 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <head-nav :flag="routerFlag"></head-nav>
-    <router-view/>
-    <foot-nav :flag="routerFlag"></foot-nav>
+    <div class="main">
+      <head-nav :flag="routerFlag"></head-nav>
+      <router-view/>
+      <foot-nav :flag="routerFlag"></foot-nav>
+    </div>
+
   </div>
 </template>
 <script>
@@ -56,19 +59,27 @@ export default {
   components: {
     headNav,
     footNav
-
   }
 }
 </script>
 
 <style lang="scss">
+li {
+  list-style: none;
+}
 #app {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 .size {
   width: 100%;
   height: 100%;
+}
+.main {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
 }
 html,
 body {

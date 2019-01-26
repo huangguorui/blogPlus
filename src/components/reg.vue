@@ -13,20 +13,13 @@
   <div>
     <Button type="primary"
             @click="next"
-            v-show="false">login</Button>
+            v-show="false">reg</Button>
     <div @click="modal10 = true">login</div>
-    <Modal title="Title"
+    <Modal title="reg"
            v-model="modal10"
            :footerHide="true"
            :maskClosable="false"
            class-name="vertical-center-modal">
-      <p>当前正在进行第 {{ current + 1 }} 步</p>
-      <Steps :current="current"
-             style="margin:6%">
-        <Step title="步骤1"></Step>
-        <Step title="步骤2"></Step>
-        <Step title="步骤3"></Step>
-      </Steps>
       <Form ref="formInline"
             :model="formInline"
             :rules="ruleInline">

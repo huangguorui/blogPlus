@@ -25,12 +25,6 @@
 .layout-footer-center {
   text-align: center;
 }
-.b {
-  background: #ccc;
-}
-.c {
-  background: #abc;
-}
 .box {
   width: 100%;
   height: auto;
@@ -48,13 +42,18 @@
 }
 .img {
   width: 100%;
-  margin-right: 2%;
   height: auto;
-
+  margin-right: 2%;
+  overflow: hidden;
+  border-radius: 5px;
   img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 130px;
+    transition: all 0.6s;
+  }
+  &:hover img {
+    transform: scale(1.2);
   }
 }
 .text {
@@ -64,6 +63,24 @@
   margin-top: 0.1%;
   display: flex;
   justify-content: space-around;
+  span {
+    display: block;
+    width: 25%;
+    padding: 1.1% 1%;
+    text-align: center;
+  }
+  span:last-child {
+    width: 15%;
+    border-radius: 5px;
+    transition: all 0.6s;
+    border: 1px solid #ccc;
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid #57a3f3;
+      cursor: pointer;
+    }
+  }
 }
 </style>
 <template>
@@ -100,23 +117,19 @@
                      :lg="18">
                 <div class="text">
                   <h2>测试demo</h2>
-                  测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+                  在出现一些开关灯的按钮，那么这些效果是如何做在出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探 在一些小游戏界面，都会出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探讨一下，其实制作这些效果非常的简单，就是利用了js操作DOM的特性，通过点击跟换样式来实现，源码如下：
                 </div>
                 <div class="status">
                   <span>2019-1-1</span>
                   <span>v2019-1-1</span>
-                  <span>o2019-1-1</span>
                   <span>2019-1-1</span>
                   <router-link exact
                                tag="span"
-                               style="border:1px solid #ccc;cursor:pointer;"
                                :to="{path:'/article/id/'+item.id}">Primary</router-link>
                 </div>
-
                 </Col>
               </Row>
             </div>
-
           </div>
           </Col>
           <Slide></Slide>
@@ -154,6 +167,12 @@ export default {
           id: 4,
         }, {
           id: 5,
+        }, {
+          id: 6,
+        }, {
+          id: 7,
+        }, {
+          id: 8,
         }
       ]
     }

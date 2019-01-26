@@ -1,12 +1,12 @@
 <style lang="scss" scoped>
 .a {
-  background: red;
+  //background: red;
 }
 .b {
-  background: #ccc;
+  //background: #ccc;
 }
 .c {
-  background: #abc;
+  // background: #abc;
 }
 .box {
   width: 100%;
@@ -17,6 +17,7 @@
   box-sizing: border-box;
 }
 .title {
+  color: #000;
   width: 80px;
   height: 30px;
   background: red;
@@ -24,7 +25,6 @@
   text-align: center;
   line-height: 30px;
   font-size: 15px;
-  color: #fff;
   font-weight: 500;
   position: absolute;
   left: 3%;
@@ -43,14 +43,15 @@
   .title-slide {
     height: 30px;
     line-height: 30px;
-    background: red;
+    //background: red;
     box-sizing: border-box;
     text-align: left;
-    color: #fff;
+    color: #000;
     font-size: 15px;
     font-weight: 500;
   }
 }
+
 li {
   list-style: none;
 }
@@ -66,7 +67,8 @@ li {
 }
 .tag li {
   background: #ccc;
-  width: 23%;
+  width: auto;
+  padding:0 1%;
   box-sizing: border-box;
   margin: 1%;
   height: 25px;
@@ -96,7 +98,7 @@ li {
   }
   p {
     float: left;
-    margin-left: 30px;
+    margin-left: 3%;
     line-height: 40px;
   }
 }
@@ -146,7 +148,7 @@ li {
         <li v-for="(item,index) in list"
             :key="item.id">
           <p>
-            <span style="margin-right:30px;">第{{index+1}}个</span>{{item.text|interceptStr(item.text)}}</p>
+            <span style="margin-right:2%;">第{{index+1}}个</span>{{item.text|interceptStr(item.text)}}</p>
         </li>
         <li>1、</li>
         <li>1、</li>
@@ -157,9 +159,9 @@ li {
     <div class="slide-style">
       <div class="title-slide">测试测试</div>
       <ul class="tag">
-        <li v-for="item in 20"
-            :key="item">
-          <a href="##">测试</a>
+        <li v-for="item in tag"
+            :key="item.text">
+          <a href="##">{{item.text}}</a>
         </li>
       </ul>
     </div>
@@ -197,6 +199,25 @@ export default {
         { id: 3, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
         { id: 4, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
         { id: 5, text: '试测试测试' }
+      ],
+      tag:[
+        {text:'测试测试11',},
+        {text:'测试1',},
+        {text:'测试1',},
+        {text:'测试1测试1',},
+        {text:'测试测试11',},
+        {text:'测试测试11',},
+        {text:'测试测试11',},
+        {text:'测试测试1测试11测',},
+        {text:'测试1',},
+        {text:'测试1',},
+         {text:'测试测试11',},
+        {text:'测试测试11',},
+        {text:'测试测试1测试11测',},
+        {text:'测试测试11',},
+        {text:'测试测试11',},
+        {text:'测试测试1测试11测',}
+
       ]
     }
   },

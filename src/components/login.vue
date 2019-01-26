@@ -12,7 +12,7 @@
 <template>
   <div @click="handle">
     <div @click="modal10 = true">login</div>
-    <Modal title="Title"
+    <Modal title="login"
            v-model="modal10"
            :maskClosable="false"
            :footerHide="true"

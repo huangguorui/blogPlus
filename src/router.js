@@ -55,7 +55,23 @@ const router = new Router({
       name: '404',
       component: nofound
     }
-  ]
+  ],
+  scrollBehavior(to, from, savePosition) { //点击浏览器的前进后退或切换导航触发
+    //to   当前需要进入的目标路由对象（要去向哪里）
+    //from  离开的路由对象    （从哪里来）
+    //savePosition   滚动的坐标
+    console.log(to);
+    console.log(from);
+    console.log(savePosition);
+    if (savePosition) {
+      return savePosition;
+    } else {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {
@@ -63,7 +79,7 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
-router.afterEach(route => {
+router.afterEach(() => {
   iView.LoadingBar.finish();
 });
 

@@ -68,6 +68,13 @@ li {
 li:hover {
   background: #ccc;
 }
+.top {
+  padding: 10px;
+  background: rgba(0, 153, 229, 0.7);
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+}
 </style>
 <template>
   <div class="container">
@@ -80,6 +87,7 @@ li:hover {
         <li>demo</li>
         <li>demo</li>
         <li>demo</li>
+        <li>demo</li>
         <li>
           <Reg></Reg>
         </li>
@@ -88,7 +96,10 @@ li:hover {
         </li>
       </ul>
     </div>
-
+    <BackTop :height="35"
+             :bottom="12">
+      <div class="top">返回顶端</div>
+    </BackTop>
   </div>
 </template>
 <script>

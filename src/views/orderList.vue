@@ -104,13 +104,14 @@
 <template>
   <div class="layout">
     <div class="container">
-      <Row>
-        <Col class="bg"
-             :xs="24"
+      <Row class="">
+        <Col :xs="24"
              :sm="24"
              :md="24"
              :lg="24">
-        <div class="login">login</div>
+        <div class="login">
+          <Login></Login>
+        </div>
         </Col>
       </Row>
       <div class="introduce">
@@ -177,11 +178,15 @@
   </div>
 </template>
 <script>
+import Login from '@/components/login.vue'
 export default {
   data () {
     return {
       percent: 0
     }
+  },
+  components: {
+    Login
   },
   methods: {
     add () {
