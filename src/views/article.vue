@@ -90,7 +90,7 @@ h3 {
               <div class="text">
                 解决iview中表格变色问题，iview中提供了给表格修改颜色的功能，但是咋一看，还是不好理解的，接下来我就为大家来解析一下如何实现表格的隔行变色。
                 <h3>1、给Table添加一个自定义属性</h3>
-                <pre><table :row-class-name="rowClassName"></table></pre>
+                <pre><table row-class-name="rowClassName"></table></pre>
                 <h3>2、在methods中添加rowClassName事件</h3>
                 <p>详细代码如下：</p>
                 <pre> 

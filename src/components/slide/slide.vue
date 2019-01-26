@@ -160,7 +160,7 @@ li {
       <div class="title-slide">测试测试</div>
       <ul class="tag">
         <li v-for="item in tag"
-            :key="item.text">
+            :key="item.id">
           <a href="##">{{item.text}}</a>
         </li>
       </ul>
@@ -201,23 +201,22 @@ export default {
         { id: 5, text: '试测试测试' }
       ],
       tag:[
-        {text:'测试测试11',},
-        {text:'测试1',},
-        {text:'测试1',},
-        {text:'测试1测试1',},
-        {text:'测试测试11',},
-        {text:'测试测试11',},
-        {text:'测试测试11',},
-        {text:'测试测试1测试11测',},
-        {text:'测试1',},
-        {text:'测试1',},
-         {text:'测试测试11',},
-        {text:'测试测试11',},
-        {text:'测试测试1测试11测',},
-        {text:'测试测试11',},
-        {text:'测试测试11',},
-        {text:'测试测试1测试11测',}
-
+        { id: 1,text:'测试测试11',},
+        { id: 2,text:'测试1',},
+        { id: 3,text:'测试1',},
+        { id: 4,text:'测试1测试1',},
+        { id: 5,text:'测试测试11',},
+        { id: 6,text:'测试测试11',},
+        { id: 7,text:'测试测试11',},
+        { id: 8,text:'测试测试1测试11测',},
+        { id: 9,text:'测试1',},
+        { id: 10,text:'测试1',},
+         { id: 11,text:'测试测试11',},
+        { id: 12,text:'测试测试11',},
+        { id: 13,text:'测试测试1测试11测',},
+        { id: 14,text:'测试测试11',},
+        { id: 15,text:'测试测试11',},
+        { id: 16,text:'测试测试1测试11测',}
       ]
     }
   },
