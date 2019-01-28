@@ -9,7 +9,6 @@
       <router-view/>
       <foot-nav :flag="routerFlag"></foot-nav>
     </div>
-
   </div>
 </template>
 <script>
@@ -40,7 +39,7 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/user") {
+      if (this.$route.path === "/user" || this.$route.path === "/g") {
         this.routerFlag = false
       }
       console.log(this.$route.path === "/user")
@@ -88,7 +87,7 @@ body {
   font-family: 'Microsoft YaHei' !important;
   margin: 0;
   padding: 0;
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
   color: #666 !important;
 }
 #app {

@@ -8,6 +8,7 @@ import user from './views/user.vue'
 import order from './views/orderList.vue'
 import a from './views/additional.vue'
 import nofound from './views/404.vue'
+import g from './views/g.vue'
 
 Vue.use(Router)
 import iView from 'iview';
@@ -49,6 +50,11 @@ const router = new Router({
       path: '/a',
       name: 'a',
       component: a
+    },
+    {
+      path: '/g',
+      name: 'g',
+      component: g
     },
     {
       path: '*',

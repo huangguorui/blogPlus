@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<button>开始</button>
+	
+	<script type="text/javascript">
+	document.querySelector('button').onclick=function(){
+		var index=0;
+		var img=new Image();
+		var t=setInterval(function(){
+			img.src='h'+index+'.png';
+			index++;
+			if(index>5){
+				clearInterval(t)
+			}
+		},20)
+		document.body.appendChild(img);
+	}
+	</script>
+</body>
+</html>
