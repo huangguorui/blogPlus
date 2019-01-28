@@ -1,4 +1,4 @@
-<style>
+<style lang="scss">
 .ibutton {
   margin-top: 10px;
   margin-left: 10px;

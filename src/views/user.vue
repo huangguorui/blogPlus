@@ -7,6 +7,7 @@
          style="color:green;text-align:center">
         <Icon type="ios-information-circle"></Icon>
         <span>恭喜成功升级到VIP{{vipLevel}}</span>
+        <span>获得称号{{vipLevel}}</span>
       </p>
       <div>
         <p>您已经成功解锁如下功能</p>

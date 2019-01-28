@@ -39,7 +39,7 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/user" || this.$route.path === "/g") {
+      if (this.$route.path === "/user" || this.$route.path === "/g" || this.$route.path === "/404") {
         this.routerFlag = false
       }
       console.log(this.$route.path === "/user")

@@ -20,7 +20,7 @@
 .nav-game {
   border: 1px solid #ccc;
   padding: 0.5%;
-  height: 500px;
+  min-height: 500px;
 }
 .game {
   margin: 5% auto;
@@ -86,5 +86,9 @@ export default {
   }
 
 }
+/*
+第一关 +10
+第二关 +15
+*/
 </script>
 
