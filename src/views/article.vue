@@ -21,7 +21,9 @@
 }
 .text {
   line-height: 200%;
+  word-break: break-all;
 }
+
 h1 {
   text-align: center;
   margin: 1% 0;
@@ -88,6 +90,7 @@ h3 {
                 <Button @click="fonts('-')">-</Button>
                 <Button @click="fonts('default')">Default</Button>
                 当前字体大小:{{styles.fontSize}}
+                <ColorPicker v-model="styles.color" />
               </div>
               <!-- contenteditable="true" -->
               <div class="text"
@@ -203,7 +206,8 @@ export default {
     return {
       id: '',
       styles: {
-        fontSize: '16px'
+        fontSize: '16px',
+        color: '#000'
       },
     }
   },
