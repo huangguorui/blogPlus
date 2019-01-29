@@ -126,11 +126,11 @@ body {
 }
 
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 18px !important;
+  }
   .container {
     width: 100% !important;
-  }
-  .box {
-    padding: 4% !important;
   }
   .img {
     img {

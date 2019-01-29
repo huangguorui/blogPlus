@@ -5,7 +5,6 @@
   background: #fff;
   border-radius: 1%;
   padding: 2%;
-  margin: 0 1%;
   margin-bottom: 2%;
   box-sizing: border-box;
 }
@@ -67,8 +66,7 @@ h3 {
       <div class="container">
         <Row align="top"
              style="margin-top:2%">
-          <Col class="a"
-               :xs="48"
+          <Col :xs="48"
                :sm="16"
                :md="17"
                :lg="17">
@@ -77,13 +75,22 @@ h3 {
             <div class="hots">
               <span>2019年01月01日</span>
               <span>200views</span>
-              <span>200 当前传入的参数为:{{id}}
-              </span>
-              <Button @click="fonts('+')">+</Button>
-              <Button @click="fonts('-')">-</Button>
-              <Button @click="fonts('default')">Default</Button>
-              当前字体大小:{{styles.fontSize}}
-              <ColorPicker v-model="styles.color" />
+              <span>200</span>
+              <p>
+                <span>当前传入的参数为:{{id}}
+                </span>
+              </p>
+              <p>
+                <Button size="small"
+                        @click="fonts('+')">+</Button>
+                <Button size="small"
+                        @click="fonts('-')">-</Button>
+                <Button size="small"
+                        @click="fonts('default')">Default</Button>
+                当前字体大小:{{styles.fontSize}}
+                <ColorPicker size="small"
+                             v-model="styles.color" />
+              </p>
             </div>
             <!-- contenteditable="true" -->
             <div class="text"
