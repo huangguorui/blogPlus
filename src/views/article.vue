@@ -3,8 +3,8 @@
   width: 98%;
   height: auto;
   background: #fff;
-  border-radius: 1%;
   padding: 2%;
+  margin-right: 2%;
   margin-bottom: 2%;
   box-sizing: border-box;
 }
@@ -39,7 +39,7 @@ h1 {
   a {
     display: inline-block;
     height: auto;
-    margin: 1% 2%;
+    margin: 1% 1.5%;
   }
 }
 strong {
@@ -87,9 +87,9 @@ h3 {
                         @click="fonts('-')">-</Button>
                 <Button size="small"
                         @click="fonts('default')">Default</Button>
-                当前字体大小:{{styles.fontSize}}
+                <!-- 当前字体大小:{{styles.fontSize}}
                 <ColorPicker size="small"
-                             v-model="styles.color" />
+                             v-model="styles.color" /> -->
               </p>
             </div>
             <!-- contenteditable="true" -->
@@ -205,8 +205,8 @@ export default {
     return {
       id: '',
       styles: {
-        fontSize: '16px',
-        color: '#000'
+        fontSize: '16px'
+        //color: '#000'
       },
     }
   },

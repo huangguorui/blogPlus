@@ -95,10 +95,6 @@ body {
   /*background-color: #eeeeee;*/
   color: #666 !important;
 }
-#app {
-  width: 100%;
-  height: 100%;
-}
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -138,6 +134,10 @@ body {
       height: auto !important;
       margin: 1% auto;
     }
+  }
+  .box {
+    margin-right: 0 !important;
+    width: 100% !important;
   }
 }
 ::-webkit-scrollbar {
