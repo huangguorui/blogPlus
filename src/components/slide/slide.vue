@@ -17,7 +17,7 @@
   margin-top: 10%;
 }
 .slide-style {
-  margin-bottom: 3%;
+  margin-bottom: 5%;
   height: auto;
   background: #fff;
   box-sizing: border-box;

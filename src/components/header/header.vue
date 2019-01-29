@@ -68,6 +68,7 @@ li {
   width: 20%;
   cursor: pointer;
   text-align: center;
+  line-height: 25px;
   padding: 1.2%;
   list-style: none;
   box-sizing: border-box;
