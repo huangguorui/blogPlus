@@ -129,6 +129,20 @@ body {
   .container {
     width: 100% !important;
   }
+  .box {
+    padding: 4% !important;
+  }
+  .img {
+    img {
+      width: 160px !important;
+      height: auto !important;
+      margin: 1% auto;
+    }
+  }
 }
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 //(<768px)	小屏幕 平板 (≥768px)	中等屏幕 桌面显示器 (≥992px)	大屏幕 大桌面显示器 (≥1200px)
 </style>

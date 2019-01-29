@@ -58,8 +58,6 @@
   background: #f5f7f9;
 }
 ul {
-  background: #f5f7f9;
-
   width: 90%;
   box-sizing: border-box;
   height: 100%;

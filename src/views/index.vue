@@ -45,7 +45,7 @@
     text-align: center;
   }
   span:last-child {
-    width: 15%;
+    width: 20%;
     border-radius: 5px;
     transition: all 0.6s;
     border: 1px solid #ccc;

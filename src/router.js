@@ -93,12 +93,13 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+
   /* 路由发生变化修改页面meta */
   if (to.meta.content) {
     let head = document.getElementsByTagName('head');
     let meta = document.createElement('meta');
 
-    meta.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+    meta.content = 'width=device-width, initial-scale=1';
     meta.name = 'viewport';
     head[0].appendChild(meta)
   }
