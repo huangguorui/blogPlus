@@ -5,11 +5,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+.container-main {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
 .container {
   width: 1200px;
   margin: 0 auto;
   height: auto;
   padding: 0px 2.5%;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1200px) {
@@ -81,28 +87,30 @@ li:hover {
 }
 </style>
 <template>
-  <div class="container">
-    <div class="nav"
-         v-show="flag">
-      <router-link tag="div"
-                   class="logo"
-                   :to="{ name: 'index'}"></router-link>
-      <ul>
-        <li>demo</li>
-        <li>demo</li>
-        <li>demo</li>
-        <li>
-          <Reg></Reg>
-        </li>
-        <li>
-          <Login></Login>
-        </li>
-      </ul>
+  <div class="container-main">
+    <div class="container">
+      <div class="nav"
+           v-show="flag">
+        <router-link tag="div"
+                     class="logo"
+                     :to="{ name: 'index'}"></router-link>
+        <ul>
+          <li>demo</li>
+          <li>demo</li>
+          <li>demo</li>
+          <li>
+            <Reg></Reg>
+          </li>
+          <li>
+            <Login></Login>
+          </li>
+        </ul>
+      </div>
+      <BackTop :height="35"
+               :bottom="12">
+        <div class="top">返回顶端</div>
+      </BackTop>
     </div>
-    <BackTop :height="35"
-             :bottom="12">
-      <div class="top">返回顶端</div>
-    </BackTop>
   </div>
 </template>
 <script>
