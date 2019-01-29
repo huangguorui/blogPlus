@@ -47,10 +47,14 @@
   cursor: pointer;
   width: 10%;
   height: 100%;
+  box-sizing: border-box;
   border: 1px solid red;
+  background: #f5f7f9;
 }
 ul {
-  width: 100%;
+  background: #f5f7f9;
+
+  width: 90%;
   box-sizing: border-box;
   height: 100%;
   display: flex;
@@ -84,7 +88,6 @@ li:hover {
                    class="logo"
                    :to="{ name: 'index'}"></router-link>
       <ul>
-        <li>demo</li>
         <li>demo</li>
         <li>demo</li>
         <li>demo</li>

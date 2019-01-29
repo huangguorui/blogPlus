@@ -72,7 +72,7 @@ h3 {
   <div>
     <div class="layout">
       <div class="container">
-        <Content :style="{padding: '0 3%',marginTop:'2%'}">
+        <Content :style="{padding: '0 0',marginTop:'2%'}">
           <Row align="top">
             <Col class="a"
                  :xs="48"

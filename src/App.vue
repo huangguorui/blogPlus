@@ -1,4 +1,5 @@
 <template>
+
   <div id="app">
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -12,7 +13,9 @@
   </div>
 </template>
 <script>
+
 import headNav from './components/header/header.vue'
+//import vipHots from './components/vipHots/vipHots.vue'
 import footNav from './components/footer/footer.vue'
 export default {
   data () {
@@ -39,7 +42,7 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/user" || this.$route.path === "/g" || this.$route.path === "/404") {
+      if (this.$route.path === "/user" || this.$route.path === "/g") {
         this.routerFlag = false
       }
       console.log(this.$route.path === "/user")
@@ -58,6 +61,7 @@ export default {
   components: {
     headNav,
     footNav
+
   }
 }
 </script>
@@ -78,6 +82,7 @@ li {
 .main {
   width: 100%;
   min-height: 100%;
+  background: #f1f1ef;
   position: relative;
 }
 html,
@@ -99,8 +104,8 @@ body {
   margin: 0 auto;
   height: auto;
   box-sizing: border-box;
+  padding: 0px 2.5%;
 }
-
 /* 超小屏幕（手机，小于 768px） */
 
 /* 小屏幕（平板，大于等于 768px） */

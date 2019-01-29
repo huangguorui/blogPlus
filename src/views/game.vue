@@ -11,7 +11,7 @@
       height: 7%;
       margin: 1%;
       padding: 1%;
-      border: 1px solid red;  
+      border: 1px solid #ccc;
       box-sizing: border-box;
       cursor: pointer;
     }
@@ -20,13 +20,12 @@
 .nav-game {
   border: 1px solid #ccc;
   padding: 0.5%;
-  height: 500px;
+  min-height: 500px;
 }
 .game {
   margin: 5% auto;
 }
 </style>
-
 <template>
   <div>
     <div class="container">
@@ -37,23 +36,28 @@
              :lg="4"
              class="nav-list">
         <ul>
-          <li @click="tabGame(1)">11</li>
-          <li @click="tabGame(2)">11</li>
-          <li @click="tabGame(3)">11</li>
-          <li @click="tabGame(4)">11</li>
+          <li @mouseover="tabGame(1)">11</li>
+          <li @mouseover="tabGame(2)">11</li>
+          <li @mouseover="tabGame(3)">11</li>
+          <li @mouseover="tabGame(4)">11</li>
         </ul>
         </Col>
         <Col :xs="24"
              :sm="20"
              :md="20"
              :lg="20"
-             class="nav-game">{{current}}</Col>
+             class="nav-game">{{current}}
+        <templateGame :message="current"></templateGame>
+        </Col>
       </Row>
     </div>
   </div>
 </template>
 <script>
+import templateGame from '../game/template.vue'
+
 export default {
+  name: 'abc',
   data () {
     return {
       list: [{
@@ -75,8 +79,15 @@ export default {
   },
   watch: {
 
+  },
+  components: {
+    templateGame
   }
 
 }
+/*
+第一关 +10
+第二关 +15
+*/
 </script>
 

@@ -1,30 +1,5 @@
 
 <style  lang="scss" scoped>
-.layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.layout-logo {
-  width: 100px;
-  height: 30px;
-  background: #5b6270;
-  border-radius: 3px;
-  float: left;
-  position: relative;
-  top: 15px;
-  left: 20px;
-}
-.layout-nav {
-  width: 420px;
-  margin: 0 auto;
-  margin-right: 20px;
-}
-.layout-footer-center {
-  text-align: center;
-}
 .box {
   width: 100%;
   height: auto;
@@ -53,7 +28,7 @@
     transition: all 0.6s;
   }
   &:hover img {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(5deg);
   }
 }
 .text {
@@ -84,60 +59,57 @@
 }
 </style>
 <template>
-  <div class="layout">
+  <div class="container">
     <Banner></Banner>
-    <div class="container">
-      <Content :style="{padding: '0 3%'}">
-        <Row align="top">
-          <Col class="a"
-               :xs="48"
-               :sm="16"
-               :md="17"
-               :lg="17">
+    <Row align="top">
+      <Col :xs="48"
+           :sm="16"
+           :md="17"
+           :lg="17">
 
-          <div class="box"
-               v-for="item in list"
-               :key="item.id">
+      <div class="box"
+           v-for="item in list"
+           :key="item.id">
 
-            <div class="mian-text">
-              <Row>
-                <Col :xs="24"
-                     :sm="24"
-                     :md="8"
-                     :lg="6">
-                <router-link exact
-                             tag="div"
-                             class="img"
-                             style="cursor:pointer;"
-                             :to="{path:'/article/id/'+item.id}"><img src="../assets/login-background.png"></router-link>
-                </Col>
-                <Col :xs="24"
-                     :sm="24"
-                     :md="16"
-                     :lg="18">
-                <div class="text">
-                  <h2>测试demo</h2>
-                  在出现一些开关灯的按钮，那么这些效果是如何做在出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探 在一些小游戏界面，都会出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探讨一下，其实制作这些效果非常的简单，就是利用了js操作DOM的特性，通过点击跟换样式来实现，源码如下：
-                </div>
-                <div class="status">
-                  <span>2019-1-1</span>
-                  <span>v2019-1-1</span>
-                  <span>2019-1-1</span>
-                  <router-link exact
-                               tag="span"
-                               :to="{path:'/article/id/'+item.id}">Primary</router-link>
-                </div>
-                </Col>
-              </Row>
+        <div class="mian-text">
+          <Row>
+            <Col :xs="24"
+                 :sm="24"
+                 :md="8"
+                 :lg="6">
+            <router-link exact
+                         tag="div"
+                         class="img"
+                         style="cursor:pointer;"
+                         :to="{path:'/article/id/'+item.id}"><img src="../assets/login-background.png"></router-link>
+            </Col>
+            <Col :xs="24"
+                 :sm="24"
+                 :md="16"
+                 :lg="18">
+            <div class="text">
+              <h2>测试demo</h2>
+              在出现一些开关灯的按钮，那么这些效果是如何做在出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探 在一些小游戏界面，都会出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探讨一下，其实制作这些效果非常的简单，就是利用了js操作DOM的特性，通过点击跟换样式来实现，源码如下：
             </div>
-          </div>
-          </Col>
-          <Slide></Slide>
-        </Row>
-      </Content>
-    </div>
+            <div class="status">
+              <span>2019-1-1</span>
+              <span>v2019-1-1</span>
+              <span>2019-1-1</span>
+              <router-link exact
+                           tag="span"
+                           :to="{path:'/article/id/'+item.id}">Primary</router-link>
+            </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+      </Col>
+      <Slide></Slide>
+    </Row>
     <Page></Page>
   </div>
+  </div>
+
 </template>
 <script>
 // Do not use built-in or reserved HTML elements as component id: XXX  https://blog.csdn.net/shooke/article/details/72801735  模板为关键字

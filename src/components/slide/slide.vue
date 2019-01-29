@@ -1,13 +1,4 @@
 <style lang="scss" scoped>
-.a {
-  //background: red;
-}
-.b {
-  //background: #ccc;
-}
-.c {
-  // background: #abc;
-}
 .box {
   width: 100%;
   height: 160px;
@@ -36,6 +27,7 @@
 .slide-style {
   margin-bottom: 3%;
   height: auto;
+  background: #fff;
   box-sizing: border-box;
   border: 1px solid #ccc;
   padding: 3%;
@@ -68,7 +60,7 @@ li {
 .tag li {
   background: #ccc;
   width: auto;
-  padding:0 1%;
+  padding: 0 1%;
   box-sizing: border-box;
   margin: 1%;
   height: 25px;
@@ -115,8 +107,7 @@ li {
 
 <template>
   <div>
-    <Col class="c"
-         :xs="24"
+    <Col :xs="24"
          :sm="8"
          :md="7"
          :lg="7"
@@ -200,23 +191,23 @@ export default {
         { id: 4, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
         { id: 5, text: '试测试测试' }
       ],
-      tag:[
-        { id: 1,text:'测试测试11',},
-        { id: 2,text:'测试1',},
-        { id: 3,text:'测试1',},
-        { id: 4,text:'测试1测试1',},
-        { id: 5,text:'测试测试11',},
-        { id: 6,text:'测试测试11',},
-        { id: 7,text:'测试测试11',},
-        { id: 8,text:'测试测试1测试11测',},
-        { id: 9,text:'测试1',},
-        { id: 10,text:'测试1',},
-         { id: 11,text:'测试测试11',},
-        { id: 12,text:'测试测试11',},
-        { id: 13,text:'测试测试1测试11测',},
-        { id: 14,text:'测试测试11',},
-        { id: 15,text:'测试测试11',},
-        { id: 16,text:'测试测试1测试11测',}
+      tag: [
+        { id: 1, text: '测试测试11', },
+        { id: 2, text: '测试1', },
+        { id: 3, text: '测试1', },
+        { id: 4, text: '测试1测试1', },
+        { id: 5, text: '测试测试11', },
+        { id: 6, text: '测试测试11', },
+        { id: 7, text: '测试测试11', },
+        { id: 8, text: '测试测试1测试11测', },
+        { id: 9, text: '测试1', },
+        { id: 10, text: '测试1', },
+        { id: 11, text: '测试测试11', },
+        { id: 12, text: '测试测试11', },
+        { id: 13, text: '测试测试1测试11测', },
+        { id: 14, text: '测试测试11', },
+        { id: 15, text: '测试测试11', },
+        { id: 16, text: '测试测试1测试11测', }
       ]
     }
   },

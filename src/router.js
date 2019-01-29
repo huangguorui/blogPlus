@@ -5,10 +5,10 @@ import about from './views/about.vue'
 import article from './views/article.vue'
 import anchor from './views/anchor.vue'
 import user from './views/user.vue'
-import order from './views/orderList.vue'
-import a from './views/additional.vue'
 import nofound from './views/404.vue'
-import g from './views/g.vue'
+
+import game from './views/game.vue'
+import turnTable from './views/turnTable.vue'
 
 Vue.use(Router)
 import iView from 'iview';
@@ -19,43 +19,55 @@ const router = new Router({
   routes: [{
       path: '/',
       name: 'index',
-      component: index
+      component: index,
+      meta: {
+        title: "测试测试测试",
+      }
     },
     {
       path: '/about',
       name: 'about',
-      component: about
+      component: about,
+      meta: {
+        title: "测试测试测试",
+      }
     },
     {
       path: '/article/id/:id',
       name: 'article',
-      component: article
+      component: article,
+      meta: {
+        title: "article",
+      }
     },
     {
       path: '/anchor',
       name: 'anchor',
-      component: anchor
+      component: anchor,
+      meta: {
+        title: "锚点测试界面",
+      }
     },
     {
       path: '/user',
       name: 'user',
-      component: user
+      component: user,
+      meta: {
+        title: "用户中心",
+      }
     },
     {
-      path: '/order',
-      name: 'order',
-      component: order
+      path: '/game',
+      name: 'game',
+      component: game
     },
     {
-      path: '/a',
-      name: 'a',
-      component: a
+      path: '/turntable',
+      name: 'turntable',
+      component: turnTable
     },
-    {
-      path: '/g',
-      name: 'g',
-      component: g
-    },
+
+
     {
       path: '*',
       name: '404',
@@ -81,6 +93,20 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面meta */
+  if (to.meta.content) {
+    let head = document.getElementsByTagName('head');
+    let meta = document.createElement('meta');
+
+    meta.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
+    meta.name = 'viewport';
+    head[0].appendChild(meta)
+  }
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
   iView.LoadingBar.start();
   next();
 });

@@ -1,98 +1,208 @@
+<style lang="scss">
+.introduce {
+  border: 1px solid red;
+  box-sizing: border-box;
+  padding: 1%;
+  h3 {
+    margin: 3px 0;
+  }
+  p {
+    line-height: 18px;
+  }
+}
+.grade {
+  border: 1px solid red;
+  box-sizing: border-box;
+  padding: 1%;
+}
+.grade > div {
+  height: 25px;
+  text-align: center;
+}
+.bg {
+  border: 1px solid red;
+  box-sizing: border-box;
+  background: pink;
+}
+.login {
+  margin: 15px 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 60px;
+  border: 1px solid red;
+  font-weight: 700;
+  color: #fff;
+}
+.layout {
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.layout {
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.bg {
+  margin-top: 2%;
+}
+.introduce,
+.grade,
+.bg,
+.circle {
+  margin-bottom: 2%;
+}
+/*进度环*/
+.demo-i-circle -custom {
+  & h1 {
+    color: #3f414d;
+    font-size: 28px;
+    font-weight: normal;
+  }
+  & p {
+    color: #657180;
+    font-size: 14px;
+    margin: 10px 0 15px;
+  }
+  & span {
+    display: block;
+    padding-top: 15px;
+    color: #657180;
+    font-size: 14px;
+    &:before {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 1px;
+      margin: 0 auto;
+      background: #e0e3e6;
+      position: relative;
+      top: -15px;
+    }
+  }
+  & span i {
+    font-style: normal;
+    color: #3f414d;
+  }
+}
+/*进度环*/
+
+.circle {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid red;
+  box-sizing: border-box;
+  padding: 1%;
+}
+</style>
 <template>
-  <div>
-    <Button @click="modal2 = true">Custom header and footer</Button>
-    <Modal v-model="modal2"
-           width="360">
-      <p slot="header"
-         style="color:green;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>恭喜成功升级到VIP{{vipLevel}}</span>
-      </p>
-      <p slot="header"
-         style="color:green;text-align:center">
-        <span>获得称号【{{nickName[vipLevel-1].text}}】称号</span>
-      </p>
-      <div>
-        <p>您已经成功解锁如下功能</p>
-        <ul style="text-align:left;margin-left:10%;line-height: 25px;padding: 5px;padding: 10px 0 0 0; "
-            v-for="item in unlockText"
-            :key="item.id">
-
-          <li v-show="vipLevel==item.id"
-              v-for="(list,index) in item.text"
-              :key="index">{{index+1}}、{{list}}</li>
-
-        </ul>
+  <div class="layout">
+    <div class="container">
+      <Row class="">
+        <Col :xs="24"
+             :sm="24"
+             :md="24"
+             :lg="24">
+        <div class="login">
+          <Login></Login>
+        </div>
+        </Col>
+      </Row>
+      <div class="introduce">
+        <a href="javascript:;"
+           style="text-align:right">
+          <h3>测试</h3>
+        </a>
+        <h3>测试测试</h3>
+        <Progress :percent="percent" />
+        <ButtonGroup size="large">
+          <Button icon="ios-add"
+                  @click="add"></Button>
+          <Button icon="ios-remove"
+                  @click="minus"></Button>
+        </ButtonGroup>
+        <h3>测试测试</h3>
+        <p>测试测试测试测试测试测试测试测试</p>
+        <h3>测试测试</h3>
+        <p>测试测试测试测试测试测试测试测试</p>
+        <h3>测试测试</h3>
+        <p>测试测试测试测试测试测试测试测试</p>
+        <h3>测试测试</h3>
+        <p>测试测试测试测试测试测试测试测试</p>
       </div>
-      <div slot="footer">
-        <Button type="success"
-                size="large"
-                long
-                :loading="modal_loading"
-                @click="del">确定</Button>
-      </div>
-    </Modal>
+      <Row class="grade">
+        <Col span="4">center</Col>
+        <Col span="4">center</Col>
+        <Col span="4">center</Col>
+        <Col span="4">center</Col>
+        <Col span="4">center</Col>
+        <Col span="4">center</Col>
+      </Row>
+      <Row>
+        <Col span="24">
+        <div class="circle">
+          <div>
+            <i-circle :percent="80">
+              <span class="demo-i-circle -inner"
+                    style="font-size:24px">80%</span>
+            </i-circle>
+          </div>
+          <div>
+            <i-circle :percent="100"
+                      stroke-color="#5cb85c">
+              <Icon type="ios-checkmark"
+                    size="60"
+                    style="color:#5cb85c"></Icon>
+            </i-circle>
+          </div>
+          <div>
+            <i-circle :percent="35"
+                      stroke-color="#ff5500">
+              <span class="demo-i-circle -inner">
+                <Icon type="ios-close"
+                      size="50"
+                      style="color:#ff5500"></Icon>
+              </span>
+            </i-circle>
+          </div>
+        </div>
+        </Col>
+      </Row>
+    </div>
   </div>
 </template>
 <script>
+import Login from '@/components/login.vue'
 export default {
+  name: 'user',
   data () {
     return {
-      modal2: false,
-      modal_loading: false,
-      vipLevel: 1,
-      unlockText: [{
-        id: 1,
-        text: ['黑夜护眼功能111', '界面文章字体大小自定义111', '文字颜色修改111']
-      }, {
-        id: 2,
-        text: ['黑夜护眼功能222', '界面文章字体大小自定义222', '文字颜色修改222']
-      }, {
-        id: 3,
-        text: ['黑夜护眼功能333', '界面文章字体大小自定义333', '文字颜色修改333']
-      }],
-      nickName: [{
-        text: '倔强青铜'
-      }, {
-        text: '持续白银'
-      }, {
-        text: '荣耀黄金'
-      }, {
-        text: '尊贵铂金'
-      }, {
-        text: '永恒钻石'
-      }, {
-        text: '最强王者'
-      }, {
-        text: '荣耀王者'
-      }]
+      percent: 0
     }
   },
-  /*
-小萌新
-倔强青铜 
-持续白银 
-荣耀黄金 
-尊贵铂金 
-永恒钻石 
-最强王者 
-荣耀王者
-
-特殊VIP徽章 黑夜护眼 字体大小自定义 文章颜色自定义 每次登陆经验值+10 每日免费转盘一次
-特殊VIP徽章 音乐播放 每次登陆经验值+15 每日免费转盘一次
-特殊VIP徽章 页面背景自定义颜色 每次登陆经验值+20
-特殊VIP徽章 每次登陆经验值+25
-
-*/
+  components: {
+    Login
+  },
   methods: {
-    del () {
-      this.modal_loading = true;
-      setTimeout(() => {
-        this.modal_loading = false;
-        this.modal2 = false;
-        this.$Message.success('Success');
-      }, 1000);
+    add () {
+      if (this.percent >= 100) {
+        return false;
+      }
+      this.percent += 10;
+    },
+    minus () {
+      if (this.percent <= 0) {
+        return false;
+      }
+      this.percent -= 10;
     }
   }
 }
 </script>
+

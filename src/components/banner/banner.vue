@@ -1,7 +1,7 @@
 
 <style scoped>
 .banner {
-  margin: 2% 3% 2% 3%;
+  margin: 2% 0 2% 0;
   background: #506b9e !important;
 }
 @media screen and (max-width: 1080px) {
@@ -18,25 +18,23 @@
 }
 </style>
 <template>
-  <div class="container">
-    <Carousel class="banner"
-              v-model="value1"
-              loop
-              style="height:350px;">
-      <CarouselItem>
-        <div class="demo-carousel">1</div>
-      </CarouselItem>
-      <CarouselItem>
-        <div class="demo-carousel">2</div>
-      </CarouselItem>
-      <CarouselItem>
-        <div class="demo-carousel">3</div>
-      </CarouselItem>
-      <CarouselItem>
-        <div class="demo-carousel">4</div>
-      </CarouselItem>
-    </Carousel>
-  </div>
+  <Carousel class="banner"
+            v-model="value1"
+            loop
+            style="height:350px;">
+    <CarouselItem>
+      <div class="demo-carousel">1</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="demo-carousel">2</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="demo-carousel">3</div>
+    </CarouselItem>
+    <CarouselItem>
+      <div class="demo-carousel">4</div>
+    </CarouselItem>
+  </Carousel>
 </template>
 <script>
 export default {
