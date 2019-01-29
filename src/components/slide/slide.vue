@@ -1,12 +1,4 @@
 <style lang="scss" scoped>
-.box {
-  width: 100%;
-  height: 160px;
-  background: #000;
-  padding: 1%;
-  margin-bottom: 2%;
-  box-sizing: border-box;
-}
 .title {
   color: #000;
   width: 80px;

@@ -1,7 +1,7 @@
 
 <style  lang="scss" scoped>
 .box {
-  width: 100%;
+  width: 98%;
   height: auto;
   background: #fff;
   border-radius: 1%;
