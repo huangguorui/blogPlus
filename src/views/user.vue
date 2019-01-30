@@ -112,7 +112,7 @@
   }
   .label {
     width: 25%;
-    }
+  }
   .info {
     width: 50%;
   }
@@ -199,6 +199,27 @@ export default {
   data () {
     return {
       percent: 0,
+      // userInfoVal: {
+      //   nickName: '张三',
+      //   grade: '1',
+      //   goldCoin: '1',
+      //   diamonds: '1',
+      //   qq: 123465,
+      //   blog: '12345678',
+      //   github: 123456,
+      //   skill: ['a', 'b', 'c']
+
+      // },
+      // userInfoLabel: {
+      //   nickName: '您的昵称',
+      //   grade: '您的等级',
+      //   goldCoin: '金币',
+      //   diamonds: '钻石',
+      //   qq: 'QQ账号',
+      //   blog: '博客主页',
+      //   github: 'Github',
+      //   skill: '掌握技能'
+      // }
       userInfo: [
         {
           label: '您的昵称',
@@ -223,7 +244,7 @@ export default {
           text: 111
         }, {
           label: '掌握技能',
-          text: 111
+          text: ['a', 'b', 'c']
         }
       ]
     }

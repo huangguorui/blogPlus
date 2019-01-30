@@ -36,10 +36,10 @@
              :lg="4"
              class="nav-list">
         <ul>
-          <li @mouseover="tabGame(1)">11</li>
-          <li @mouseover="tabGame(2)">11</li>
-          <li @mouseover="tabGame(3)">11</li>
-          <li @mouseover="tabGame(4)">11</li>
+          <li @mouseover="tabGame(1)">game1</li>
+          <li @mouseover="tabGame(2)">game2</li>
+          <li @mouseover="tabGame(3)">game3</li>
+          <li @mouseover="tabGame(4)">game4</li>
         </ul>
         </Col>
         <Col :xs="24"

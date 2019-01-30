@@ -96,7 +96,8 @@ li:hover {
         <ul>
           <li>demo</li>
           <li>demo</li>
-          <li>demo</li>
+          <router-link tag="li"
+                       :to="{ name: 'game'}">demo</router-link>
           <li>
             <Reg></Reg>
           </li>

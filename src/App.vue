@@ -138,6 +138,7 @@ body {
   .box {
     margin-right: 0 !important;
     width: 100% !important;
+    margin: 4% 0 5% 0 !important;
   }
 }
 ::-webkit-scrollbar {

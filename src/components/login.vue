@@ -11,11 +11,12 @@
 </style>
 <template>
   <div @click="handle">
-    <div @click="modal10 = true">login</div>
-    <Modal title="login"
-           v-model="modal10"
+    <div @click="modal = true">login</div>
+    <Modal title="用户登陆"
+           v-model="modal"
            :maskClosable="false"
            :footerHide="true"
+           width="320"
            class-name="vertical-center-modal">
       <Form ref="formInline"
             :model="formInline"
@@ -23,7 +24,7 @@
         <FormItem prop="user">
           <Input type="text"
                  v-model="formInline.user"
-                 placeholder="Username">
+                 placeholder="请输入用户名">
           <Icon type="ios-person-outline"
                 slot="prepend"></Icon>
           </Input>
@@ -31,14 +32,14 @@
         <FormItem prop="password">
           <Input type="password"
                  v-model="formInline.password"
-                 placeholder="Password">
+                 placeholder="请输入密码">
           <Icon type="ios-lock-outline"
                 slot="prepend"></Icon>
           </Input>
         </FormItem>
         <FormItem>
           <Button type="primary"
-                  @click="handleSubmit('formInline')">Signin</Button>
+                  @click="handleSubmit('formInline')">登陆</Button>
         </FormItem>
       </Form>
 
@@ -51,18 +52,18 @@ export default {
     return {
       current: 0,
       modal9: false,
-      modal10: false,
+      modal: false,
       formInline: {
         user: '',
         password: ''
       },
       ruleInline: {
         user: [
-          { required: true, message: 'Please fill in the user name', trigger: 'blur' }
+          { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: 'Please fill in the password.', trigger: 'blur' },
-          { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+          { required: true, message: '请输入密码.', trigger: 'blur' },
+          { type: 'string', min: 8, message: '密码的长度要大于或者等于8位', trigger: 'blur' }
         ]
       }
     }
@@ -76,7 +77,7 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.modal10 = false;
+          this.modal = false;
           this.$Message.success('Success!');
         } else {
           this.$Message.error('Fail!');

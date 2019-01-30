@@ -19,53 +19,58 @@
            class-name="vertical-center-modal">
       <Form ref="formInline"
             :model="formInline"
+            :label-width="100"
             :rules="ruleInline">
-        <FormItem label="password"
+        <FormItem label="请输入用户名"
+                  prop="user">
+          <Input v-model="formInline.user"
+                 placeholder="请输入用户名"></Input>
+        </FormItem>
+        <FormItem label="请输入密码"
                   prop="password">
           <Input v-model="formInline.password"
-                 placeholder="Enter your name"></Input>
+                 placeholder="请输入密码"></Input>
         </FormItem>
-        <FormItem label="user"
-                  prop="password">
-          <Input v-model="formInline.password"
-                 placeholder="Enter your e-mail"></Input>
-        </FormItem>
-        <FormItem label="Date">
+        <FormItem label="请输入邮箱"
+                  prop="email">
           <Row>
-            <Col span="11">
-            <FormItem prop="user">
-              <Input v-model="formInline.user"
-                     placeholder="Enter your name"></Input>
+            <Col span="15">
+            <FormItem prop="email">
+              <Input v-model="formInline.email"
+                     placeholder="请输入邮箱"></Input>
             </FormItem>
             </Col>
-            <Col span="5"
-                 style="text-align: center">=></Col>
+            <Col span="2"
+                 style="text-align: center">-</Col>
+
             <Col span="5">
             <Button type="primary"
                     :disabled="isDisabled"
-                    @click="openEmail">{{codeTime}}</Button>
+                    @click="openEmail">&nbsp;&nbsp;&nbsp;{{codeTime}}&nbsp;&nbsp;&nbsp;</Button>
             </Col>
           </Row>
         </FormItem>
-        <FormItem label="Name"
+        <FormItem label="验证码"
                   prop="gender">
-          <Input v-model="formInline.gender"
-                 placeholder="Enter your name"></Input>
+          <Input v-model="formInline.code"
+                 placeholder="验证码"></Input>
         </FormItem>
-        <FormItem label="Gender"
+        <FormItem label="性别"
                   prop="gender">
           <RadioGroup v-model="formInline.gender">
-            <Radio label="male">Male</Radio>
-            <Radio label="female">Female</Radio>
+            <Radio label="male">小哥哥</Radio>
+            <Radio label="female">小姐姐</Radio>
           </RadioGroup>
         </FormItem>
-
-        <Upload action="//jsonplaceholder.typicode.com/posts/">
-          <Button icon="ios-cloud-upload-outline">Upload files</Button>
-        </Upload>
+        <FormItem label="上传用户图片"
+                  prop="gender">
+          <Upload action="//jsonplaceholder.typicode.com/posts/">
+            <Button icon="ios-cloud-upload-outline">Upload files</Button>
+          </Upload>
+        </FormItem>
         <FormItem>
           <Button type="primary"
-                  @click="handleSubmit('formInline')">Signin</Button>
+                  @click="handleSubmit('formInline')">立即注册</Button>
         </FormItem>
       </Form>
 
@@ -98,6 +103,12 @@ export default {
         gender: [
           { required: true, message: 'Please select gender', trigger: 'change' }
         ],
+        email: [
+          { required: true, message: 'Please select gender', trigger: 'change' }
+        ],
+        code: [
+          { required: true, message: 'Please select gender', trigger: 'change' }
+        ]
       }
     }
   },
