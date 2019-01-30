@@ -11,9 +11,6 @@
 </style>
 <template>
   <div>
-    <Button type="primary"
-            @click="next"
-            v-show="false">reg</Button>
     <div @click="modal10 = true">login</div>
     <Modal title="reg"
            v-model="modal10"
@@ -23,22 +20,46 @@
       <Form ref="formInline"
             :model="formInline"
             :rules="ruleInline">
-        <FormItem prop="user">
-          <Input type="text"
-                 v-model="formInline.user"
-                 placeholder="Username">
-          <Icon type="ios-person-outline"
-                slot="prepend"></Icon>
-          </Input>
+        <FormItem label="password"
+                  prop="password">
+          <Input v-model="formInline.password"
+                 placeholder="Enter your name"></Input>
         </FormItem>
-        <FormItem prop="password">
-          <Input type="password"
-                 v-model="formInline.password"
-                 placeholder="Password">
-          <Icon type="ios-lock-outline"
-                slot="prepend"></Icon>
-          </Input>
+        <FormItem label="user"
+                  prop="password">
+          <Input v-model="formInline.password"
+                 placeholder="Enter your e-mail"></Input>
         </FormItem>
+        <FormItem label="Date">
+          <Row>
+            <Col span="11">
+            <FormItem prop="user">
+              <Input v-model="formInline.user"
+                     placeholder="Enter your name"></Input>
+            </FormItem>
+            </Col>
+            <Col span="5"
+                 style="text-align: center">=></Col>
+            <Col span="5">
+            <Button type="primary"
+                    :disabled="isDisabled"
+                    @click="openEmail">{{codeTime}}</Button>
+            </Col>
+          </Row>
+        </FormItem>
+        <FormItem label="Name"
+                  prop="gender">
+          <Input v-model="formInline.gender"
+                 placeholder="Enter your name"></Input>
+        </FormItem>
+        <FormItem label="Gender"
+                  prop="gender">
+          <RadioGroup v-model="formInline.gender">
+            <Radio label="male">Male</Radio>
+            <Radio label="female">Female</Radio>
+          </RadioGroup>
+        </FormItem>
+
         <Upload action="//jsonplaceholder.typicode.com/posts/">
           <Button icon="ios-cloud-upload-outline">Upload files</Button>
         </Upload>
@@ -56,11 +77,15 @@ export default {
   data () {
     return {
       current: 0,
+      emailCode: '',
+      codeTime: 5,
       modal9: false,
       modal10: false,
+      isDisabled: false,
       formInline: {
         user: '',
-        password: ''
+        password: '',
+        gender: ''
       },
       ruleInline: {
         user: [
@@ -69,18 +94,14 @@ export default {
         password: [
           { required: true, message: 'Please fill in the password.', trigger: 'blur' },
           { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
-        ]
+        ],
+        gender: [
+          { required: true, message: 'Please select gender', trigger: 'change' }
+        ],
       }
     }
   },
   methods: {
-    next () {
-      if (this.current == 3) {
-        this.current = 0;
-      } else {
-        this.current += 1;
-      }
-    },
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
@@ -90,6 +111,18 @@ export default {
           this.$Message.error('Fail!');
         }
       })
+    },
+    openEmail () {
+      this.isDisabled = true;
+      let timer = setInterval(() => {
+        this.codeTime--;
+        if (this.codeTime === 0) {
+          this.codeTime = 60
+          this.isDisabled = false;
+          clearInterval(timer)
+        }
+      }, 1000)
+
     }
   }
 }

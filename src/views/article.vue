@@ -61,46 +61,44 @@ h3 {
 </style>
 
 <template>
-  <div>
-    <div style="margin-top:2%">
-      <div class="container">
-        <Row align="top"
-             style="margin-top:2%">
-          <Col :xs="48"
-               :sm="16"
-               :md="17"
-               :lg="17">
-          <div class="box">
-            <h1>解决iview中表格变色问题</h1>
-            <div class="hots">
-              <span>2019年01月01日</span>
-              <span>200views</span>
-              <span>200</span>
-              <p>
-                <span>当前传入的参数为:{{id}}
-                </span>
-              </p>
-              <p>
-                <Button size="small"
-                        @click="fonts('+')">+</Button>
-                <Button size="small"
-                        @click="fonts('-')">-</Button>
-                <Button size="small"
-                        @click="fonts('default')">Default</Button>
-                <!-- 当前字体大小:{{styles.fontSize}}
+  <div class="container">
+    <Row align="top"
+         style="margin-top:2%">
+      <Col :xs="48"
+           :sm="16"
+           :md="17"
+           :lg="17">
+      <div class="box">
+        <h1>解决iview中表格变色问题</h1>
+        <div class="hots">
+          <span>2019年01月01日</span>
+          <span>200views</span>
+          <span>200</span>
+          <p>
+            <span>当前传入的参数为:{{id}}
+            </span>
+          </p>
+          <p>
+            <Button size="small"
+                    @click="fonts('+')">+</Button>
+            <Button size="small"
+                    @click="fonts('-')">-</Button>
+            <Button size="small"
+                    @click="fonts('default')">Default</Button>
+            <!-- 当前字体大小:{{styles.fontSize}}
                 <ColorPicker size="small"
                              v-model="styles.color" /> -->
-              </p>
-            </div>
-            <!-- contenteditable="true" -->
-            <div class="text"
-                 :style="styles">
-              解决iview中表格变色问题，iview中提供了给表格修改颜色的功能，但是咋一看，还是不好理解的，接下来我就为大家来解析一下如何实现表格的隔行变色。
-              <h3>1、给Table添加一个自定义属性</h3>
-              <pre><table row-class-name="rowClassName"></table></pre>
-              <h3>2、在methods中添加rowClassName事件</h3>
-              <p>详细代码如下：</p>
-              <pre> 
+          </p>
+        </div>
+        <!-- contenteditable="true" -->
+        <div class="text"
+             :style="styles">
+          解决iview中表格变色问题，iview中提供了给表格修改颜色的功能，但是咋一看，还是不好理解的，接下来我就为大家来解析一下如何实现表格的隔行变色。
+          <h3>1、给Table添加一个自定义属性</h3>
+          <pre><table row-class-name="rowClassName"></table></pre>
+          <h3>2、在methods中添加rowClassName事件</h3>
+          <p>详细代码如下：</p>
+          <pre> 
     rowClassName (row, index) {
       if (index % 2 === 1) {
         return 'demo-table-info-row';
@@ -110,9 +108,9 @@ h3 {
       return '';
     }
                   </pre>
-              <h3>3、给表格上色</h3>
-              <p>详细代码如下：</p>
-              <pre>
+          <h3>3、给表格上色</h3>
+          <p>详细代码如下：</p>
+          <pre>
     .demo-table-info-row {
       background: #ccc;
     }
@@ -120,77 +118,87 @@ h3 {
       background: #f1f1f1;
     }
                   </pre>
-              <h3>4、如果还不了解，可以访问</h3>
-              <a href="https://www.iviewui.com/components/table#TDYS"
-                 target="_blank">https://www.iviewui.com/components/table#TDYS</a>
-            </div>
-            <money-pay></money-pay>
-          </div>
-          <div class="box">
-            <strong>tag</strong>
-            <Row align="top">
-              <Col :xs="24"
-                   :sm="24"
-                   :md="24"
-                   :lg="24"
-                   class="tag">
-              <a href="javascript:;">
-                <Tag type="dot">标签一</Tag>
-              </a>
-              <a href="javascript:;">
-                <Tag type="dot">标签一</Tag>
-              </a>
-              <a href="javascript:;">
-                <Tag type="dot">标签一</Tag>
-              </a>
-              <a href="javascript:;">
-                <Tag type="dot">标签一</Tag>
-              </a>
-              </Col>
-              <Col :xs="24"
-                   :sm="24"
-                   :md="24"
-                   :lg="24">
-              <strong>tag</strong>
-              </Col>
-              <Col :xs="24"
-                   :sm="12"
-                   :md="12"
-                   :lg="12"
-                   class="list">
-              <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
-              </Col>
-              <Col :xs="24"
-                   :sm="12"
-                   :md="12"
-                   :lg="12"
-                   class="list">
-              <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
-              </Col>
-              <Col :xs="24"
-                   :sm="12"
-                   :md="12"
-                   :lg="12"
-                   class="list">
-              <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
-              </Col>
-              <Col :xs="24"
-                   :sm="12"
-                   :md="12"
-                   :lg="12"
-                   class="list">
-              <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
-              </Col>
-            </Row>
-          </div>
-          <div class="box">
-            <Comment></Comment>
-          </div>
+          <h3>4、如果还不了解，可以访问</h3>
+          <a href="https://www.iviewui.com/components/table#TDYS"
+             target="_blank">https://www.iviewui.com/components/table#TDYS</a>
+        </div>
+        <money-pay></money-pay>
+      </div>
+      <div class="box">
+        <strong>tag</strong>
+        <Row align="top">
+          <Col :xs="24"
+               :sm="24"
+               :md="24"
+               :lg="24"
+               class="tag">
+          <a href="javascript:;">
+            <Tag type="default">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="primary">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="success">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="warning">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="default">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="primary">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="success">标签一</Tag>
+          </a>
+          <a href="javascript:;">
+            <Tag type="warning">标签一</Tag>
+          </a>
           </Col>
-          <Slide></Slide>
+          <Col :xs="24"
+               :sm="24"
+               :md="24"
+               :lg="24">
+          <strong>tag</strong>
+          </Col>
+          <Col :xs="24"
+               :sm="12"
+               :md="12"
+               :lg="12"
+               class="list">
+          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          </Col>
+          <Col :xs="24"
+               :sm="12"
+               :md="12"
+               :lg="12"
+               class="list">
+          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          </Col>
+          <Col :xs="24"
+               :sm="12"
+               :md="12"
+               :lg="12"
+               class="list">
+          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          </Col>
+          <Col :xs="24"
+               :sm="12"
+               :md="12"
+               :lg="12"
+               class="list">
+          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          </Col>
         </Row>
       </div>
-    </div>
+      <div class="box">
+        <Comment></Comment>
+      </div>
+      </Col>
+      <Slide></Slide>
+    </Row>
   </div>
 
 </template>

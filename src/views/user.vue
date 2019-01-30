@@ -100,6 +100,23 @@
   box-sizing: border-box;
   padding: 1%;
 }
+.perfect {
+  display: block;
+  text-align: right;
+}
+.user li {
+  height: auto;
+  p {
+    display: inline-block;
+    padding: 1%;
+  }
+  .label {
+    width: 25%;
+    }
+  .info {
+    width: 50%;
+  }
+}
 </style>
 <template>
   <div class="layout">
@@ -116,8 +133,8 @@
       </Row>
       <div class="introduce">
         <a href="javascript:;"
-           style="text-align:right">
-          <h3>测试</h3>
+           class="perfect">
+          <span>测试</span>
         </a>
         <h3>测试测试</h3>
         <Progress :percent="percent" />
@@ -127,22 +144,29 @@
           <Button icon="ios-remove"
                   @click="minus"></Button>
         </ButtonGroup>
-        <h3>测试测试</h3>
-        <p>测试测试测试测试测试测试测试测试</p>
-        <h3>测试测试</h3>
-        <p>测试测试测试测试测试测试测试测试</p>
-        <h3>测试测试</h3>
-        <p>测试测试测试测试测试测试测试测试</p>
-        <h3>测试测试</h3>
-        <p>测试测试测试测试测试测试测试测试</p>
+        <ul class="user">
+          <li v-for="(item,index) in userInfo"
+              :key="index">
+            <p class="label">{{item.label}}:</p>
+            <p class="info">{{item.text}}</p>
+          </li>
+
+        </ul>
+
       </div>
       <Row class="grade">
-        <Col span="4">center</Col>
-        <Col span="4">center</Col>
-        <Col span="4">center</Col>
-        <Col span="4">center</Col>
-        <Col span="4">center</Col>
-        <Col span="4">center</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP1</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP2</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP3</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP4</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP5</Col>
+        <Col span="4"
+             style="line-height:25px;">VIP6</Col>
       </Row>
       <Row>
         <Col span="24">
@@ -161,16 +185,7 @@
                     style="color:#5cb85c"></Icon>
             </i-circle>
           </div>
-          <div>
-            <i-circle :percent="35"
-                      stroke-color="#ff5500">
-              <span class="demo-i-circle -inner">
-                <Icon type="ios-close"
-                      size="50"
-                      style="color:#ff5500"></Icon>
-              </span>
-            </i-circle>
-          </div>
+
         </div>
         </Col>
       </Row>
@@ -183,7 +198,34 @@ export default {
   name: 'user',
   data () {
     return {
-      percent: 0
+      percent: 0,
+      userInfo: [
+        {
+          label: '您的昵称',
+          text: 111
+        }, {
+          label: '您的等级',
+          text: 111
+        }, {
+          label: '金币',
+          text: 111
+        }, {
+          label: '钻石',
+          text: 111
+        }, {
+          label: 'QQ账号',
+          text: 111
+        }, {
+          label: '博客主页',
+          text: 111
+        }, {
+          label: 'Github',
+          text: 111
+        }, {
+          label: '掌握技能',
+          text: 111
+        }
+      ]
     }
   },
   components: {
