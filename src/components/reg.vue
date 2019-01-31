@@ -11,9 +11,9 @@
 </style>
 <template>
   <div>
-    <div @click="modal10 = true">login</div>
-    <Modal title="reg"
-           v-model="modal10"
+    <div @click="modal = true">reg</div>
+    <Modal title="用户注册"
+           v-model="modal"
            :footerHide="true"
            :maskClosable="false"
            class-name="vertical-center-modal">
@@ -85,7 +85,7 @@ export default {
       emailCode: '',
       codeTime: 5,
       modal9: false,
-      modal10: false,
+      modal: false,
       isDisabled: false,
       formInline: {
         user: '',
@@ -116,7 +116,7 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          this.modal10 = false;
+          this.modal = false;
           this.$Message.success('Success!');
         } else {
           this.$Message.error('Fail!');

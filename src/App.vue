@@ -5,11 +5,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <div class="main">
-      <head-nav :flag="routerFlag"></head-nav>
-      <router-view/>
-      <foot-nav :flag="routerFlag"></foot-nav>
-    </div>
+    <head-nav :flag="routerFlag"></head-nav>
+    <router-view/>
+    <foot-nav :flag="routerFlag"></foot-nav>
   </div>
 </template>
 <script>
@@ -78,12 +76,6 @@ li {
 .size {
   width: 100%;
   height: 100%;
-}
-.main {
-  width: 100%;
-  min-height: 100%;
-  background: #f1f1ef;
-  position: relative;
 }
 html,
 body {

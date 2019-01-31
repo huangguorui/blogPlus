@@ -1,7 +1,10 @@
 <style lang="scss" scoped>
 .footer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
   height: auto;
+  background-color: #ffc0cb;
 }
 </style>
 
