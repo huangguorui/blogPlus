@@ -1,3 +1,6 @@
+<style>
+</style>
+
 <template>
 
   <div id="app">
@@ -40,7 +43,7 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/g") {
+      if (this.$route.path === "/g"||this.$route.path === "/404") {
         this.routerFlag = false
       }
       console.log(this.$route.path === "/user")
@@ -65,6 +68,10 @@ export default {
 </script>
 
 <style lang="scss">
+-webkit-scrollbar{
+   width:0px;
+   height:0px;
+}
 li {
   list-style: none;
 }
@@ -72,6 +79,7 @@ li {
   width: 100%;
   min-height: 100%;
   position: relative;
+  background: #f1f1ef;
 }
 .size {
   width: 100%;
@@ -79,6 +87,7 @@ li {
 }
 html,
 body {
+  position: relative;
   width: 100%;
   height: 100%;
   font-family: 'Microsoft YaHei' !important;
@@ -106,14 +115,19 @@ body {
   .container {
     width: 992px !important;
   }
+  .none {
+    display: none!important;
+  }
 }
 @media screen and (max-width: 992px) {
+
   .container {
     width: 768px !important;
   }
 }
 
 @media screen and (max-width: 768px) {
+
   h1 {
     font-size: 18px !important;
   }
@@ -130,7 +144,7 @@ body {
   .box {
     margin-right: 0 !important;
     width: 100% !important;
-    margin: 4% 0 5% 0 !important;
+   /* margin: 4% 0 5% 0 !important;*/
   }
 }
 ::-webkit-scrollbar {

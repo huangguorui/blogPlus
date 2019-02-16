@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="scss" scoped>
 
 .ibutton {
   margin-top: 10px;

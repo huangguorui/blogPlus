@@ -21,7 +21,7 @@ const router = new Router({
       name: 'index',
       component: index,
       meta: {
-        title: "测试测试测试",
+        title: "首页-前端博客",
       }
     },
     {
@@ -66,13 +66,15 @@ const router = new Router({
       name: 'turntable',
       component: turnTable
     },
-
-
     {
-      path: '*',
+      path: '/404',
       name: '404',
       component: nofound
-    }
+    },
+    {
+      path: "*", // 此处需特别注意置于最底部
+      redirect: "/404"
+    }      
   ],
   scrollBehavior(to, from, savePosition) { //点击浏览器的前进后退或切换导航触发
     //to   当前需要进入的目标路由对象（要去向哪里）
@@ -99,7 +101,7 @@ router.beforeEach((to, from, next) => {
     let head = document.getElementsByTagName('head');
     let meta = document.createElement('meta');
 
-    meta.content = 'width=device-width, initial-scale=1';
+    meta.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     meta.name = 'viewport';
     head[0].appendChild(meta)
   }
@@ -107,6 +109,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
   }
+  console.log('拦截到的数据为',to)
 
   iView.LoadingBar.start();
   next();

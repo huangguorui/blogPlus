@@ -11,7 +11,7 @@
 </style>
 <template>
   <div @click="handle">
-    <div @click="modal = true">login</div>
+    <div @click="modal = true">登录</div>
     <Modal title="用户登陆"
            v-model="modal"
            :maskClosable="false"

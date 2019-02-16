@@ -9,10 +9,14 @@
 </style>
 
 <template>
+<div>
+  <div style="height:100px;"></div>
   <div class="footer">
     <Footer v-show="flag"
             class="layout-footer-center"> &copy; 2019-至今</Footer>
   </div>
+</div>
+
 </template>
 <script>
 // @ is an alias to /src

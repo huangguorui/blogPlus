@@ -39,13 +39,16 @@
   display: flex;
   justify-content: space-around;
   span {
-    display: block;
-    width: 25%;
+    display: inline-block;
     padding: 1.1% 1%;
     text-align: center;
+    width: 23%;
+    height: 32px;
   }
+    span:first-child {
+      width: 31%;
+    }
   span:last-child {
-    width: 20%;
     border-radius: 5px;
     transition: all 0.6s;
     border: 1px solid #ccc;
@@ -59,9 +62,9 @@
 }
 </style>
 <template>
-  <div class="container">
+  <div class="container" style="padding-bottom: 6.5%;">
     <Banner></Banner>
-    <Row align="top">
+    <Row align="top" >
       <Col :xs="48"
            :sm="16"
            :md="17"
@@ -70,7 +73,6 @@
       <div class="box"
            v-for="item in list"
            :key="item.id">
-
         <div class="mian-text">
           <Row>
             <Col :xs="24"
@@ -92,12 +94,14 @@
               在出现一些开关灯的按钮，那么这些效果是如何做在出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探 在一些小游戏界面，都会出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探讨一下，其实制作这些效果非常的简单，就是利用了js操作DOM的特性，通过点击跟换样式来实现，源码如下：
             </div>
             <div class="status">
-              <span>2019-1-1</span>
-              <span>v2019-1-1</span>
-              <span>2019-1-1</span>
+              <span>2019年01月01日</span>
+              <span>访问量：999</span>
+              <span>2人评论</span>
+              <span  class="none">1人赞同</span>
               <router-link exact
+              class="none"
                            tag="span"
-                           :to="{path:'/article/id/'+item.id}">Primary</router-link>
+                           :to="{path:'/article/id/'+item.id}" >Primary</router-link>
             </div>
             </Col>
           </Row>

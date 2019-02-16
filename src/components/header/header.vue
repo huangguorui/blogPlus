@@ -8,7 +8,7 @@
 .container-main {
   width: 100%;
   height: auto;
-  background: #fff;
+  background: #c1c1c1;
 }
 .container {
   width: 1200px;
@@ -94,10 +94,10 @@ li:hover {
                      class="logo"
                      :to="{ name: 'index'}"></router-link>
         <ul>
-          <li>demo</li>
-          <li>demo</li>
+          <li>全部文章</li>
+          <li>给我留言</li>
           <router-link tag="li"
-                       :to="{ name: 'game'}">demo</router-link>
+                       :to="{ name: 'game'}">游戏大厅</router-link>
           <li>
             <Reg></Reg>
           </li>

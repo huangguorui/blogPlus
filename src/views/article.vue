@@ -63,11 +63,11 @@ h3 {
 <template>
   <div class="container">
     <Row align="top"
-         style="margin-top:2%">
+         style="margin-top:2%;">
       <Col :xs="48"
            :sm="16"
            :md="17"
-           :lg="17">
+           :lg="17" style="margin-bottom:8%;">
       <div class="box">
         <h1>解决iview中表格变色问题</h1>
         <div class="hots">
@@ -133,28 +133,28 @@ h3 {
                :lg="24"
                class="tag">
           <a href="javascript:;">
-            <Tag type="default">标签一</Tag>
+            <Tag color="default">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="primary">标签一</Tag>
+            <Tag color="primary">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="success">标签一</Tag>
+            <Tag color="success">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="warning">标签一</Tag>
+            <Tag color="warning">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="default">标签一</Tag>
+            <Tag color="default">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="primary">标签一</Tag>
+            <Tag color="primary">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="success">标签一</Tag>
+            <Tag color="success">标签一</Tag>
           </a>
           <a href="javascript:;">
-            <Tag type="warning">标签一</Tag>
+            <Tag color="warning">标签一</Tag>
           </a>
           </Col>
           <Col :xs="24"
@@ -200,7 +200,6 @@ h3 {
       <Slide></Slide>
     </Row>
   </div>
-
 </template>
 <script>
 //  <img src="../assets/logo.png"> <img src="../assets/login-background.png"> -->
@@ -231,6 +230,7 @@ export default {
     fetchData () {
       this.id = this.$route.params;
       console.log(this.$route.params)
+      document.title=this.$route.params.id
     },
     fonts (e) {
       console.log("parseInt", parseInt('16px'))

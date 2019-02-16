@@ -11,7 +11,7 @@
 </style>
 <template>
   <div>
-    <div @click="modal = true">reg</div>
+    <div @click="modal = true">注册</div>
     <Modal title="用户注册"
            v-model="modal"
            :footerHide="true"
