@@ -69,8 +69,8 @@
   <div>
     <Button style="display:block;margin:5% auto"
             @click="moneyPay"
-            type="success">测试测试</Button>
-    <Modal title="Title"
+            type="success">在线捐赠</Button>
+    <Modal title="在线捐赠"
            :maskClosable="false"
            v-model="modelFlag"
            :footerHide="true"
@@ -104,7 +104,7 @@
           <Input v-model="desc"
                  type="textarea"
                  :rows="3"
-                 placeholder="" />
+                 placeholder="请填写发送内容" />
         </Row>
         <Row type="flex"
              justify="center">
@@ -134,7 +134,7 @@
         <Button style="display:block;margin:5% auto"
                 type="success"
                 @click="submit"
-                :loading="loading">测试测试</Button>
+                :loading="loading">捐赠</Button>
       </div>
 
     </Modal>
@@ -164,7 +164,7 @@ export default {
       customNumber: '',
       modelFlag: false,
       curVal: 0,
-      desc: 0,
+      desc: '',
       money: 0,
       tab: false
     }
@@ -180,20 +180,18 @@ export default {
       //为空不可提交
       this.loading = true
       if (this.money === '' || this.money === 0) {
-        console.log('~~~')
-        this.$Message.error('error');
+        //console.log('~~~')
         this.$Notice.error({
           title: 'error',
-          desc: ''
+          desc: '捐赠失败'
         });
       } else {
         this.modelFlag = false
-        this.$Message.success('success');
         this.$Notice.success({
           title: 'success',
-          desc: ''
+          desc: `捐赠成功${this.money}，成功获得${this.money}钻石，将在2小时内发送到您的账户`
         });
-        console.log('当前提交的数值为', this.money)
+        //console.log('当前提交的数值为', this.money)
       }
       setTimeout(() => {
         this.loading = false
@@ -204,7 +202,7 @@ export default {
     },
     current (e, num) {
       this.curVal = e
-      console.log(this.curVal)
+      //console.log(this.curVal)
       if (num !== '自定义') {
         this.money = num
         this.moneyList[this.moneyList.length - 1].number = '自定义'
@@ -222,6 +220,7 @@ export default {
         this.customNumber = 0
       }
       this.money = this.customNumber
+      this.customNumber = this.money
     }
   }
 }

@@ -9,7 +9,7 @@
       <router-link to="/about">About</router-link>
     </div> -->
     <head-nav :flag="routerFlag"></head-nav>
-    <router-view/>
+    <router-view />
     <foot-nav :flag="routerFlag"></foot-nav>
   </div>
 </template>
@@ -43,17 +43,17 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/g"||this.$route.path === "/404") {
+      if (this.$route.path === "/g" || this.$route.path === "/404") {
         this.routerFlag = false
       }
-      console.log(this.$route.path === "/user")
+      //console.log(this.$route.path === "/user")
     },
     load () {
-      console.log(1)
+      //console.log(1)
 
     },
     routerLink () {
-      console.log("aaa=", this.$route.path)
+      //console.log("aaa=", this.$route.path)
       if (this.$route.path === "/user") {
         this.routerFlag = false
       }
@@ -68,9 +68,9 @@ export default {
 </script>
 
 <style lang="scss">
--webkit-scrollbar{
-   width:0px;
-   height:0px;
+-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
 }
 li {
   list-style: none;
@@ -90,18 +90,25 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  font-family: 'Microsoft YaHei' !important;
+  font-family: "Microsoft YaHei" !important;
   margin: 0;
   padding: 0;
   /*background-color: #eeeeee;*/
   color: #666 !important;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .container {
   width: 1200px;
   margin: 0 auto;
   height: auto;
   box-sizing: border-box;
-  padding: 0px 2.5%;
+  padding: 25px 2.5% 0 2.5%;
 }
 /* 超小屏幕（手机，小于 768px） */
 
@@ -116,18 +123,16 @@ body {
     width: 992px !important;
   }
   .none {
-    display: none!important;
+    display: none !important;
   }
 }
 @media screen and (max-width: 992px) {
-
   .container {
     width: 768px !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-
   h1 {
     font-size: 18px !important;
   }
@@ -144,7 +149,7 @@ body {
   .box {
     margin-right: 0 !important;
     width: 100% !important;
-   /* margin: 4% 0 5% 0 !important;*/
+    /* margin: 4% 0 5% 0 !important;*/
   }
 }
 ::-webkit-scrollbar {

@@ -31,8 +31,7 @@ img {
   <Carousel class="banner"
             v-model="value1"
             loop
-            :autoplay="true"
-            :autoplayspeed="2000"
+            autoplay
             :height="350">
     <CarouselItem class="item">
       <img src="@/assets/login-background.png"

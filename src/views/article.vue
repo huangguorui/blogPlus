@@ -58,6 +58,11 @@ strong {
 h3 {
   text-indent: 0em;
 }
+.icon-user {
+  height: 15px;
+  margin-right: 3px;
+  font-weight: 500;
+}
 </style>
 
 <template>
@@ -67,13 +72,29 @@ h3 {
       <Col :xs="48"
            :sm="16"
            :md="17"
-           :lg="17" style="margin-bottom:8%;">
+           :lg="17"
+           style="margin-bottom:8%;">
       <div class="box">
         <h1>解决iview中表格变色问题</h1>
         <div class="hots">
-          <span>2019年01月01日</span>
-          <span>200views</span>
-          <span>200</span>
+          <span>
+            <Icon type="ios-clock-outline"
+                  size="13"
+                  class="icon-user" />2019年01月01日</span>
+          <span>
+            <Icon type="ios-eye-outline"
+                  class="icon-user" />浏览量：999</span>
+          <span>
+            <Icon type="ios-text-outline"
+                  size="13"
+                  class="icon-user" />评论数：2
+          </span>
+          <span>
+            <Icon type="ios-hand-outline"
+                  size="13"
+                  class="icon-user" />
+            2人赞同</span>
+
           <p>
             <span>当前传入的参数为:{{id}}
             </span>
@@ -85,9 +106,12 @@ h3 {
                     @click="fonts('-')">-</Button>
             <Button size="small"
                     @click="fonts('default')">Default</Button>
-            <!-- 当前字体大小:{{styles.fontSize}}
-                <ColorPicker size="small"
-                             v-model="styles.color" /> -->
+            当前字体大小:{{styles.fontSize}}
+          </p>
+          <p>
+            字体颜色为:{{styles.color}}
+            <ColorPicker size="small"
+                         v-model="styles.color" />
           </p>
         </div>
         <!-- contenteditable="true" -->
@@ -98,7 +122,8 @@ h3 {
           <pre><table row-class-name="rowClassName"></table></pre>
           <h3>2、在methods中添加rowClassName事件</h3>
           <p>详细代码如下：</p>
-          <pre> 
+
+          <pre contenteditable="true">
     rowClassName (row, index) {
       if (index % 2 === 1) {
         return 'demo-table-info-row';
@@ -110,7 +135,7 @@ h3 {
                   </pre>
           <h3>3、给表格上色</h3>
           <p>详细代码如下：</p>
-          <pre>
+          <pre contenteditable="true">
     .demo-table-info-row {
       background: #ccc;
     }
@@ -125,7 +150,7 @@ h3 {
         <money-pay></money-pay>
       </div>
       <div class="box">
-        <strong>tag</strong>
+        <strong>当前标签</strong>
         <Row align="top">
           <Col :xs="24"
                :sm="24"
@@ -133,63 +158,63 @@ h3 {
                :lg="24"
                class="tag">
           <a href="javascript:;">
-            <Tag color="default">标签一</Tag>
+            <Tag color="default">Iview</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="primary">标签一</Tag>
+            <Tag color="primary">UI框架</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="success">标签一</Tag>
+            <Tag color="success">JavaScript</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="warning">标签一</Tag>
+            <Tag color="warning">前端小技巧</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="default">标签一</Tag>
+            <Tag color="default">Vue</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="primary">标签一</Tag>
+            <Tag color="primary">Vue-Cli</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="success">标签一</Tag>
+            <Tag color="success">新手前端学习</Tag>
           </a>
           <a href="javascript:;">
-            <Tag color="warning">标签一</Tag>
+            <Tag color="warning">WEB开发</Tag>
           </a>
           </Col>
           <Col :xs="24"
                :sm="24"
                :md="24"
                :lg="24">
-          <strong>tag</strong>
+          <strong>相关文章</strong>
           </Col>
           <Col :xs="24"
                :sm="12"
                :md="12"
                :lg="12"
                class="list">
-          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          <a href="javascript:;">Iview为什么会受到开发者的青睐</a>
           </Col>
           <Col :xs="24"
                :sm="12"
                :md="12"
                :lg="12"
                class="list">
-          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          <a href="javascript:;">如何更加高效的使用Iview来提高工作效率</a>
           </Col>
           <Col :xs="24"
                :sm="12"
                :md="12"
                :lg="12"
                class="list">
-          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          <a href="javascript:;">iview中表格判断是否被选中</a>
           </Col>
           <Col :xs="24"
                :sm="12"
                :md="12"
                :lg="12"
                class="list">
-          <a href="javascript:;">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+          <a href="javascript:;">Iview中弹出框填写属性报错解决方法</a>
           </Col>
         </Row>
       </div>
@@ -212,8 +237,8 @@ export default {
     return {
       id: '',
       styles: {
-        fontSize: '16px'
-        //color: '#000'
+        fontSize: '16px',
+        color: ''
       },
     }
   },
@@ -229,12 +254,12 @@ export default {
   methods: {
     fetchData () {
       this.id = this.$route.params;
-      console.log(this.$route.params)
-      document.title=this.$route.params.id
+      //console.log(this.$route.params)
+      document.title = this.$route.params.id
     },
     fonts (e) {
-      console.log("parseInt", parseInt('16px'))
-      console.log(e)
+      //console.log("parseInt", parseInt('16px'))
+      //console.log(e)
       let fontSize = parseInt(this.styles.fontSize)
       this.styles.fontSize = (this.styles.fontSize = parseInt(e === '+' ? fontSize + 1 : fontSize - 1)) + "px"
       if (e === 'default') {

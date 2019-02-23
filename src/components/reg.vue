@@ -94,20 +94,20 @@ export default {
       },
       ruleInline: {
         user: [
-          { required: true, message: 'Please fill in the user name', trigger: 'blur' }
+          { required: true, message: '请输入你的名字', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: 'Please fill in the password.', trigger: 'blur' },
-          { type: 'string', min: 6, message: 'The password length cannot be less than 6 bits', trigger: 'blur' }
+          { required: true, message: '请输入你的密码', trigger: 'blur' },
+          { type: 'string', min: 6, message: '长度不能小于6位', trigger: 'blur' }
         ],
         gender: [
-          { required: true, message: 'Please select gender', trigger: 'change' }
+          { required: true, message: '请上传图片', trigger: 'change' }
         ],
         email: [
-          { required: true, message: 'Please select gender', trigger: 'change' }
+          { required: true, message: '请输入邮箱', trigger: 'change' }
         ],
         code: [
-          { required: true, message: 'Please select gender', trigger: 'change' }
+          { required: true, message: '请输入验证码', trigger: 'change' }
         ]
       }
     }
@@ -117,9 +117,9 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.modal = false;
-          this.$Message.success('Success!');
+          this.$Message.success('注册成功');
         } else {
-          this.$Message.error('Fail!');
+          this.$Message.error('注册失败');
         }
       })
     },

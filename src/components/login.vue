@@ -62,7 +62,7 @@ export default {
           { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
         password: [
-          { required: true, message: '请输入密码.', trigger: 'blur' },
+          { required: true, message: '请输入密码', trigger: 'blur' },
           { type: 'string', min: 8, message: '密码的长度要大于或者等于8位', trigger: 'blur' }
         ]
       }
@@ -78,15 +78,15 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.modal = false;
-          this.$Message.success('Success!');
+          this.$Message.success('登录成功');
         } else {
-          this.$Message.error('Fail!');
+          this.$Message.error('登录失败');
         }
       })
     },
     handle () {
       this.$emit('on-ok')
-      console.log('调用组件')
+      //console.log('调用组件')
     }
   }
 }

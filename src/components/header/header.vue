@@ -1,81 +1,210 @@
 
-<style scoped>
-* {
-  margin: 0;
-  padding: 0;
+  <style scoped>
+.index-nav {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  height: 50px;
   box-sizing: border-box;
+  background: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
 }
+
+.index-nav-frame {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.index-nav-frame-line {
+  color: #333333;
+  background: white;
+  float: left;
+  position: relative;
+  display: block;
+  outline: none;
+  cursor: pointer;
+  width: 100px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.index-nav-frame-line.active {
+  /*color: #b63b4d;*/
+}
+
+.index-nav-frame-line-center {
+  opacity: 0;
+  height: 0;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  /* Firefox 4 */
+  -o-transition: all 0.5s;
+  /* Opera */
+}
+
+.index-nav-frame-line-li {
+  width: 100%;
+  font-weight: 500;
+  text-align: center;
+  background: white;
+  color: #666666;
+}
+
+.index-nav-frame-line-li:hover {
+  background: #444359;
+  color: white;
+}
+
+.index-nav-frame-line-li:hover a {
+  background: #444359;
+  color: white;
+}
+
+.index-nav-frame-line-focus:focus {
+  display: none;
+}
+
+.index-nav-frame-line:hover .index-nav-frame-line-center {
+  height: auto;
+  opacity: 1;
+}
+
+.nav-line {
+  height: 50px;
+  width: 100%;
+  position: relative;
+  display: none;
+  outline: none;
+}
+
+.nav-small {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  display: none;
+  outline: none;
+}
+
+.nav-small img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nav-small-focus {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.nav-small-focus:focus {
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .index-nav-frame-line-li a {
+    display: block;
+    color: white;
+  }
+
+  .nav-line {
+    display: block;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .nav-small {
+    display: block;
+  }
+
+  .nav-small:focus ~ .index-nav-frame-line {
+    height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .nav-small:focus .nav-small-focus {
+    display: block;
+  }
+
+  .index-nav-frame {
+    width: 100%;
+  }
+
+  .index-nav-frame-line {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .index-nav-frame-line-center {
+    position: relative;
+    background: #444359;
+  }
+
+  .index-nav-frame-line:hover .index-nav-frame-line-center {
+    height: 0;
+    opacity: 0;
+  }
+
+  .index-nav-frame-line-li {
+    border-bottom: 1px solid #4b4a5e;
+    color: #d9d9d9;
+    background: #444359;
+  }
+
+  .index-nav-frame-line-li:hover {
+    background: #b63b4d;
+  }
+
+  .index-nav-frame-line:focus {
+    height: auto;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .index-nav-frame-line:focus > .index-nav-frame-line-center {
+    height: auto;
+    opacity: 1;
+  }
+
+  .index-nav-frame-line:focus .index-nav-frame-line-header {
+    color: #b63b4d;
+  }
+
+  .index-nav-frame-line-focus {
+    display: none;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .index-nav-frame-line:focus .index-nav-frame-line-focus {
+    display: block;
+  }
+}
+
 .container-main {
+  position: relative;
+  left: 0;
+  top: 0;
   width: 100%;
   height: auto;
   background: #c1c1c1;
+  z-index: 9;
 }
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  height: auto;
-  padding: 0px 2.5%;
-  box-sizing: border-box;
-}
-
-@media screen and (max-width: 1200px) {
-  .container {
-    width: 992px !important;
-  }
-}
-@media screen and (max-width: 992px) {
-  .container {
-    width: 768px !important;
-  }
-  .nav {
-    height: 40px !important;
-  }
-}
-@media screen and (max-width: 768px) {
-  .container {
-    width: 100% !important;
-  }
-  .nav {
-    height: 30px !important;
-  }
-  .logo {
-    width: 20% !important;
-  }
-}
-
-.nav {
-  width: 100%;
-  height: 50px;
-  box-sizing: border-box;
-  display: flex;
-}
-.logo {
-  cursor: pointer;
-  width: 10%;
-  height: 100%;
-  box-sizing: border-box;
-  border: 1px solid red;
-  background: #f5f7f9;
-}
-ul {
-  width: 90%;
-  box-sizing: border-box;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-}
-li {
-  width: 20%;
-  cursor: pointer;
-  text-align: center;
-  line-height: 25px;
-  padding: 1.2%;
-  list-style: none;
-  box-sizing: border-box;
-  transition: all 0.6s;
-}
-li:hover {
-  background: #ccc;
+.active {
+  color: #b63b4d;
 }
 .top {
   padding: 10px;
@@ -87,30 +216,50 @@ li:hover {
 </style>
 <template>
   <div class="container-main">
+
     <div class="container">
-      <div class="nav"
-           v-show="flag">
-        <router-link tag="div"
-                     class="logo"
-                     :to="{ name: 'index'}"></router-link>
-        <ul>
-          <li>全部文章</li>
-          <li>给我留言</li>
-          <router-link tag="li"
+      <div class="index-nav">
+        <div class="index-nav-frame clearfix">
+          <div class="nav-line">
+          </div>
+          <div class="nav-small"
+               tabindex="-1">
+            <div class="nav-small-focus"
+                 tabindex="-1">
+            </div>
+            <img src="../../assets/images/icon.png">
+          </div>
+          <router-link tag="div"
+                       class="index-nav-frame-line"
+                       tabindex="-1"
+                       :to="{ name: 'index'}">首页</router-link>
+          <router-link tag="div"
+                       class="index-nav-frame-line"
+                       tabindex="-1"
                        :to="{ name: 'game'}">游戏大厅</router-link>
-          <li>
+          <div class="index-nav-frame-line"
+               tabindex="-1">
             <Reg></Reg>
-          </li>
-          <li>
+            <!-- <div class="index-nav-frame-line-center">
+              <div class="index-nav-frame-line-li">
+                第二页面1
+              </div>
+            </div>
+            <div class="index-nav-frame-line-focus"
+                 tabindex="-1"></div> -->
+          </div>
+          <div class="index-nav-frame-line"
+               tabindex="-1">
             <Login></Login>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
-      <BackTop :height="35"
-               :bottom="12">
-        <div class="top">返回顶端</div>
-      </BackTop>
     </div>
+    <BackTop :height="35"
+             :bottom="12">
+      <div class="top">返回顶端</div>
+    </BackTop>
+  </div>
   </div>
 </template>
 <script>
@@ -131,11 +280,15 @@ export default {
   },
   data () {
     return {
+      modal1: true
     }
   },
   methods: {
     ok () {
-      console.log(1)
+      this.$Message.info('Clicked ok');
+    },
+    cancel () {
+      // this.$Message.info('Clicked cancel');
     }
   }
 }

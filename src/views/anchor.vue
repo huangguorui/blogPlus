@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     select (e) {
-      console.log(e)
+      //console.log(e)
     }
   }
 }

@@ -52,7 +52,7 @@ export default {
     };
   },
   created () {
-    console.log('启动', this.message)
+    //console.log('启动', this.message)
   },
   props: {
     message: {

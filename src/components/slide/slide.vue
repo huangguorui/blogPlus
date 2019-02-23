@@ -38,6 +38,7 @@
 
 li {
   list-style: none;
+  overflow: hidden;
 }
 .uls li {
   width: 100%;
@@ -50,12 +51,13 @@ li {
   flex-wrap: wrap;
 }
 .tag li {
-  background: #ccc;
+  background: #dcdee2;
   width: auto;
-  padding: 0 1%;
+  padding: 0 3%;
   box-sizing: border-box;
   margin: 1%;
   height: 25px;
+  border-radius: 5px;
   a {
     display: block;
     text-align: center;
@@ -105,18 +107,17 @@ li {
          :lg="7"
          :style="{padding: '0 0 0 0%'}">
     <div class="slide-style">
-      <div class="title">测试测试</div>
+      <div class="title">个人博客</div>
       <div class="guide">
-        测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试......
+        该站主要用来技术探索，笔记记录......
       </div>
     </div>
     <div class="slide-style">
-      <div class="title-slide">测试测试</div>
+      <div class="title-slide">随机好文</div>
       <ul class="news">
         <li v-for="item in list"
             :key="item.id">
           <a href="javascript:;">
-
             <img src="@/assets/logo.png">
             <router-link exact
                          tag="p"
@@ -126,45 +127,30 @@ li {
       </ul>
     </div>
     <div class="slide-style">
-      <div class="title-slide">测试测试</div>
+      <div class="title-slide">文章排行</div>
       <ul class="uls">
         <li v-for="(item,index) in list"
             :key="item.id">
           <p>
             <span style="margin-right:2%;">第{{index+1}}个</span>{{item.text|interceptStr(item.text)}}</p>
         </li>
-        <li>1、</li>
-        <li>1、</li>
-        <li>1、</li>
-        <li>1、</li>
       </ul>
     </div>
     <div class="slide-style">
-      <div class="title-slide">测试测试</div>
+      <div class="title-slide">标签云</div>
       <ul class="tag">
         <li v-for="item in tag"
             :key="item.id">
-          <a href="##">{{item.text}}</a>
+          <a href="javascript:;">{{item.text}}</a>
         </li>
       </ul>
     </div>
     <div class="slide-style">
-      <div class="title-slide">测试测试</div>
+      <div class="title-slide">最赞同</div>
       <ul class="uls link">
-        <li>
-          <a href="javascript:;">测试</a>
-        </li>
-        <li>
-          <a href="javascript:;">测试</a>
-        </li>
-        <li>
-          <a href="javascript:;">测试</a>
-        </li>
-        <li>
-          <a href="javascript:;">测试</a>
-        </li>
-        <li>
-          <a href="javascript:;">测试</a>
+        <li v-for="item in list"
+            :key="item.id">
+          <a href="javascript:;">{{item.text}}</a>
         </li>
       </ul>
     </div>
@@ -177,36 +163,39 @@ export default {
   data () {
     return {
       list: [
-        { id: 1, text: '测试测试' },
-        { id: 2, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测' },
-        { id: 3, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
-        { id: 4, text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试' },
-        { id: 5, text: '试测试测试' }
+
+
+        { id: 1, text: '利用swiper插件实现3D轮播效果 ' },
+        { id: 2, text: 'mui中dtpicker组件--弹出日期选择器(移动端滑动日历)' },
+        { id: 3, text: 'mui框架grid栅格布局 ' },
+        { id: 4, text: 'jquery实现上传多个文件 (file类型) ，并能单个删除 ' },
+        { id: 5, text: 'js利用substring ()替换指定长度的字符串' },
+        { id: 6, text: '  原生js实现图片放大镜效果及原理分析      ' }
       ],
       tag: [
-        { id: 1, text: '测试测试11', },
-        { id: 2, text: '测试1', },
-        { id: 3, text: '测试1', },
-        { id: 4, text: '测试1测试1', },
-        { id: 5, text: '测试测试11', },
-        { id: 6, text: '测试测试11', },
-        { id: 7, text: '测试测试11', },
-        { id: 8, text: '测试测试1测试11测', },
-        { id: 9, text: '测试1', },
-        { id: 10, text: '测试1', },
-        { id: 11, text: '测试测试11', },
-        { id: 12, text: '测试测试11', },
-        { id: 13, text: '测试测试1测试11测', },
-        { id: 14, text: '测试测试11', },
-        { id: 15, text: '测试测试11', },
-        { id: 16, text: '测试测试1测试11测', }
+        { id: 1, text: 'Vue', },
+        { id: 2, text: 'Web技术', },
+        { id: 3, text: '前端', },
+        { id: 4, text: 'javaScript学习指南', },
+        { id: 5, text: '后端', },
+        { id: 6, text: 'React', },
+        { id: 7, text: 'Web前端', },
+        { id: 8, text: 'Blog', },
+        { id: 9, text: 'Elment UI', },
+        { id: 10, text: 'CSS', },
+        { id: 11, text: 'Iview UI', },
+        { id: 12, text: 'HTML5', },
+        { id: 13, text: 'MUI', },
+        { id: 14, text: 'CSS3', },
+        { id: 15, text: 'Float', },
+        { id: 16, text: 'Axios', }
       ]
     }
   },
   filters: {
     interceptStr: function (value) {
       if (value.length >= 10) {
-        return value.substr(0, 10) + "……"
+        return value.substr(0, 16) + "……"
       } else {
         return value
       }

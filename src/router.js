@@ -16,6 +16,7 @@ Vue.use(iView);
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkActiveClass: 'active',
   routes: [{
       path: '/',
       name: 'index',
@@ -34,7 +35,7 @@ const router = new Router({
     },
     {
       path: '/article/id/:id',
-      name: 'article',
+      name: '',
       component: article,
       meta: {
         title: "article",
@@ -74,15 +75,15 @@ const router = new Router({
     {
       path: "*", // 此处需特别注意置于最底部
       redirect: "/404"
-    }      
+    }
   ],
   scrollBehavior(to, from, savePosition) { //点击浏览器的前进后退或切换导航触发
     //to   当前需要进入的目标路由对象（要去向哪里）
     //from  离开的路由对象    （从哪里来）
     //savePosition   滚动的坐标
-    console.log(to);
-    console.log(from);
-    console.log(savePosition);
+    //console.log(to);
+    //console.log(from);
+    //console.log(savePosition);
     if (savePosition) {
       return savePosition;
     } else {
@@ -109,7 +110,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.title) {
     document.title = to.meta.title;
   }
-  console.log('拦截到的数据为',to)
+  //console.log('拦截到的数据为',to)
 
   iView.LoadingBar.start();
   next();
