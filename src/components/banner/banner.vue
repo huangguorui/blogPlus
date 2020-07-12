@@ -1,5 +1,5 @@
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .banner {
   margin: 2% 0 2% 0;
   background: #506b9e !important;

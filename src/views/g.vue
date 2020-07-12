@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="less">
 .nav-list {
   box-sizing: border-box;
   border: 1px solid #ccc;

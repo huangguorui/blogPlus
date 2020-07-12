@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .nav-list {
   box-sizing: border-box;
   border: 1px solid #ccc;

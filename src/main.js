@@ -11,7 +11,8 @@ Vue.use(iView);
 Vue.use(ElementUI);
 
 //导入全局组件
-
+import axios from 'axios'
+Vue.prototype.$axios = axios
 
 new Vue({
   router,

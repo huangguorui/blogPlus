@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .left-game {
   width: 10%;
   height: 300px;

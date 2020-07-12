@@ -1,5 +1,5 @@
 
-<style  lang="scss" scoped>
+<style  lang="less" scoped>
 .box {
   width: 98%;
   height: auto;
@@ -82,7 +82,7 @@ h2 {
            :lg="17">
 
       <div class="box"
-           v-for="item in list"
+           v-for="(item) in list"
            :key="item.id">
         <div class="mian-text">
           <Row>
@@ -105,11 +105,11 @@ h2 {
                 <router-link exact
                              tag="h2"
                              :to="{path:'/article/id/'+item.id}">
-                  解决iview中表格变色问题</router-link>
+                  {{item.title}}</router-link>
               </a>
-              在出现一些开关灯的按钮，那么这些效果是如何做在出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探 在一些小游戏界面，都会出现一些开关灯的按钮，那么这些效果是如何做出来的呢，今天我们就来探讨一下，其实制作这些效果非常的简单，就是利用了js操作DOM的特性，通过点击跟换样式来实现，源码如下：
+              {{item.content}}
             </div>
-            <div class="status">
+            <!-- <div class="status">
               <span>
                 <Icon type="ios-clock-outline"
                       size="13"
@@ -122,7 +122,7 @@ h2 {
                       size="13"
                       class="icon-user" />2人评论</span>
               <span class="none"
-                    @click="fabulous(item.id)">
+                    @click="fabulous(index)">
                 <Icon type="ios-hand-outline"
                       size="13"
                       class="icon-user" />
@@ -134,15 +134,19 @@ h2 {
                 <Icon type="md-heart-outline"
                       size="13"
                       class="icon-user" />Primary</router-link>
-            </div>
+            </div> -->
             </Col>
           </Row>
+
         </div>
       </div>
+      <Page :page-data="pageInfo"
+            @pageChange="pageChange"
+            @pagSizesChange="pageSizeChange"></Page>
       </Col>
       <Slide></Slide>
     </Row>
-    <Page></Page>
+
   </div>
   </div>
 
@@ -153,52 +157,74 @@ h2 {
 import Banner from '@/components/banner/banner.vue'
 import Slide from '@/components/slide/slide.vue'
 import Page from '@/components/page/page.vue'
+import pageM from "../common/pageM"
+
 export default {
   name: 'Index',
+  mixins: [pageM],
   components: {
     Banner,
     Slide,
     Page
   },
-  methods: {
-    fabulous (id) {
-      this.$Message.success('点赞成功，积分+10');
-      this.list[id - 1].fabulousNumber = ++(this.list[id - 1].fabulousNumber)
-    }
-  },
+
   data () {
     return {
-      value1: 0,
-      value: '',
       list: [
         {
           id: 1,
-          fabulousNumber: 0
-        }, {
-          id: 2,
-          fabulousNumber: 0
-        }, {
-          id: 3,
-          fabulousNumber: 0
-        }, {
-          id: 4,
-          fabulousNumber: 0
-        }, {
-          id: 5,
-          fabulousNumber: 0
-        }, {
-          id: 6,
-        }, {
-          id: 7,
-          fabulousNumber: 0
-        }, {
-          id: 8,
-          fabulousNumber: 0
-
+          fabulousNumber: 99,
+          title: "",
+          description: "",
+          content: "",
+          created: "",
         }
       ],
-      fabulousNumber: 1
+      pageInfo: {
+        current: 1,
+        size: 5,
+        pages: 1,
+        total: 1,
+      }
+
     }
-  }
+  },
+  methods: {
+    ok (e) {
+      console.log(e)
+    },
+    getList (data) {
+      this.$axios({
+        url: "http://localhost:8081/blogs?currentPage=" + data.current + "&size=" + data.size,
+        method: "get",
+        params: {}
+      }).then(res => {
+        console.log(res)
+
+        //获取分页
+        this.pageInfo.current = res.data.data.current
+        this.pageInfo.pages = res.data.data.pages
+        this.pageInfo.size = res.data.data.size
+        this.pageInfo.total = res.data.data.total
+
+        res.data.data.records.forEach((item, i) => {
+          res.data.data.records[i].fabulousNumber = 0
+          res.data.data.records[i].content = res.data.data.records[i].content.slice(0, 200)
+        })
+        this.list = res.data.data.records
+        // 赋值以后添加，修改的值是不会被vue监听的
+        this.list.forEach((item, i) => {
+          this.list[i].fabulousNumber = 1
+        })
+      })
+    },
+    fabulous (id) {
+      this.$Message.success('点赞成功，积分+10');
+
+
+      this.list[id].fabulousNumber = ++this.list[id].fabulousNumber
+      console.log(this.list[id])
+    }
+  },
 }
 </script>

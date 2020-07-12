@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 -webkit-scrollbar {
   width: 0px;
   height: 0px;

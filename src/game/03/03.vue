@@ -1,5 +1,4 @@
-<style lang="scss" scoped>
-
+<style lang="less" scoped>
 .ibutton {
   margin-top: 10px;
   margin-left: 10px;

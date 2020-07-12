@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .footer {
   position: absolute;
   bottom: 0;

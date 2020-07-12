@@ -1,4 +1,4 @@
-<style lang="scss">
+<style lang="less">
 .introduce {
   border: 1px solid red;
   box-sizing: border-box;
@@ -76,7 +76,7 @@
     color: #657180;
     font-size: 14px;
     &:before {
-      content: '';
+      content: "";
       display: block;
       width: 50px;
       height: 1px;
