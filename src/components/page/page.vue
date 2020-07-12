@@ -1,8 +1,8 @@
 <style lang="less" scoped>
-// .page {
-//   text-align: center;
-//   margin: 3% auto;
-// }
+.page {
+  text-align: center;
+  margin-bottom: 3%;
+}
 </style>
 
 <template>
@@ -12,10 +12,16 @@
           :page-size="pageData.size"
           :show-total="true"
           @on-change="pageChange"
-          @on-page-size-change="pageSizeChange"
           size="small"
-          show-elevator
-          show-sizer />
+         
+          />
+
+          <!-- 
+ show-sizer
+          @on-page-size-change="pageSizeChange"
+ show-elevator
+
+           -->
   </div>
 </template>
 <script>

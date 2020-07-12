@@ -1,12 +1,12 @@
 
 <style  lang="less" scoped>
 .box {
-  width: 98%;
+  width: 100%;
   height: auto;
   background: #fff;
   border-radius: 1%;
   padding: 2%;
-  margin-bottom: 2%;
+  margin: 3% 0;
   box-sizing: border-box;
 }
 .box span {
@@ -32,7 +32,6 @@
   }
 }
 .text {
-  margin-left: 2%;
 }
 .status {
   margin-top: 0.1%;
@@ -75,11 +74,12 @@ h2 {
   <div class="container"
        style="padding-bottom: 6.5%;">
     <Banner></Banner>
+
     <Row align="top">
-      <Col :xs="48"
-           :sm="16"
-           :md="17"
-           :lg="17">
+      <Col :xs="24"
+           :sm="24"
+           :md="24"
+           :lg="24">
 
       <div class="box"
            v-for="(item) in list"
@@ -88,18 +88,18 @@ h2 {
           <Row>
             <Col :xs="24"
                  :sm="24"
-                 :md="8"
-                 :lg="6">
-            <router-link exact
+                 :md="24"
+                 :lg="24">
+            <!-- <router-link exact
                          tag="div"
                          class="img"
                          style="cursor:pointer;"
-                         :to="{path:'/article/id/'+item.id}"><img src="../assets/login-background.png"></router-link>
+                         :to="{path:'/article/id/'+item.id}"><img src="../assets/login-background.png"></router-link> -->
             </Col>
             <Col :xs="24"
                  :sm="24"
-                 :md="16"
-                 :lg="18">
+                 :md="24"
+                 :lg="24">
             <div class="text">
               <a href="javascript:;">
                 <router-link exact
@@ -144,7 +144,6 @@ h2 {
             @pageChange="pageChange"
             @pagSizesChange="pageSizeChange"></Page>
       </Col>
-      <Slide></Slide>
     </Row>
 
   </div>
@@ -155,7 +154,7 @@ h2 {
 // Do not use built-in or reserved HTML elements as component id: XXX  https://blog.csdn.net/shooke/article/details/72801735  模板为关键字
 // @ is an alias to /src
 import Banner from '@/components/banner/banner.vue'
-import Slide from '@/components/slide/slide.vue'
+// import Slide from '@/components/slide/slide.vue'
 import Page from '@/components/page/page.vue'
 import pageM from "../common/pageM"
 
@@ -164,7 +163,7 @@ export default {
   mixins: [pageM],
   components: {
     Banner,
-    Slide,
+    // Slide,
     Page
   },
 

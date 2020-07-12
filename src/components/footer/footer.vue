@@ -1,16 +1,15 @@
 <style lang="less" scoped>
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  background-color: #ffc0cb;
+  // position: absolute;
+  // bottom: 0;
+  // width: 100%;
+  // height: auto;
+  // background-color: #ffc0cb;
 }
 </style>
 
 <template>
   <div>
-    <div style="height:100px;"></div>
     <div class="footer">
       <Footer v-show="flag"
               class="layout-footer-center">

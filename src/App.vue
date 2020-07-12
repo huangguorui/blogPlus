@@ -7,9 +7,9 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div> -->
-    <head-nav :flag="routerFlag"></head-nav>
+    <head-nav></head-nav>
     <router-view />
-    <foot-nav :flag="routerFlag"></foot-nav>
+    <foot-nav></foot-nav>
   </div>
 </template>
 <script>
@@ -42,9 +42,9 @@ export default {
     },
     routerTo () {
       //order
-      if (this.$route.path === "/g" || this.$route.path === "/404") {
-        this.routerFlag = false
-      }
+      // if (this.$route.path === "/g" || this.$route.path === "/404") {
+      //   this.routerFlag = false
+      // }
       //console.log(this.$route.path === "/user")
     },
     load () {
@@ -53,9 +53,9 @@ export default {
     },
     routerLink () {
       //console.log("aaa=", this.$route.path)
-      if (this.$route.path === "/user") {
-        this.routerFlag = false
-      }
+      // if (this.$route.path === "/user") {
+      //   this.routerFlag = false
+      // }
     }
   },
   components: {
@@ -105,9 +105,9 @@ body {
 .container {
   width: 1200px;
   margin: 0 auto;
+  padding: 0 2.5%;
   height: auto;
   box-sizing: border-box;
-  padding: 25px 2.5% 0 2.5%;
 }
 /* 超小屏幕（手机，小于 768px） */
 

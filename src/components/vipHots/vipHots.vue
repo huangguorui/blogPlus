@@ -41,7 +41,7 @@ export default {
     return {
       modal2: false,
       modal_loading: false,
-      vipLevel: 2,
+      vipLevel: 3,
       unlockText: [{
         id: 1,
         text: ['黑夜护眼功能111', '界面文章字体大小自定义111', '文字颜色修改111']

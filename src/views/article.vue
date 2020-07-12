@@ -251,7 +251,7 @@ export default {
       }).then(res => {
         this.article = res.data.data
         //设置标题
-        document.title = this.article.title
+        document.title = this.article.title+"-前端博客"
 
         // 赋值以后添加，修改的值是不会被vue监听的
       })

@@ -3,18 +3,16 @@ import Router from 'vue-router'
 import index from './views/index.vue'
 import about from './views/about.vue'
 import article from './views/article.vue'
-import anchor from './views/anchor.vue'
 import user from './views/user.vue'
 import nofound from './views/404.vue'
 
-import game from './views/game.vue'
 import turnTable from './views/turnTable.vue'
 
 Vue.use(Router)
 import iView from 'iview';
 Vue.use(iView);
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   linkActiveClass: 'active',
   routes: [{
@@ -38,15 +36,7 @@ const router = new Router({
       name: '',
       component: article,
       meta: {
-        title: "article",
-      }
-    },
-    {
-      path: '/anchor',
-      name: 'anchor',
-      component: anchor,
-      meta: {
-        title: "锚点测试界面",
+        title: "",
       }
     },
     {
@@ -57,11 +47,7 @@ const router = new Router({
         title: "用户中心",
       }
     },
-    {
-      path: '/game',
-      name: 'game',
-      component: game
-    },
+
     {
       path: '/turntable',
       name: 'turntable',

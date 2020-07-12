@@ -1,17 +1,17 @@
 <style lang="less">
 .introduce {
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
   padding: 1%;
   h3 {
-    margin: 3px 0;
+    margin: 10px 0;
   }
   p {
     line-height: 18px;
   }
 }
 .grade {
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
   padding: 1%;
 }
@@ -20,7 +20,7 @@
   text-align: center;
 }
 .bg {
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
   background: pink;
 }
@@ -31,17 +31,11 @@
   border-radius: 50%;
   text-align: center;
   line-height: 60px;
-  border: 1px solid red;
+  //border: 1px solid red;
   font-weight: 700;
   color: #fff;
 }
-.layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-}
+
 .layout {
   border: 1px solid #d7dde4;
   background: #f5f7f9;
@@ -57,6 +51,8 @@
 .bg,
 .circle {
   margin-bottom: 2%;
+  background: #fff;
+  border-radius: 5px;
 }
 /*进度环*/
 .demo-i-circle -custom {
@@ -96,7 +92,7 @@
 .circle {
   display: flex;
   justify-content: space-around;
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
   padding: 1%;
 }
@@ -117,9 +113,16 @@
     width: 50%;
   }
 }
+.sign {
+  margin: 0 15px;
+  font-size: 17px;
+  color: pink;
+}
 </style>
 <template>
   <div class="layout">
+    <!-- style="padding-bottom: 100px;" -->
+    <vipHots></vipHots>
     <div class="container">
       <Row class="">
         <Col :xs="24"
@@ -134,9 +137,9 @@
       <div class="introduce">
         <a href="javascript:;"
            class="perfect">
-          <span>测试</span>
+          <span>测一测</span>
         </a>
-        <h3>测试测试</h3>
+        <h3>尊敬的<strong class="sign">超级VIP</strong>用户<strong class="sign"> 张三</strong>已登录</h3>
         <Progress :percent="percent" />
         <ButtonGroup size="large">
           <Button icon="ios-add"
@@ -194,8 +197,13 @@
 </template>
 <script>
 import Login from '@/components/login.vue'
+import vipHots from '@/components/vipHots/vipHots.vue'
 export default {
   name: 'user',
+  components: {
+    Login,
+    vipHots
+  },
   data () {
     return {
       percent: 0,
@@ -223,35 +231,33 @@ export default {
       userInfo: [
         {
           label: '您的昵称',
-          text: 111
+          text: "张三"
         }, {
           label: '您的等级',
-          text: 111
+          text: "超级VIP"
         }, {
           label: '金币',
-          text: 111
+          text: 99999
         }, {
           label: '钻石',
-          text: 111
+          text: 999
         }, {
           label: 'QQ账号',
-          text: 111
+          text: 179857854
         }, {
           label: '博客主页',
-          text: 111
+          text: "www.github.com"
         }, {
           label: 'Github',
-          text: 111
+          text: "www.github.com"
         }, {
           label: '掌握技能',
-          text: ['a', 'b', 'c']
+          text: ['Java', 'SpringMVC', 'springBoot']
         }
       ]
     }
   },
-  components: {
-    Login
-  },
+
   methods: {
     add () {
       if (this.percent >= 100) {

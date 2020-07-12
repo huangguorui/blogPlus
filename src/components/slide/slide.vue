@@ -12,9 +12,11 @@
   position: absolute;
   left: 3%;
   top: 0%;
+  font-family: "kaiti";
 }
 .guide {
   margin-top: 10%;
+  text-indent: 2em;
 }
 .slide-style {
   margin-bottom: 5%;
@@ -105,14 +107,15 @@ li {
          :sm="8"
          :md="7"
          :lg="7"
-         :style="{padding: '0 0 0 0%'}">
+         :style="{padding: '0 0 0 0'}">
     <div class="slide-style">
       <div class="title">个人博客</div>
       <div class="guide">
-        该站主要用来技术探索，笔记记录......
+        该站主要用来技术探索，笔记记录该站主要用来技术探索，笔记记录......
       </div>
     </div>
-    <div class="slide-style">
+    <div class="slide-style"
+         style="display:none;">
       <div class="title-slide">随机好文</div>
       <ul class="news">
         <li v-for="item in list"
@@ -140,15 +143,6 @@ li {
       <div class="title-slide">标签云</div>
       <ul class="tag">
         <li v-for="item in tag"
-            :key="item.id">
-          <a href="javascript:;">{{item.text}}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="slide-style">
-      <div class="title-slide">最赞同</div>
-      <ul class="uls link">
-        <li v-for="item in list"
             :key="item.id">
           <a href="javascript:;">{{item.text}}</a>
         </li>
