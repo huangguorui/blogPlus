@@ -1,15 +1,22 @@
 <template>
   <div>
-    <Button @click="add">添加</Button>
     <Button @click="isModalClose=true"
-            :disabled="del.length==0?true:false">删除</Button>
+            :disabled="delList.length==0?true:false">删除</Button>
 
-    <Button @click="add"
+    <Button @click="addData"
             type="primary">新增资源</Button>
+
+    <Table border
+           @on-selection-change="select"
+           ref="selection"
+           :loading="isTableLoading"
+           :columns="rowTitle"
+           :height="350"
+           :data="list"></Table>
     <drawerM :formData="formData"
-             :isClose="isClose"
-             :title="title"
-             @closepop="closepop"
+             :isCloseDrawer="isCloseDrawer"
+             :title="titleDrawer"
+             @closeDrawer="closeDrawer"
              @submitData="submitData">
 
       <template slot="formData">
@@ -35,6 +42,7 @@
       </template>
 
     </drawerM>
+
     <Modal v-model="isModalClose"
            width="360">
       <p slot="header"
@@ -44,7 +52,7 @@
       </p>
       <div style="text-align:center">
         <p>您当前的操作将会删除掉数据的ID为：</p>
-        <p> {{this.del}}</p>
+        <p> {{this.delList}}</p>
         <p> 是否继续删除？</p>
       </div>
       <div slot="footer">
@@ -52,16 +60,9 @@
                 size="large"
                 long
                 :loading="isModalLoading"
-                @click="deletes">删除</Button>
+                @click="deleteData">删除</Button>
       </div>
     </Modal>
-    <Table border
-           @on-selection-change="select"
-           ref="selection"
-           :loading="isTableLoading"
-           :columns="rowTitle"
-           :height="350"
-           :data="list"></Table>
 
     <Page :page-data="pageInfo"
           @pageChange="pageChange"
@@ -88,10 +89,10 @@ export default {
       isModalClose: false,
       isDisable: true,
       isTableLoading: true,
-      isClose: false,
+      isCloseDrawer: false,
 
-      del: [],
-      title: "",
+      delList: [],
+      titleDrawer: "",
 
       formData: {
         permissionName: "",
@@ -128,8 +129,8 @@ export default {
                 },
                 on: {
                   click: () => {
-                    this.isClose = true
-                    this.title = "编辑资源"
+                    this.isCloseDrawer = true
+                    this.titleDrawer = "编辑资源"
                     this.formData = params.row
                   }
                 }
@@ -143,7 +144,7 @@ export default {
                 on: {
                   click: () => {
                     console.log(params.row)
-                    this.del = [params.row.id]
+                    this.delList = [params.row.id]
                     this.isModalClose = true
                   }
                 }
@@ -162,63 +163,68 @@ export default {
       ]
     }
   },
+  created () {
+    this.apis(api)
+
+  },
   methods: {
     select (e) {
       console.log(e)
       if (e.length == 0) {
-        this.del = []
+        this.delList = []
       }
       let id = []
       //分离出id进行发送
       e.forEach(item => {
         id.push(item.id)
       })
-      this.del = id
+      this.delList = id
 
 
     },
     submitData (e) {
-      this.isClose = false
+      this.isCloseDrawer = false
       //添加新的数据，拉取列表
-      api.postSave(e).then(res => {
+      api.postSaveApi(e).then(res => {
         //数据处理
         console.log(res)
         this.getList(this.data)
       }).catch(err => console.log(err))
 
     },
-    deletes () {
+    apis (e) {
+      console.log(e)
+      console.log(e.getListApi(this.pageInfo).then(res => console.log(res)))
+    },
+    deleteData () {
       this.isModalLoading = true
-      // async deletes() {
-      //   let data = await api.postDelete(this.del)
-      //   console.log(data..code)
-      api.postDelete(this.del).then(res => {
+      api.postDeleteApi(this.delList).then(res => {
         //数据处理
         console.log(res)
-        this.del = []
+        this.delList = []
         this.isModalLoading = false
         this.isModalClose = false
         this.getList(this.data)
 
       }).catch(err => console.log(err))
     },
-    closepop () {
-      this.isClose = false
+    closeDrawer () {
+      this.isCloseDrawer = false
     },
-    add () {
-      this.title = "添加资源"
-      this.isClose = true
+    addData () {
+      this.titleDrawer = "添加资源"
+      this.isCloseDrawer = true
     },
-    edit () {
-      this.title = "编辑资源"
-      this.isClose = true
+    editData () {
+      this.titleDrawer = "编辑资源"
+      this.isCloseDrawer = true
 
     },
 
     getList (data) {
       this.isTableLoading = true
 
-      api.getList(data).then(res => {
+      api.getListApi(data).then(res => {
         //数据处理
         console.log(res)
         this.pageInfo.current = res.data.current

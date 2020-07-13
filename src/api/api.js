@@ -8,13 +8,13 @@ let resquest = "/testIp/request/"
 
 // get请求
 export default {
-    getList(params) {
+    getListApi(params) {
         return http.get(`permission/list`, params)
     },
-    postSave(params) {
+    postSaveApi(params) {
         return http.post(`permission/save`, params)
     },
-    postDelete(params) {
+    postDeleteApi(params) {
         return http.post(`permission/delete`, params)
     }
 

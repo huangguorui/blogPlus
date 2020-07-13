@@ -1,9 +1,10 @@
 <template>
   <div>
 
-    <Drawer v-model="isClose"
+    <Drawer v-model="isCloseDrawer"
             width="390"
-            :title="title"
+            :title="titleDrawer"
+            @on-close="colseDrawer"
             :mask-closable="false"
             :styles="styles">
       <Form :model="formData">
@@ -15,7 +16,7 @@
 
       <div class="demo-drawer-footer">
         <Button style="margin-right: 8px"
-                @click="cancel">取消</Button>
+                @click="colseDrawer">取消</Button>
         <Button type="primary"
                 @click="sumbit">提交</Button>
       </div>
@@ -29,11 +30,11 @@ export default {
       type: Object,
       default: Object
     },
-    title: {
+    titleDrawer: {
       type: String,
       default: "默认标题"
     },
-    isClose: {
+    isCloseDrawer: {
       type: Boolean,
       default: false
     },
@@ -43,10 +44,10 @@ export default {
     sumbit () {
       this.$emit('submitData', this.formData)
     },
-    cancel () {
-      this.$emit('closepop')
+    colseDrawer () {
+      this.$emit('closeDrawer')
 
-      //       [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "isClose"
+      //       [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "isCloseDrawer"
 
       // found in
 
@@ -54,7 +55,7 @@ export default {
       //        <Permission>
       //          <App> at src/App.vue
       //            <Root>
-      // this.isClose = false
+      // this.isCloseDrawer = false
       //不能在组件内部修改传入的porps的值，我们返回到父组件进行处理
 
     }
