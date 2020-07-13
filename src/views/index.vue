@@ -156,7 +156,7 @@ h2 {
 import Banner from '@/components/banner/banner.vue'
 // import Slide from '@/components/slide/slide.vue'
 import Page from '@/components/page/page.vue'
-import pageM from "../common/pageM"
+import pageM from "../common/mixins/pageM"
 
 export default {
   name: 'Index',
@@ -179,12 +179,12 @@ export default {
           created: "",
         }
       ],
-      pageInfo: {
-        current: 1,
-        size: 5,
-        pages: 1,
-        total: 1,
-      }
+      // pageInfo: {
+      //   current: 1,
+      //   size: 5,
+      //   pages: 1,
+      //   total: 1,
+      // }
 
     }
   },
@@ -194,7 +194,7 @@ export default {
     },
     getList (data) {
       this.$axios({
-        url: "http://localhost:8081/blogs?currentPage=" + data.current + "&size=" + data.size,
+        url: "http://localhost:8081/blogs?currentPage=" + data.currentPage + "&size=" + data.size,
         method: "get",
         params: {}
       }).then(res => {

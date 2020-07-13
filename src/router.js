@@ -5,6 +5,8 @@ import about from './views/about.vue'
 import article from './views/article.vue'
 import user from './views/user.vue'
 import nofound from './views/404.vue'
+import role from './views/role.vue'
+import permission from './views/permission.vue'
 
 import turnTable from './views/turnTable.vue'
 
@@ -47,13 +49,25 @@ const router = new Router({
         title: "用户中心",
       }
     },
-
+    {
+      path: '/role',
+      name: 'role',
+      component: role,
+      meta: {
+        title: "角色管理",
+      }
+    },
     {
       path: '/turntable',
       name: 'turntable',
       component: turnTable
+    }, {
+      path: '/permission',
+      name: 'permission',
+      component: permission
     },
     {
+
       path: '/404',
       name: '404',
       component: nofound

@@ -7,8 +7,8 @@ export default {
     data() {
         return {
             pageInfo: {
-                current: 1,
-                size: 5,
+                currentPage: 1,
+                size: this.$constDefault.page, //初始页数，10页  
                 pages: 1,
                 total: 1,
             },
@@ -34,7 +34,7 @@ export default {
     methods: {
         //点击分页
         pageChange(e) {
-            this.pageInfo.current = e
+            this.pageInfo.currentPage = e
 
             this.getList(this.pageInfo)
 
