@@ -140,9 +140,9 @@ h2 {
 
         </div>
       </div>
-      <Page :page-data="pageInfo"
-            @pageChange="pageChange"
-            @pagSizesChange="pageSizeChange"></Page>
+      <page-m :page-data="pageInfo"
+              @pageChange="pageChange"
+              @pagSizesChange="pageSizeChange"></page-m>
       </Col>
     </Row>
 
@@ -155,16 +155,14 @@ h2 {
 // @ is an alias to /src
 import Banner from '@/components/banner/banner.vue'
 // import Slide from '@/components/slide/slide.vue'
-import Page from '@/components/page/page.vue'
-import pageM from "../common/mixins/pageM"
+import page from "../common/mixins/page"
 
 export default {
   name: 'Index',
-  mixins: [pageM],
+  mixins: [page],
   components: {
     Banner,
     // Slide,
-    Page
   },
 
   data () {

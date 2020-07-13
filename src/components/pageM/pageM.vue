@@ -12,11 +12,9 @@
           :page-size="pageData.size"
           :show-total="true"
           @on-change="pageChange"
-          size="small"
-         
-          />
+          size="small" />
 
-          <!-- 
+    <!-- 
  show-sizer
           @on-page-size-change="pageSizeChange"
  show-elevator
@@ -28,7 +26,7 @@
 
 
 export default {
-  name: "page",
+  name: "pageM",
   props: {
     pageData: {
       type: Object,

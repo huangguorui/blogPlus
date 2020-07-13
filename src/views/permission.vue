@@ -13,7 +13,7 @@
            :columns="rowTitle"
            :height="350"
            :data="list"></Table>
-    <drawerM :formData="formData"
+    <drawer-m :formData="formData"
              :isCloseDrawer="isCloseDrawer"
              :title="titleDrawer"
              @closeDrawer="closeDrawer"
@@ -41,7 +41,7 @@
 
       </template>
 
-    </drawerM>
+    </drawer-m>
 
     <Modal v-model="isModalClose"
            width="360">
@@ -64,32 +64,23 @@
       </div>
     </Modal>
 
-    <Page :page-data="pageInfo"
-          @pageChange="pageChange"
-          @pagSizesChange="pageSizeChange"></Page>
+    <page-m :page-data="pageInfo"
+           @pageChange="pageChange"
+           @pagSizesChange="pageSizeChange"></page-m>
   </div>
 </template>
 <script>
-import Page from '@/components/page/page.vue'
-import drawerM from '@/components/drawerM/drawerM.vue'
-import pageM from "../common/mixins/pageM"
+import page from "@/common/mixins/page"
+import defaultValue from "@/common/mixins/defaultValue"
 import api from '@/api/api'
-// import { getList, postSave, postDelete } from '@/api/api'
 
 export default {
   name: "permission",
-  mixins: [pageM],
+  mixins: [defaultValue, page],
   components: {
-    Page,
-    drawerM
   },
   data () {
     return {
-      isModalLoading: false,
-      isModalClose: false,
-      isDisable: true,
-      isTableLoading: true,
-      isCloseDrawer: false,
 
       delList: [],
       titleDrawer: "",

@@ -1,10 +1,10 @@
 <template>
   <div>
-
+    <!-- @on-close="colseDrawer" -->
     <Drawer v-model="isCloseDrawer"
             width="390"
             :title="titleDrawer"
-            @on-close="colseDrawer"
+            :closable="false"
             :mask-closable="false"
             :styles="styles">
       <Form :model="formData">
@@ -41,11 +41,13 @@ export default {
   },
 
   methods: {
+
     sumbit () {
       this.$emit('submitData', this.formData)
     },
     colseDrawer () {
       this.$emit('closeDrawer')
+
 
       //       [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "isCloseDrawer"
 

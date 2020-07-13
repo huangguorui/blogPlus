@@ -1,9 +1,9 @@
 /**
  * 自定义列表混合带分页带条件查询
- * @author Maybe
+ * @author h
  */
 export default {
-    name: 'List',
+    name: 'page',
     data() {
         return {
             pageInfo: {
