@@ -41,20 +41,20 @@
 
     <div class="nav">
       <ul>
-        <li>
+        <!-- <li>
           <router-link tag="a"
                        :to="{ name: 'index'}">首页</router-link>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <Reg></Reg>
         </li>
         <li>
           <Login></Login>
-        </li>
-        <li>
+        </li> -->
+        <!-- <li>
           <router-link tag="a"
                        :to="{ name: 'user'}">控制台</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link tag="a"
                        :to="{ name: 'role'}">角色管理</router-link>
@@ -67,13 +67,13 @@
           <router-link tag="a"
                        :to="{ name: 'rolePermission'}">角色关联资源</router-link>
         </li>
-        <li>
+        <!-- <li>
           <router-link tag="a"
                        :to="{ name: 'rolePermission'}">用户关联角色</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link tag="a"
-                       :to="{ name: 'about'}">关于</router-link>
+                       :to="{ name: 'tableTab'}">tableTab</router-link>
         </li>
       </ul>
 

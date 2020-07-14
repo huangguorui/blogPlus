@@ -8,6 +8,7 @@ import nofound from './views/404.vue'
 import role from './views/role.vue'
 import permission from './views/permission.vue'
 import rolePermission from './views/rolePermission.vue'
+import tableTab from './views/tableTab.vue'
 
 import turnTable from './views/turnTable.vue'
 
@@ -72,7 +73,11 @@ const router = new Router({
       name: 'rolePermission',
       component: rolePermission
     },
-
+    {
+      path: '/tableTab',
+      name: 'tableTab',
+      component: tableTab
+    },
     {
 
       path: '/404',
