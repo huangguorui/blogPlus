@@ -6,12 +6,12 @@ export default {
     name: 'page',
     data() {
         return {
-            pageInfo: {
-                currentPage: 1,
-                size: this.$constDefault.page, //初始页数，10页  
-                pages: 1,
-                total: 1,
-            },
+            // pageInfo: {
+            //     currentPage: 1,
+            //     size: this.$constDefault.page, //初始页数，10页  
+            //     pages: 1,
+            //     total: 1,
+            // },
             // query: {
             //     search: '', //搜索
             //     page: 1, //第一页

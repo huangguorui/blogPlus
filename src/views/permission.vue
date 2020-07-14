@@ -14,10 +14,10 @@
            :height="350"
            :data="list"></Table>
     <drawer-m :formData="formData"
-             :isCloseDrawer="isCloseDrawer"
-             :title="titleDrawer"
-             @closeDrawer="closeDrawer"
-             @submitData="submitData">
+              :isCloseDrawer="isCloseDrawer"
+              :title="titleDrawer"
+              @closeDrawer="closeDrawer"
+              @submitData="submitData">
 
       <template slot="formData">
 
@@ -65,8 +65,8 @@
     </Modal>
 
     <page-m :page-data="pageInfo"
-           @pageChange="pageChange"
-           @pagSizesChange="pageSizeChange"></page-m>
+            @pageChange="pageChange"
+            @pagSizesChange="pageSizeChange"></page-m>
   </div>
 </template>
 <script>
@@ -155,7 +155,7 @@ export default {
     }
   },
   created () {
-    this.apis(api)
+   // this.apis(api)
 
   },
   methods: {
@@ -217,12 +217,7 @@ export default {
 
       api.getListApi(data).then(res => {
         //数据处理
-        console.log(res)
-        this.pageInfo.current = res.data.current
-        this.pageInfo.pages = res.data.pages
-        this.pageInfo.size = res.data.size
-        this.pageInfo.total = res.data.total
-
+        this.pageInfo = res.pageInfo
         this.list = res.data.records
         this.isTableLoading = false
       }).catch(err => console.log(err))

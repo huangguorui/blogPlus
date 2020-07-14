@@ -8,12 +8,9 @@
             :mask-closable="false"
             :styles="styles">
       <Form :model="formData">
-
         <slot name="formData">
-
         </slot>
       </Form>
-
       <div class="demo-drawer-footer">
         <Button style="margin-right: 8px"
                 @click="colseDrawer">取消</Button>

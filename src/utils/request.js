@@ -37,7 +37,20 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     //接收到响应数据并成功后的一些共有的处理，关闭loading等
 
-    return response.data
+    //分页
+    let page = response.data.data
+    let pageInfo = {
+        currentPage: page.currentPage,
+        size: page.size,
+        pages: page.pages,
+        total: page.total,
+    }
+    //整合分页数据
+    response = Object.assign(response.data, {
+        pageInfo: pageInfo
+    })
+
+    return response
 }, error => {
     /***** 接收到异常响应的处理开始 *****/
     if (error && error.response) {

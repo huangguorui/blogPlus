@@ -10,7 +10,8 @@ export default {
             isModalClose: false,
             isDisable: true,
             isTableLoading: true,
-            isCloseDrawer: false,
+            // isCloseDrawer: false,
+            // titleDrawer: ""
 
         }
     },
@@ -20,7 +21,7 @@ export default {
     watch: {},
     //开局刷新
     created() {
-        console.log("混入开始")
+        // console.log("混入开始")
     },
     methods: {
 

@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     pageChange (e) {
-      console.log(e)
       this.$emit("pageChange", e)
 
     },
