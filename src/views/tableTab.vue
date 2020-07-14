@@ -10,71 +10,47 @@ export default {
     return {
       columns16: [
         {
-          title: 'Name',
+          title: '权限名称',
           key: 'name',
           tree: true
         },
         {
-          title: 'Age',
-          key: 'age'
-        },
-        {
-          title: 'Address',
+          title: '所属资源',
           key: 'address'
         }
       ],
       data12: [
         {
           id: '100',
-          name: 'John Brown',
-          age: 18,
-          address: 'New York No. 1 Lake Park'
+          name: 'ADMIN',
+
+          address: 'ADMIN'
         },
         {
           id: '101',
-          name: 'Jim Green',
-          age: 24,
-          address: 'London No. 1 Lake Park',
           children: [
             {
-              id: '10100',
-              name: 'John Brown',
-              age: 18,
-              address: 'New York No. 1 Lake Park'
-            },
-            {
               id: '10101',
-              name: 'Joe Blackn',
+              name: '/permission/list',
               age: 30,
-              address: 'Sydney No. 1 Lake Park'
+              address: '/permission/list'
             },
             {
               id: '10102',
-              name: 'Jon Snow',
-              age: 26,
-              address: 'Ottawa No. 2 Lake Park',
-              children: [
-                {
-                  id: '1010200',
-                  name: 'Jim Green',
-                  age: 24,
-                  address: 'New York No. 1 Lake Park'
-                }
-              ]
-            }
+              name: '/permission/list',
+              address: '/permission/list'
+            },
           ]
         },
         {
           id: '102',
-          name: 'Joe Black',
-          age: 30,
-          address: 'Sydney No. 1 Lake Park'
+          name: 'USER',
+          address: 'USER'
         },
         {
           id: '103',
-          name: 'Jon Snow',
-          age: 26,
-          address: 'Ottawa No. 2 Lake Park'
+          name: 'USER',
+          address: 'USER'
         }
       ]
     }
