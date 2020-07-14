@@ -48,42 +48,25 @@
 
     </drawer-m>
 
-    <Modal v-model="isModalClose"
-           width="360">
-      <p slot="header"
-         style="color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>删除确认</span>
-      </p>
-      <div style="text-align:center">
-        <p>您当前的操作将会删除掉数据的ID为：</p>
-        <p> {{this.delList}}</p>
-        <p> 是否继续删除？</p>
-      </div>
-      <div slot="footer">
-        <Button type="error"
-                size="large"
-                long
-                :loading="isModalLoading"
-                @click="deleteData">删除</Button>
-      </div>
-    </Modal>
+    <modal-m :isModalClose="isModalClose"
+             :isModalLoading="isModalLoading"
+             :delList="delList"
+             @cancelModalClose="cancelModalClose"
+             @deleteData="deleteData"></modal-m>
 
     <page-m :page-data="pageInfo"
             @pageChange="pageChange"
-            @pagSizesChange="pageSizeChange"></page-m>
+            @pagSizesChange="pageSizeChange">
+    </page-m>
   </div>
 </template>
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
 import api from '@/api/rolePermission'
-
 export default {
   name: "permission",
   mixins: [defaultValue, page],
-  components: {
-  },
   data () {
     return {
 
@@ -136,7 +119,6 @@ export default {
                 },
                 on: {
                   click: () => {
-                    console.log(params.row)
                     this.delList = [params.row.id]
                     this.isModalClose = true
                   }
@@ -157,6 +139,9 @@ export default {
     }
   },
   methods: {
+    cancelModalClose (e) {
+      this.isModalClose = e
+    },
     select (e) {
       if (e.length == 0) {
         this.delList = []
@@ -180,9 +165,8 @@ export default {
     },
     deleteData () {
       this.isModalLoading = true
-      api.postDeleteApi(this.delList).then(res => {
+      api.postDeleteApi(this.delList).then(() => {
         //数据处理
-        console.log(res)
         this.delList = []
         this.isModalLoading = false
         this.isModalClose = false
