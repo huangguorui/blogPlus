@@ -10,8 +10,8 @@ export default {
             isModalClose: false,
             isDisable: true,
             isTableLoading: true,
-            // isCloseDrawer: false,
-            // titleDrawer: ""
+            isCloseDrawer: false,
+            titleDrawer: ""
 
         }
     },

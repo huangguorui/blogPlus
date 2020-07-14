@@ -39,16 +39,23 @@ service.interceptors.response.use(response => {
 
     //分页
     let page = response.data.data
-    let pageInfo = {
-        currentPage: page.current,
-        size: page.size,
-        pages: page.pages,
-        total: page.total,
+    let pageInfo = {}
+    if (page != null) {
+        pageInfo = {
+            currentPage: page.current,
+            size: page.size,
+            pages: page.pages,
+            total: page.total,
+        }
+        //整合分页数据
+        response = Object.assign(response.data, {
+            pageInfo: pageInfo
+        })
+    } else {
+        response = response.data
     }
-    //整合分页数据
-    response = Object.assign(response.data, {
-        pageInfo: pageInfo
-    })
+
+
 
     return response
 }, error => {
