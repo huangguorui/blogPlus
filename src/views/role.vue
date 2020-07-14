@@ -8,7 +8,8 @@
              :pageInfo="pageInfo"
              @isDrawer="isDrawer"
              :formData="formData"
-             :isCloseDrawer.sync="isCloseDrawer"></table-m>
+             @closeDrawer="closeDrawer"
+             :isCloseDrawer="isCloseDrawer"></table-m>
   </div>
 </template>
 
@@ -65,7 +66,6 @@ export default {
                     this.isCloseDrawer = true
                     this.titleDrawer = "编辑资源"
                     this.formData = params.row
-                    console.log(123)
                   }
                 }
               }, '编辑'),
@@ -109,10 +109,14 @@ export default {
     }
   },
   methods: {
+    closeDrawer (e) {
+      this.isCloseDrawer = e
+
+    },
     resData (res) {
       this.list = res.data.records
       this.pageInfo = res.pageInfo
-      console.log("list", this.list)
+      // console.log("res===", res)
       //  this.page = pages
     },
     isDrawer (e) {

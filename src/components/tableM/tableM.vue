@@ -2,11 +2,12 @@
   <div>
 
     <!-- @on-selection-change="select" -->
-
+    {{pageInfo}}
     <Table border
            ref="selection"
            :columns="rowTitle"
            :height="350"
+           :loading="isTableLoading"
            :data="list"></Table>
 
     <drawer-m :formData="formData"
@@ -103,13 +104,14 @@ export default {
 
     },
     submitData (e) {
-      this.$emit('update:closeDrawer', false)
+      console.log("this.pageInfo===", this.pageInfo)
       //添加新的数据，拉取列表
       api.postSaveApi(e).then(res => {
         //数据处理
         console.log(res)
-        this.getList(this.data)
+        this.getList(this.pageInfo)
       }).catch(err => console.log(err))
+      this.$emit('closeDrawer', false)
 
     },
     apis (e) {
@@ -124,40 +126,36 @@ export default {
         this.delList = []
         this.isModalLoading = false
         this.isModalClose = false
-        this.getList(this.data)
+        this.getList(this.pageInfo)
 
       }).catch(err => console.log(err))
     },
     closeDrawer () {
       console.log("取消激活")
-      this.$emit('update:closeDrawer', false)
+      this.$emit('closeDrawer', false)
       // this.$emit("Drawer", false)
     },
     addData () {
       this.titleDrawer = "添加资源"
-      this.$emit('update:closeDrawer', false)
+      this.$emit('closeDrawer', false)
 
     },
     editData () {
       console.log(123)
       this.titleDrawer = "编辑资源"
-      this.$emit('update:closeDrawer', false)
+      this.$emit('closeDrawer', false)
 
     },
 
     getList (data) {
       this.isTableLoading = true
-
       api.getListApi(data).then(res => {
         //数据处理
         this.$emit("resData", res)
-        // this.pageInfo = res.pageInfo
-        // this.list = res.data.records
-
-        // console.log(this.list)
-
         this.isTableLoading = false
       }).catch(err => console.log(err))
+
+
     }
   }
 }

@@ -28,7 +28,7 @@ export default {
     watch: {},
     //开局刷新
     created() {
-        console.log("混入开始")
+        // console.log("混入开始")
         this.getList(this.pageInfo)
     },
     methods: {

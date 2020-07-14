@@ -40,7 +40,7 @@ service.interceptors.response.use(response => {
     //分页
     let page = response.data.data
     let pageInfo = {
-        currentPage: page.currentPage,
+        currentPage: page.current,
         size: page.size,
         pages: page.pages,
         total: page.total,
