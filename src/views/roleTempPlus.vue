@@ -108,9 +108,9 @@ export default {
         url: "",
       },
       isCloseDrawer: false,
-      rightTitleDrawer:{
-        add:"添加资源",
-        edit:"编辑资源"
+      rightTitleDrawer: {
+        add: "添加资源",
+        edit: "编辑资源"
       }
     }
   },

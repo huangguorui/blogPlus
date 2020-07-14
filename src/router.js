@@ -7,6 +7,7 @@ import user from './views/user.vue'
 import nofound from './views/404.vue'
 import role from './views/role.vue'
 import permission from './views/permission.vue'
+import rolePermission from './views/rolePermission.vue'
 
 import turnTable from './views/turnTable.vue'
 
@@ -66,6 +67,12 @@ const router = new Router({
       name: 'permission',
       component: permission
     },
+    {
+      path: '/rolePermission',
+      name: 'rolePermission',
+      component: rolePermission
+    },
+
     {
 
       path: '/404',

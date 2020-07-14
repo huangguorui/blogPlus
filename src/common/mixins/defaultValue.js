@@ -11,7 +11,13 @@ export default {
             isDisable: true,
             isTableLoading: true,
             isCloseDrawer: false,
-            titleDrawer: ""
+            titleDrawer: "",
+            delList: [],
+
+            //搜索
+            search:{
+                
+            }
 
         }
     },

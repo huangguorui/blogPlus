@@ -6,6 +6,16 @@
     <Button @click="addData"
             type="primary">新增资源</Button>
 
+    <!-- @on-change="searchData" -->
+    <Input v-model="pageInfo.permissionName"
+           placeholder="请输入需要搜索的文字"
+           style="width: 300px" />
+    <Button type="primary"
+            @click="searchData">搜索</Button>
+
+    <Button type="primary"
+            @click="addRoleAndPermission">提交</Button>
+
     <Table border
            @on-selection-change="select"
            ref="selection"
@@ -72,7 +82,7 @@
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
-import api from '@/api/api'
+import api from '@/api/permission'
 
 export default {
   name: "permission",
@@ -81,9 +91,6 @@ export default {
   },
   data () {
     return {
-
-      delList: [],
-      titleDrawer: "",
 
       formData: {
         permissionName: "",
@@ -154,13 +161,8 @@ export default {
       ]
     }
   },
-  created () {
-   // this.apis(api)
-
-  },
   methods: {
     select (e) {
-      console.log(e)
       if (e.length == 0) {
         this.delList = []
       }
@@ -170,8 +172,6 @@ export default {
         id.push(item.id)
       })
       this.delList = id
-
-
     },
     submitData (e) {
       this.isCloseDrawer = false
@@ -182,10 +182,6 @@ export default {
         this.getList(this.data)
       }).catch(err => console.log(err))
 
-    },
-    apis (e) {
-      console.log(e)
-      console.log(e.getListApi(this.pageInfo).then(res => console.log(res)))
     },
     deleteData () {
       this.isModalLoading = true
@@ -211,38 +207,39 @@ export default {
       this.isCloseDrawer = true
 
     },
+    searchData () {
+      this.getList(this.pageInfo)
+      // console.log(this)
 
+    },
     getList (data) {
       this.isTableLoading = true
-
       api.getListApi(data).then(res => {
         //数据处理
         this.pageInfo = res.pageInfo
         this.list = res.data.records
         this.isTableLoading = false
       }).catch(err => console.log(err))
+    },
+    addRoleAndPermission () {
+      //拼装语句
+      let data = {
+        roleIds: this.delList,
+        permissionId: this.$route.query.id
+      }
+      if (this.$route.query.id == null) {
+        return false
+      }
+      this.delList.push(this.$route.query.id)
+      api.postAddRoleAndPermission(this.delList).then(res => {
+        console.log(res)
+        this.getList(this.data)
+      }).catch(err => console.log(err))
+
+
     }
-    // getList (data) {
-    //   this.$axios({
-    //     url: "http://localhost:8081/permission/list?currentPage=" + data.current + "&size=" + data.size,
-    //     method: "get",
-    //     params: {}
-    //   }).then(res => {
-    //     console.log(res)
+  },
 
-    //     //获取分页
-    //     this.pageInfo.current = res.data.current
-    //     this.pageInfo.pages = res.data.pages
-    //     this.pageInfo.size = res.data.size
-    //     this.pageInfo.total = res.data.total
 
-    //     this.list = res.data.records
-    //     // 赋值以后添加，修改的值是不会被vue监听的
-    //     this.list.forEach((item, i) => {
-    //       this.list[i].fabulousNumber = 1
-    //     })
-    //   })
-    // },
-  }
 }
 </script>

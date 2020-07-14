@@ -26,28 +26,27 @@
 
       <template slot="formData">
 
-        <FormItem label="权限名称"
+        <FormItem label="权限ID"
                   label-position="top">
-          <Input v-model="formData.roleName"
-                 placeholder="权限名称" />
+          <Input v-model="formData.permissionId"
+                 placeholder="权限ID" />
         </FormItem>
         <!-- <FormItem label="资源路径"
                   label-position="top">
-          <Input v-model="formData.roleDesc"
+          <Input v-model="formData.roleId"
                  placeholder="描述" />
         </FormItem> -->
-        <FormItem label="权限描述"
+        <FormItem label="角色ID"
                   label-position="top">
           <Input type="textarea"
-                 v-model="formData.roleDesc"
+                 v-model="formData.roleId"
                  :rows="4"
-                 placeholder="权限描述" />
+                 placeholder="角色ID" />
         </FormItem>
 
       </template>
 
     </drawer-m>
-
 
     <Modal v-model="isModalClose"
            width="360">
@@ -78,10 +77,10 @@
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
-import api from '@/api/role'
+import api from '@/api/rolePermission'
 
 export default {
-  name: "role",
+  name: "permission",
   mixins: [defaultValue, page],
   components: {
   },
@@ -102,36 +101,19 @@ export default {
           title: 'ID',
           key: 'id'
         }, {
-          title: '权限名',
-          key: 'roleName'
+          title: '权限ID',
+          key: 'permissionId'
         },
         {
-          title: '权限描述',
-          key: 'roleDesc'
+          title: '角色ID',
+          key: 'roleId'
         },
-
         {
           title: '操作',
           align: 'center',
           type: 'text',
           render: (h, params) => {
             return h('div', [
-              h('Button', {
-                style: {
-                  fontSize: '14px',
-                  padding: '5px 10px',
-                  cursor: 'pointer',
-                },
-                on: {
-                  click: () => {
-                    // this.isCloseDrawer = true
-                    // this.titleDrawer = "编辑资源"
-                    //带上id跳转到资源列表页面
-                    this.$router.push({ path: 'permission', query: { id: params.row.id } })
-                    this.formData = params.row
-                  }
-                }
-              }, '添加资源'),
               h('Button', {
                 style: {
                   fontSize: '14px',
@@ -168,8 +150,8 @@ export default {
       list: [
         {
           id: 0,
-          roleName: '',
-          roleDesc: '',
+          permissionId: '',
+          roleId: '',
         },
       ]
     }
@@ -233,8 +215,7 @@ export default {
         this.list = res.data.records
         this.isTableLoading = false
       }).catch(err => console.log(err))
-    },
-    
+    }
   }
 }
 </script>

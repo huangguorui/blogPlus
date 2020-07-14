@@ -65,11 +65,11 @@
         </li>
         <li>
           <router-link tag="a"
-                       :to="{ name: 'role'}">角色管理资源</router-link>
+                       :to="{ name: 'rolePermission'}">角色关联资源</router-link>
         </li>
         <li>
           <router-link tag="a"
-                       :to="{ name: 'role'}">用户关联角色</router-link>
+                       :to="{ name: 'rolePermission'}">用户关联角色</router-link>
         </li>
         <li>
           <router-link tag="a"
