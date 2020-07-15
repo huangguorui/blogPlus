@@ -1,57 +1,45 @@
+
 <template>
-  <Table row-key="id"
-         :columns="columns16"
-         :data="data12"
-         border></Table>
+  <Table :columns="columns10"
+         :data="data9"></Table>
 </template>
 <script>
+import expandRow from '../views/tableTab2';
 export default {
+  components: { expandRow },
   data () {
     return {
-      columns16: [
+      columns10: [
         {
-          title: '权限名称',
-          key: 'name',
-          tree: true
+          type: 'expand',
+          width: 50,
+          render: (h, params) => {
+            return h(expandRow, {
+              props: {
+                row: params.row
+              }
+            })
+          }
         },
         {
-          title: '所属资源',
-          key: 'address'
+          title: 'ID',
+          key: 'ID'
+        },
+        {
+          title: 'roleName',
+          key: 'roleName'
+        },
+        {
+          title: 'roleDesc',
+          key: 'roleDesc'
         }
       ],
-      data12: [
+      data9: [
         {
-          id: '100',
-          name: 'ADMIN',
-
-          address: 'ADMIN'
+          id: 'Steve Jobs',
+          permissionName: 'The Prestige',
+          url: 'I Cry'
         },
-        {
-          id: '101',
-          children: [
-            {
-              id: '10101',
-              name: '/permission/list',
-              age: 30,
-              address: '/permission/list'
-            },
-            {
-              id: '10102',
-              name: '/permission/list',
-              address: '/permission/list'
-            },
-          ]
-        },
-        {
-          id: '102',
-          name: 'USER',
-          address: 'USER'
-        },
-        {
-          id: '103',
-          name: 'USER',
-          address: 'USER'
-        }
       ]
     }
   }

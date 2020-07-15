@@ -209,7 +209,6 @@ export default {
     },
     searchData () {
       this.getList(this.pageInfo)
-      // console.log(this)
 
     },
     getList (data) {
@@ -222,11 +221,6 @@ export default {
       }).catch(err => console.log(err))
     },
     addRoleAndPermission () {
-      //拼装语句
-      let data = {
-        roleIds: this.delList,
-        permissionId: this.$route.query.id
-      }
       if (this.$route.query.id == null) {
         return false
       }

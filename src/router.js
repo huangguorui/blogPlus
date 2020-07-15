@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from './views/index.vue'
-import about from './views/about.vue'
-import article from './views/article.vue'
-import user from './views/user.vue'
-import nofound from './views/404.vue'
-import role from './views/role.vue'
-import permission from './views/permission.vue'
-import rolePermission from './views/rolePermission.vue'
-import tableTab from './views/tableTab.vue'
+import index from './views/index'
+import about from './views/about'
+import article from './views/article'
+import user from './views/user'
+import nofound from './views/404'
+import role from './views/role'
+import permission from './views/permission'
+import rolePermission from './views/rolePermission'
+import tableTab from './views/tableTab'
+// import tableTab2 from './views/tableTab2'
 
-import turnTable from './views/turnTable.vue'
+import turnTable from './views/turnTable'
 
 Vue.use(Router)
 import iView from 'iview';
@@ -78,6 +79,11 @@ const router = new Router({
       name: 'tableTab',
       component: tableTab
     },
+    // {
+    //   path: '/tableTab2',
+    //   name: 'tableTab2',
+    //   component: tableTab2
+    // },
     {
 
       path: '/404',

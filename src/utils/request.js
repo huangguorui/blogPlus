@@ -37,6 +37,10 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
     //接收到响应数据并成功后的一些共有的处理，关闭loading等
 
+
+    console.log(response)
+
+
     //分页
     let page = response.data.data
     let pageInfo = {}

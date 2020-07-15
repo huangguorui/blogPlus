@@ -12,11 +12,13 @@
     <Button type="primary"
             @click="searchData">搜索</Button>
     <Table border
+           row-key="id"
            @on-selection-change="select"
+           @on-row-click="expand"
            ref="selection"
            :loading="isTableLoading"
            :columns="rowTitle"
-           :height="350"
+           :height="1000"
            :data="list"></Table>
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
@@ -48,7 +50,6 @@
 
     </drawer-m>
 
-
     <Modal v-model="isModalClose"
            width="360">
       <p slot="header"
@@ -79,11 +80,13 @@
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
 import api from '@/api/role'
+import expandRow from '../views/tableTab2';
 
 export default {
   name: "role",
   mixins: [defaultValue, page],
   components: {
+    expandRow
   },
   data () {
     return {
@@ -93,14 +96,33 @@ export default {
         url: "",
       },
       rowTitle: [
+        // {
+        //   type: 'selection',
+        //   width: 60,
+        //   align: 'center',
+        // },
         {
-          type: 'selection',
-          width: 60,
-          align: 'center'
+          type: 'expand',
+          width: 50,
+          render: (h, params) => {
+            return h(expandRow, {
+
+              props: {
+                row: params.row
+              },
+              on: {
+                click: () => {
+                  console.log(params.row)
+                }
+              }
+            })
+          }
         },
         {
           title: 'ID',
-          key: 'id'
+          key: 'id',
+          tree: true
+
         }, {
           title: '权限名',
           key: 'roleName'
@@ -171,10 +193,19 @@ export default {
           roleName: '',
           roleDesc: '',
         },
-      ]
+      ],
+      rows: {
+        a: 1,
+        b: {
+          abc: 1
+        }
+      }
     }
   },
   methods: {
+    expand (e) {
+      console.log(e)
+    },
     select (e) {
       if (e.length == 0) {
         this.delList = []
@@ -231,10 +262,25 @@ export default {
         //数据处理
         this.pageInfo = res.pageInfo
         this.list = res.data.records
+
+
+
+        // this.list.forEach((item, i) => {
+        //   this.list[i].children = [{
+        //     roleName: '123',
+        //     roleDesc: '123',
+        //     children: [
+        //       {
+        //         roleName: '登录权限',
+        //         roleDesc: '/login',
+        //       }
+        //     ]
+        //   }]
+        // })
         this.isTableLoading = false
       }).catch(err => console.log(err))
     },
-    
+
   }
 }
 </script>
