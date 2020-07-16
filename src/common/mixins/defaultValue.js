@@ -13,7 +13,6 @@ export default {
             isCloseDrawer: false,
             titleDrawer: "",
             delList: [],
-
             //搜索
             search:{
                 

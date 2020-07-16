@@ -61,20 +61,25 @@
         </li>
         <li>
           <router-link tag="a"
+                       :to="{ name: 'user'}">用户管理</router-link>
+        </li>
+        <li>
+
+          <router-link tag="a"
                        :to="{ name: 'permission'}">资源管理</router-link>
         </li>
         <li>
           <router-link tag="a"
                        :to="{ name: 'rolePermission'}">角色关联资源</router-link>
         </li>
-        <!-- <li>
-          <router-link tag="a"
-                       :to="{ name: 'rolePermission'}">用户关联角色</router-link>
-        </li> -->
         <li>
           <router-link tag="a"
-                       :to="{ name: 'tableTab'}">tableTab</router-link>
+                       :to="{ name: 'userRole'}">用户关联角色</router-link>
         </li>
+        <!-- <li>
+          <router-link tag="a"
+                       :to="{ name: 'tableTab'}">tableTab</router-link>
+        </li> -->
       </ul>
 
       <!-- <span>
@@ -93,14 +98,14 @@
   </div>
 </template>
 <script>
-import Reg from '@/components/reg.vue'
-import Login from '@/components/login.vue'
+// import Reg from '@/components/reg.vue'
+// import Login from '@/components/login.vue'
 
 export default {
   name: 'headerNav',
   components: {
-    Reg,
-    Login
+    // Reg,
+    // Login
   },
   props: {
     flag: {

@@ -8,6 +8,7 @@ import nofound from './views/404'
 import role from './views/role'
 import permission from './views/permission'
 import rolePermission from './views/rolePermission'
+import userRole from './views/userRole'
 import tableTab from './views/tableTab'
 // import tableTab2 from './views/tableTab2'
 
@@ -78,6 +79,10 @@ const router = new Router({
       path: '/tableTab',
       name: 'tableTab',
       component: tableTab
+    }, {
+      path: '/userRole',
+      name: 'userRole',
+      component: userRole
     },
     // {
     //   path: '/tableTab2',

@@ -4,7 +4,7 @@
             :disabled="delList.length==0?true:false">删除</Button>
 
     <Button @click="addData"
-            type="primary">添加角色</Button>
+            type="primary">新增资源</Button>
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
            placeholder="请输入需要搜索的文字"
@@ -12,39 +12,42 @@
     <Button type="primary"
             @click="searchData">搜索</Button>
     <Table border
-           row-key="id"
            @on-selection-change="select"
-           @on-row-click="expand"
            ref="selection"
            :loading="isTableLoading"
            :columns="rowTitle"
-           :max-height="1000"
+           :height="350"
            :data="list"></Table>
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
-              :titleDrawer="titleDrawer"
+              :title="titleDrawer"
               @closeDrawer="closeDrawer"
               @submitData="submitData">
 
       <template slot="formData">
 
-        <FormItem label="角色名称"
+        <FormItem label="用户ID"
                   label-position="top">
-          <Input v-model="formData.roleName"
-                 placeholder="角色名称称" />
+          <Input v-model="formData.userId"
+                 placeholder="用户ID" />
         </FormItem>
-
-        <FormItem label="角色描述"
+        <!-- <FormItem label="资源路径"
+                  label-position="top">
+          <Input v-model="formData.roleId"
+                 placeholder="描述" />
+        </FormItem> -->
+        <FormItem label="角色ID"
                   label-position="top">
           <Input type="textarea"
-                 v-model="formData.roleDesc"
+                 v-model="formData.roleId"
                  :rows="4"
-                 placeholder="角色描述" />
+                 placeholder="角色ID" />
         </FormItem>
 
       </template>
 
     </drawer-m>
+
     <modal-m :isModalClose="isModalClose"
              :isModalLoading="isModalLoading"
              :delList="delList"
@@ -53,20 +56,20 @@
 
     <page-m :page-data="pageInfo"
             @pageChange="pageChange"
-            @pagSizesChange="pageSizeChange"></page-m>
-
+            @pagSizesChange="pageSizeChange">
+    </page-m>
   </div>
 </template>
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
-import api from '@/api/user'
-
+import api from '@/api/userRole'
 export default {
-  name: "role",
+  name: "permission",
   mixins: [defaultValue, page],
   data () {
     return {
+
       formData: {
         permissionName: "",
         url: "",
@@ -75,42 +78,19 @@ export default {
         {
           type: 'selection',
           width: 60,
-          align: 'center',
-        },
-        {
-          type: 'expand',
-          width: 50,
-          render: (h, params) => {
-            return h('table-expand-row2', {
-              props: {
-                row: params.row,
-              },
-              on: {
-                click: () => {
-                  console.log(params.row)
-                }
-              }
-            })
-          }
+          align: 'center'
         },
         {
           title: 'ID',
-          key: 'id',
-          tree: true
-
+          key: 'id'
         }, {
           title: '用户ID',
-          key: 'id'
+          key: 'userId'
         },
         {
-          title: '用户名',
-          key: 'username'
+          title: '角色ID',
+          key: 'roleId'
         },
-        {
-          title: '邮箱',
-          key: 'email'
-        },
-
         {
           title: '操作',
           align: 'center',
@@ -125,24 +105,8 @@ export default {
                 },
                 on: {
                   click: () => {
-                    // this.isCloseDrawer = true
-                    // this.titleDrawer = "编辑资源"
-                    //带上id跳转到资源列表页面
-                    this.$router.push({ path: 'role', query: { id: params.row.id } })
-                    this.formData = params.row
-                  }
-                }
-              }, '添加权限'),
-              h('Button', {
-                style: {
-                  fontSize: '14px',
-                  padding: '5px 10px',
-                  cursor: 'pointer',
-                },
-                on: {
-                  click: () => {
                     this.isCloseDrawer = true
-                    this.titleDrawer = "编辑角色"
+                    this.titleDrawer = "编辑资源"
                     this.formData = params.row
                   }
                 }
@@ -155,7 +119,6 @@ export default {
                 },
                 on: {
                   click: () => {
-                    console.log(params.row)
                     this.delList = [params.row.id]
                     this.isModalClose = true
                   }
@@ -169,18 +132,15 @@ export default {
       list: [
         {
           id: 0,
-          roleName: '',
-          roleDesc: '',
+          userId: '',
+          roleId: '',
         },
-      ],
+      ]
     }
   },
   methods: {
     cancelModalClose (e) {
       this.isModalClose = e
-    },
-    expand (e) {
-      console.log(e)
     },
     select (e) {
       if (e.length == 0) {
@@ -205,9 +165,8 @@ export default {
     },
     deleteData () {
       this.isModalLoading = true
-      api.postDeleteApi(this.delList).then(res => {
+      api.postDeleteApi(this.delList).then(() => {
         //数据处理
-        console.log(res)
         this.delList = []
         this.isModalLoading = false
         this.isModalClose = false
@@ -219,11 +178,11 @@ export default {
       this.isCloseDrawer = false
     },
     addData () {
-      this.titleDrawer = "添加角色"
+      this.titleDrawer = "添加权限"
       this.isCloseDrawer = true
     },
     editData () {
-      this.titleDrawer = "编辑角色"
+      this.titleDrawer = "编辑权限"
       this.isCloseDrawer = true
 
     },
@@ -240,8 +199,7 @@ export default {
         this.list = res.data.records
         this.isTableLoading = false
       }).catch(err => console.log(err))
-    },
-
+    }
   }
 }
 </script>

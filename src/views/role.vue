@@ -83,7 +83,8 @@ export default {
           render: (h, params) => {
             return h('table-expand-row', {
               props: {
-                row: params.row
+                row: params.row,
+                
               },
               on: {
                 click: () => {
