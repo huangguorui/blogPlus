@@ -89,8 +89,11 @@ export default {
             this.isCloseDrawer = false
         },
         //添加drawer组件数据
-        addData() {
-            this.$refs["formData"].resetFields();
+        addData(clearData) {
+            this.formData = {
+
+            }
+            this.$refs[clearData].resetFields();
             this.titleDrawer = this.title.addTitle
             this.isCloseDrawer = true
         },
