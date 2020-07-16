@@ -13,9 +13,7 @@ export default {
 
     },
     watch: {},
-    created() {
-
-    },
+    created() {},
     methods: {
         //开始调用
         getApi(apiList) {

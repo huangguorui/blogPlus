@@ -133,7 +133,7 @@ export default {
                     this.formData = params.row
                   }
                 }
-              }, this.title.editTitle),
+              }, "添加资源"),
               h('Button', {
                 style: {
                   fontSize: '14px',

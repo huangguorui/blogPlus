@@ -4,7 +4,7 @@
             :disabled="delList.length==0?true:false">删除</Button>
 
     <Button @click="addData"
-            type="primary">新增资源</Button>
+            type="primary">{{title.addTitle}}</Button>
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
            placeholder="请输入需要搜索的文字"
@@ -12,7 +12,7 @@
     <Button type="primary"
             @click="searchData">搜索</Button>
     <Table border
-           @on-selection-change="select"
+           @on-selection-change="parkCheck"
            ref="selection"
            :loading="isTableLoading"
            :columns="rowTitle"
@@ -20,30 +20,26 @@
            :data="list"></Table>
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
-              :title="titleDrawer"
+              :titleDrawer="titleDrawer"
               @closeDrawer="closeDrawer"
               @submitData="submitData">
 
       <template slot="formData">
-
-        <FormItem label="权限ID"
-                  label-position="top">
-          <Input v-model="formData.permissionId"
-                 placeholder="权限ID" />
-        </FormItem>
-        <!-- <FormItem label="资源路径"
-                  label-position="top">
-          <Input v-model="formData.roleId"
-                 placeholder="描述" />
-        </FormItem> -->
-        <FormItem label="角色ID"
-                  label-position="top">
-          <Input type="textarea"
-                 v-model="formData.roleId"
-                 :rows="4"
-                 placeholder="角色ID" />
-        </FormItem>
-
+        <Form :model="formData"
+              ref="formData">
+          <FormItem label="权限ID"
+                    label-position="top">
+            <Input v-model="formData.permissionId"
+                   placeholder="权限ID" />
+          </FormItem>
+          <FormItem label="角色ID"
+                    label-position="top">
+            <Input type="textarea"
+                   v-model="formData.roleId"
+                   :rows="4"
+                   placeholder="角色ID" />
+          </FormItem>
+        </Form>
       </template>
 
     </drawer-m>
@@ -63,16 +59,15 @@
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
+import list from "@/common/mixins/list"
 import api from '@/api/rolePermission'
 export default {
   name: "permission",
-  mixins: [defaultValue, page],
+  mixins: [defaultValue, list, page],
   data () {
     return {
 
       formData: {
-        permissionName: "",
-        url: "",
       },
       rowTitle: [
         {
@@ -135,71 +130,18 @@ export default {
           permissionId: '',
           roleId: '',
         },
-      ]
+      ],
+      title: {
+        addTitle: '添加权限资源关联',
+        editTitle: '编辑权限资源关联',
+      }
     }
   },
+  created () {
+    this.getApi(api)
+  },
   methods: {
-    cancelModalClose (e) {
-      this.isModalClose = e
-    },
-    select (e) {
-      if (e.length == 0) {
-        this.delList = []
-      }
-      let id = []
-      //分离出id进行发送
-      e.forEach(item => {
-        id.push(item.id)
-      })
-      this.delList = id
-    },
-    submitData (e) {
-      this.isCloseDrawer = false
-      //添加新的数据，拉取列表
-      api.postSaveApi(e).then(res => {
-        //数据处理
-        console.log(res)
-        this.getList(this.data)
-      }).catch(err => console.log(err))
 
-    },
-    deleteData () {
-      this.isModalLoading = true
-      api.postDeleteApi(this.delList).then(() => {
-        //数据处理
-        this.delList = []
-        this.isModalLoading = false
-        this.isModalClose = false
-        this.getList(this.data)
-
-      }).catch(err => console.log(err))
-    },
-    closeDrawer () {
-      this.isCloseDrawer = false
-    },
-    addData () {
-      this.titleDrawer = "添加权限"
-      this.isCloseDrawer = true
-    },
-    editData () {
-      this.titleDrawer = "编辑权限"
-      this.isCloseDrawer = true
-
-    },
-    searchData () {
-      this.getList(this.pageInfo)
-      // console.log(this)
-
-    },
-    getList (data) {
-      this.isTableLoading = true
-      api.getListApi(data).then(res => {
-        //数据处理
-        this.pageInfo = res.pageInfo
-        this.list = res.data.records
-        this.isTableLoading = false
-      }).catch(err => console.log(err))
-    }
   }
 }
 </script>

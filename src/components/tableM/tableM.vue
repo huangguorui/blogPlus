@@ -20,7 +20,7 @@
 
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
-              :title="titleDrawer"
+              :titleDrawer="titleDrawer"
               @closeDrawer="closeDrawer"
               @submitData="submitData">
 
