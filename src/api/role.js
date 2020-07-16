@@ -10,6 +10,10 @@ export default {
     },
     postDeleteApi(params) {
         return http.post(`role/delete`, params)
+    },
+    //提交请求
+    postAddUserAndRole(params) {
+        return http.post(`role/addUserAndRole`, params)
     }
 
 

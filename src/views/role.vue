@@ -11,6 +11,8 @@
            style="width: 300px" />
     <Button type="primary"
             @click="searchData">搜索</Button>
+    <Button type="primary"
+            @click="addUserAndRole">提交</Button>
     <Table border
            row-key="id"
            @on-selection-change="select"
@@ -84,7 +86,7 @@ export default {
             return h('table-expand-row', {
               props: {
                 row: params.row,
-                
+
               },
               on: {
                 click: () => {
@@ -238,7 +240,18 @@ export default {
         this.isTableLoading = false
       }).catch(err => console.log(err))
     },
+    addUserAndRole () {
+      if (this.$route.query.id == null) {
+        return false
+      }
+      this.delList.push(this.$route.query.id)
+      api.postAddUserAndRole(this.delList).then(res => {
+        console.log(res)
+        this.getList(this.data)
+      }).catch(err => console.log(err))
 
+
+    }
   }
 }
 </script>

@@ -18,7 +18,6 @@ export default {
     methods: {
         getApi(apiList) {
             this.apiList = apiList
-            console.log(apiList.getListApi())
             this.getList(this.pageInfo)
         },
         //模块化的增删改查

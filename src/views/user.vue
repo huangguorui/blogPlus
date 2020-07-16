@@ -128,7 +128,7 @@ export default {
                     // this.isCloseDrawer = true
                     // this.titleDrawer = "编辑资源"
                     //带上id跳转到资源列表页面
-                    this.$router.push({ path: 'role', query: { id: params.row.id } })
+                    this.$router.push({ path: 'permission', query: { id: params.row.id } })
                     this.formData = params.row
                   }
                 }

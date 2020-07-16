@@ -82,6 +82,7 @@
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
+// import page from "@/common/mixins/page"
 import api from '@/api/permission'
 
 export default {
@@ -161,6 +162,10 @@ export default {
       ]
     }
   },
+  // created () {
+  //   this.getApi(api)
+
+  // },
   methods: {
     select (e) {
       if (e.length == 0) {
