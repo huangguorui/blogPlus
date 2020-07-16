@@ -6,15 +6,15 @@ export default {
     name: 'defaultValue',
     data() {
         return {
-            isModalLoading: false,
-            isModalClose: false,
-            isDisable: true,
-            isTableLoading: true,
-            isCloseDrawer: false,
-            titleDrawer: "",
-            delList: [],
-            //搜索
-            search: {
+            isModalLoading: false, //模态框loading状态
+            isModalClose: false, //是否关闭模态框
+            isTableLoading: true, //表格loading
+            isCloseDrawer: false, //是否关闭侧面窗口
+            titleDrawer: "", //窗口标题
+            delList: [], //删除列表
+            isBtnDisable: true, //按钮状态
+
+            search: { //搜索
 
             }
 
@@ -23,7 +23,7 @@ export default {
     computed: {
 
     },
-    watch: {},
+
     //开局刷新
     created() {
         // console.log("混入开始")

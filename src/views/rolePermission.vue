@@ -3,7 +3,7 @@
     <Button @click="isModalClose=true"
             :disabled="delList.length==0?true:false">删除</Button>
 
-    <Button @click="addData"
+    <Button @click="addData('formData')"
             type="primary">{{title.addTitle}}</Button>
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"

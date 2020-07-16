@@ -12,7 +12,17 @@ export default {
     computed: {
 
     },
-    watch: {},
+    watch: {
+        delList: function () {
+            console.log(123333)
+            if (this.delList.length == 0) {
+                this.isBtnDisable = true
+            } else {
+                this.isBtnDisable = false;
+
+            }
+        }
+    },
     created() {},
     methods: {
         //开始调用
@@ -79,8 +89,8 @@ export default {
             this.isCloseDrawer = false
         },
         //添加drawer组件数据
-        addData(clearData) {
-            this.$refs[clearData].resetFields();
+        addData() {
+            this.$refs["formData"].resetFields();
             this.titleDrawer = this.title.addTitle
             this.isCloseDrawer = true
         },

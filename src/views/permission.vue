@@ -5,7 +5,6 @@
 
     <Button @click="addData('formData')"
             type="primary">{{title.addTitle}}</Button>
-
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
            placeholder="请输入需要搜索的文字"
@@ -14,7 +13,8 @@
             @click="searchData">搜索</Button>
 
     <Button type="primary"
-            @click="addRoleAndPermission">提交</Button>
+            @click="addRoleAndPermission"
+            :disabled="isBtnDisable">提交</Button>
 
     <Table border
            @on-selection-change="parkCheck"

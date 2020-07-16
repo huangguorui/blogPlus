@@ -1,7 +1,7 @@
 <template>
   <div>
     <Button @click="isModalClose=true"
-            :disabled="delList.length==0?true:false">删除</Button>
+            :disabled="isBtnDisable">删除</Button>
 
     <Button @click="addData('formData')"
             type="primary">添加角色</Button>
