@@ -130,7 +130,8 @@ export default {
                     // this.titleDrawer = "编辑资源"
                     //带上id跳转到资源列表页面
                     this.$router.push({ path: 'permission', query: { id: params.row.id } })
-                    this.formData = params.row
+                    //防止表格中的数据随着修改而发生改变
+                    this.formData = Object.assign({}, params.row)
                   }
                 }
               }, '添加权限'),
@@ -144,7 +145,8 @@ export default {
                   click: () => {
                     this.isCloseDrawer = true
                     this.titleDrawer = "编辑角色"
-                    this.formData = params.row
+                    //防止表格中的数据随着修改而发生改变
+                    this.formData = Object.assign({}, params.row)
                   }
                 }
               }, '编辑'),

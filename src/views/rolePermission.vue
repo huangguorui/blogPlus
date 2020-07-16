@@ -102,7 +102,8 @@ export default {
                   click: () => {
                     this.isCloseDrawer = true
                     this.titleDrawer = "编辑资源"
-                    this.formData = params.row
+                    //防止表格中的数据随着修改而发生改变
+                    this.formData = Object.assign({}, params.row)
                   }
                 }
               }, '编辑'),
