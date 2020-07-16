@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- @on-close="colseDrawer" -->
-    <Drawer v-model="isCloseDrawer"
+    <!-- @on-close="colseDrawer :closable="false"" -->
+    <Drawer :value="isCloseDrawer"
             width="390"
             :title="titleDrawer"
-            :closable="false"
+            
             :mask-closable="false"
             :styles="styles">
       <Form :model="formData">

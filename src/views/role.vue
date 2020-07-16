@@ -4,7 +4,7 @@
             :disabled="delList.length==0?true:false">删除</Button>
 
     <Button @click="addData"
-            type="primary">新增资源</Button>
+            type="primary">添加角色</Button>
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
            placeholder="请输入需要搜索的文字"
@@ -18,95 +18,70 @@
            ref="selection"
            :loading="isTableLoading"
            :columns="rowTitle"
-           :height="1000"
+           :max-height="1000"
            :data="list"></Table>
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
-              :title="titleDrawer"
+              :titleDrawer="titleDrawer"
               @closeDrawer="closeDrawer"
               @submitData="submitData">
 
       <template slot="formData">
 
-        <FormItem label="权限名称"
+        <FormItem label="角色名称"
                   label-position="top">
           <Input v-model="formData.roleName"
-                 placeholder="权限名称" />
+                 placeholder="角色名称称" />
         </FormItem>
-        <!-- <FormItem label="资源路径"
-                  label-position="top">
-          <Input v-model="formData.roleDesc"
-                 placeholder="描述" />
-        </FormItem> -->
-        <FormItem label="权限描述"
+
+        <FormItem label="角色描述"
                   label-position="top">
           <Input type="textarea"
                  v-model="formData.roleDesc"
                  :rows="4"
-                 placeholder="权限描述" />
+                 placeholder="角色描述" />
         </FormItem>
 
       </template>
 
     </drawer-m>
-
-    <Modal v-model="isModalClose"
-           width="360">
-      <p slot="header"
-         style="color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>删除确认</span>
-      </p>
-      <div style="text-align:center">
-        <p>您当前的操作将会删除掉数据的ID为：</p>
-        <p> {{this.delList}}</p>
-        <p> 是否继续删除？</p>
-      </div>
-      <div slot="footer">
-        <Button type="error"
-                size="large"
-                long
-                :loading="isModalLoading"
-                @click="deleteData">删除</Button>
-      </div>
-    </Modal>
+    <modal-m :isModalClose="isModalClose"
+             :isModalLoading="isModalLoading"
+             :delList="delList"
+             @cancelModalClose="cancelModalClose"
+             @deleteData="deleteData"></modal-m>
 
     <page-m :page-data="pageInfo"
             @pageChange="pageChange"
             @pagSizesChange="pageSizeChange"></page-m>
+
   </div>
 </template>
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
 import api from '@/api/role'
-import expandRow from '../views/tableTab2';
 
 export default {
   name: "role",
   mixins: [defaultValue, page],
-  components: {
-    expandRow
-  },
   data () {
     return {
-
       formData: {
         permissionName: "",
         url: "",
       },
       rowTitle: [
-        // {
-        //   type: 'selection',
-        //   width: 60,
-        //   align: 'center',
-        // },
+        {
+          type: 'selection',
+          width: 60,
+          align: 'center',
+        },
         {
           type: 'expand',
           width: 50,
           render: (h, params) => {
-            return h(expandRow, {
-
+            return h('table-expand-row', {
               props: {
                 row: params.row
               },
@@ -124,11 +99,11 @@ export default {
           tree: true
 
         }, {
-          title: '权限名',
+          title: '角色名称',
           key: 'roleName'
         },
         {
-          title: '权限描述',
+          title: '角色描述',
           key: 'roleDesc'
         },
 
@@ -163,7 +138,7 @@ export default {
                 on: {
                   click: () => {
                     this.isCloseDrawer = true
-                    this.titleDrawer = "编辑资源"
+                    this.titleDrawer = "编辑角色"
                     this.formData = params.row
                   }
                 }
@@ -194,15 +169,12 @@ export default {
           roleDesc: '',
         },
       ],
-      rows: {
-        a: 1,
-        b: {
-          abc: 1
-        }
-      }
     }
   },
   methods: {
+    cancelModalClose (e) {
+      this.isModalClose = e
+    },
     expand (e) {
       console.log(e)
     },
@@ -243,11 +215,11 @@ export default {
       this.isCloseDrawer = false
     },
     addData () {
-      this.titleDrawer = "添加权限"
+      this.titleDrawer = "添加角色"
       this.isCloseDrawer = true
     },
     editData () {
-      this.titleDrawer = "编辑权限"
+      this.titleDrawer = "编辑角色"
       this.isCloseDrawer = true
 
     },
@@ -262,21 +234,6 @@ export default {
         //数据处理
         this.pageInfo = res.pageInfo
         this.list = res.data.records
-
-
-
-        // this.list.forEach((item, i) => {
-        //   this.list[i].children = [{
-        //     roleName: '123',
-        //     roleDesc: '123',
-        //     children: [
-        //       {
-        //         roleName: '登录权限',
-        //         roleDesc: '/login',
-        //       }
-        //     ]
-        //   }]
-        // })
         this.isTableLoading = false
       }).catch(err => console.log(err))
     },
