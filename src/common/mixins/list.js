@@ -3,10 +3,9 @@
  * @author h
  */
 export default {
-    name: 'page',
+    name: 'list',
     data() {
         return {
-            api: {},
             apiList: {},
         }
     },
@@ -14,20 +13,18 @@ export default {
 
     },
     watch: {},
-    created() {},
+    created() {
+
+    },
     methods: {
+        //开始调用
         getApi(apiList) {
+            console.log("----混合开始----")
             this.apiList = apiList
             this.getList(this.pageInfo)
         },
-        //模块化的增删改查
+        //模块化的数据列表
         getList(data) {
-            try {
-                console.log(data)
-            } catch (e) {
-                console.log(e)
-                return false
-            }
             this.isTableLoading = true
             this.apiList.getListApi(data).then(res => {
                 //数据处理
@@ -36,6 +33,7 @@ export default {
                 this.isTableLoading = false
             }).catch(err => console.log(err))
         },
+        //删除
         deleteData() {
             this.isModalLoading = true
             this.apiList.postDeleteApi(this.delList).then(res => {
@@ -48,6 +46,7 @@ export default {
 
             }).catch(err => console.log(err))
         },
+        //数据提交
         submitData(e) {
             this.isCloseDrawer = false
             //添加新的数据，拉取列表
@@ -58,7 +57,8 @@ export default {
             }).catch(err => console.log(err))
 
         },
-        select(e) {
+        //选中表格
+        parkCheck(e) {
             if (e.length == 0) {
                 this.delList = []
             }
@@ -69,11 +69,33 @@ export default {
             })
             this.delList = id
         },
+        //搜索数据
         searchData() {
             this.getList(this.pageInfo)
             // console.log(this)
 
         },
+        //关闭组件侧拉框
+        closeDrawer() {
+            console.log("123")
+            this.isCloseDrawer = false
+        },
+        //添加drawer组件数据
+        addData(clearData) {
+            this.$refs[clearData].resetFields();
+            this.titleDrawer = this.title.addTitle
+            this.isCloseDrawer = true
+        },
+        //编辑drawer组件数据
+        editData() {
+            this.titleDrawer = this.title.editTitle
+            this.isCloseDrawer = true
+
+        },
+        //关闭模态框
+        cancelModalClose() {
+            this.isModalClose = false
+        }
 
 
 

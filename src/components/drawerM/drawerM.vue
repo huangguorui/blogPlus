@@ -1,10 +1,11 @@
 <template>
   <div>
-    <!-- @on-close="colseDrawer :closable="false"" -->
+    <!-- @on-close="colseDrawer :closable="false"" :value防止报错 ，@on-close监听右上角 -->
     <Drawer :value="isCloseDrawer"
             width="390"
-            :title="titleDrawer"
-            
+            @on-close="colseDrawer"
+            :title="
+            titleDrawer"
             :mask-closable="false"
             :styles="styles">
       <Form :model="formData">

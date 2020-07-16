@@ -3,8 +3,8 @@
     <Button @click="isModalClose=true"
             :disabled="delList.length==0?true:false">删除</Button>
 
-    <Button @click="addData"
-            type="primary">新增资源</Button>
+    <Button @click="addData('formData')"
+            type="primary">{{title.addTitle}}</Button>
 
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
@@ -17,7 +17,7 @@
             @click="addRoleAndPermission">提交</Button>
 
     <Table border
-           @on-selection-change="select"
+           @on-selection-change="parkCheck"
            ref="selection"
            :loading="isTableLoading"
            :columns="rowTitle"
@@ -25,55 +25,41 @@
            :data="list"></Table>
     <drawer-m :formData="formData"
               :isCloseDrawer="isCloseDrawer"
-              :title="titleDrawer"
+              :titleDrawer="titleDrawer"
               @closeDrawer="closeDrawer"
               @submitData="submitData">
 
       <template slot="formData">
-
-        <FormItem label="资源名称"
-                  label-position="top">
-          <Input v-model="formData.permissionName"
-                 placeholder="请输入资源名" />
-        </FormItem>
-        <FormItem label="资源路径"
-                  label-position="top">
-          <Input v-model="formData.url"
-                 placeholder="请输入资源路径" />
-        </FormItem>
-        <FormItem label="Description"
-                  label-position="top">
-          <Input type="textarea"
-                 v-model="formData.permissionName"
-                 :rows="4"
-                 placeholder="permissionName" />
-        </FormItem>
-
+        <Form :model="formData"
+              ref="formData">
+          <FormItem label="资源名称"
+                    label-position="top">
+            <Input v-model="formData.permissionName"
+                   placeholder="请输入资源名" />
+          </FormItem>
+          <FormItem label="资源路径"
+                    label-position="top">
+            <Input v-model="formData.url"
+                   placeholder="请输入资源路径" />
+          </FormItem>
+          <FormItem label="Description"
+                    label-position="top">
+            <Input type="textarea"
+                   v-model="formData.permissionName"
+                   :rows="4"
+                   placeholder="permissionName" />
+          </FormItem>
+        </Form>
       </template>
 
     </drawer-m>
 
-    <Modal v-model="isModalClose"
-           width="360">
-      <p slot="header"
-         style="color:#f60;text-align:center">
-        <Icon type="ios-information-circle"></Icon>
-        <span>删除确认</span>
-      </p>
-      <div style="text-align:center">
-        <p>您当前的操作将会删除掉数据的ID为：</p>
-        <p> {{this.delList}}</p>
-        <p> 是否继续删除？</p>
-      </div>
-      <div slot="footer">
-        <Button type="error"
-                size="large"
-                long
-                :loading="isModalLoading"
-                @click="deleteData">删除</Button>
-      </div>
-    </Modal>
-
+    <modal-m :isModalClose="isModalClose"
+             :isModalLoading="isModalLoading"
+             :delList="delList"
+             @cancelModalClose="cancelModalClose"
+             @deleteData="deleteData"></modal-m>
+    {{isCloseDrawer}}
     <page-m :page-data="pageInfo"
             @pageChange="pageChange"
             @pagSizesChange="pageSizeChange"></page-m>
@@ -82,12 +68,12 @@
 <script>
 import page from "@/common/mixins/page"
 import defaultValue from "@/common/mixins/defaultValue"
-// import page from "@/common/mixins/page"
+import list from "@/common/mixins/list"
 import api from '@/api/permission'
 
 export default {
   name: "permission",
-  mixins: [defaultValue, page],
+  mixins: [defaultValue, list, page],
   components: {
   },
   data () {
@@ -131,6 +117,7 @@ export default {
                     this.isCloseDrawer = true
                     this.titleDrawer = "编辑资源"
                     this.formData = params.row
+                    console.log(params.row)
                   }
                 }
               }, '编辑'),
@@ -159,72 +146,21 @@ export default {
           permissionName: '',
           url: '',
         },
-      ]
+      ],
+      title: {
+        addTitle: '添加资源',
+        editTitle: '编辑资源',
+      }
+
     }
   },
-  // created () {
-  //   this.getApi(api)
+  created () {
+    this.getApi(api)
 
-  // },
+  },
   methods: {
-    select (e) {
-      if (e.length == 0) {
-        this.delList = []
-      }
-      let id = []
-      //分离出id进行发送
-      e.forEach(item => {
-        id.push(item.id)
-      })
-      this.delList = id
-    },
-    submitData (e) {
-      this.isCloseDrawer = false
-      //添加新的数据，拉取列表
-      api.postSaveApi(e).then(res => {
-        //数据处理
-        console.log(res)
-        this.getList(this.data)
-      }).catch(err => console.log(err))
 
-    },
-    deleteData () {
-      this.isModalLoading = true
-      api.postDeleteApi(this.delList).then(res => {
-        //数据处理
-        console.log(res)
-        this.delList = []
-        this.isModalLoading = false
-        this.isModalClose = false
-        this.getList(this.data)
-
-      }).catch(err => console.log(err))
-    },
-    closeDrawer () {
-      this.isCloseDrawer = false
-    },
-    addData () {
-      this.titleDrawer = "添加资源"
-      this.isCloseDrawer = true
-    },
-    editData () {
-      this.titleDrawer = "编辑资源"
-      this.isCloseDrawer = true
-
-    },
-    searchData () {
-      this.getList(this.pageInfo)
-
-    },
-    getList (data) {
-      this.isTableLoading = true
-      api.getListApi(data).then(res => {
-        //数据处理
-        this.pageInfo = res.pageInfo
-        this.list = res.data.records
-        this.isTableLoading = false
-      }).catch(err => console.log(err))
-    },
+    //发送角色和资源关联请求
     addRoleAndPermission () {
       if (this.$route.query.id == null) {
         return false
@@ -234,11 +170,8 @@ export default {
         console.log(res)
         this.getList(this.data)
       }).catch(err => console.log(err))
-
-
     }
   },
-
 
 }
 </script>

@@ -14,8 +14,8 @@ export default {
             titleDrawer: "",
             delList: [],
             //搜索
-            search:{
-                
+            search: {
+
             }
 
         }

@@ -29,7 +29,7 @@ export default {
     //开局刷新
     created() {
         // console.log("混入开始")
-        this.getList(this.pageInfo)
+        // this.getList(this.pageInfo)
     },
     methods: {
         //点击分页
