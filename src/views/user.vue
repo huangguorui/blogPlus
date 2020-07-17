@@ -182,9 +182,7 @@ export default {
 
   methods: {
 
-    expand (e) {
-      console.log(e)
-    },
+
 
   }
 }

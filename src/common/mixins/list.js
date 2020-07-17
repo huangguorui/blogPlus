@@ -51,6 +51,7 @@ export default {
                 this.isModalLoading = false
                 this.isModalClose = false
                 this.getList(this.data)
+                this.$alertInfo.alertInfo(res.code, res.msg)
 
             }).catch(err => console.log(err))
         },
@@ -62,6 +63,8 @@ export default {
                 //数据处理
                 console.log(res)
                 this.getList(this.data)
+                this.$alertInfo.alertInfo(res.code, res.msg)
+
             }).catch(err => console.log(err))
 
         },
@@ -106,8 +109,12 @@ export default {
         //关闭模态框
         cancelModalClose() {
             this.isModalClose = false
-        }
-
+        },
+        //获取表格数据，可以进行一些操作
+        expand() {
+            //e
+            // console.log(e)
+        },
 
 
     }

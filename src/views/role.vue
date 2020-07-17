@@ -187,9 +187,7 @@ export default {
     this.getApi(api)
   },
   methods: {
-    expand (e) {
-      console.log(e)
-    },
+
 
     addUserAndRole () {
       if (this.$route.query.id == null) {

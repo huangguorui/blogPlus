@@ -92,12 +92,12 @@ export default {
                 on: {
                   click: () => {
                     this.isCloseDrawer = true
-                    this.titleDrawer = this.title.editData
+                    this.titleDrawer = this.title.editTitle
                     //防止表格中的数据随着修改而发生改变
                     this.formData = Object.assign({}, params.row)
                   }
                 }
-              }, '编辑'),
+              }, this.title.editTitle),
               h('Button', {
                 style: {
                   fontSize: '14px',
