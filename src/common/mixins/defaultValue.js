@@ -13,7 +13,8 @@ export default {
             titleDrawer: "", //窗口标题
             delList: [], //删除列表
             isBtnDisable: true, //按钮状态
-
+            list: [], //获取的数据列表
+            formData: {}, //提交的数据
             search: { //搜索
 
             }

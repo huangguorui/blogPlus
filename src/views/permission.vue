@@ -75,11 +75,6 @@ export default {
   },
   data () {
     return {
-
-      formData: {
-        permissionName: "",
-        url: "",
-      },
       ruleFormData: {
         permissionName: [
           { required: true, message: '资源名称', trigger: 'blur' }
@@ -147,13 +142,6 @@ export default {
           }
         }
 
-      ],
-      list: [
-        {
-          id: 0,
-          permissionName: '',
-          url: '',
-        },
       ],
       title: {
         addTitle: '添加资源',

@@ -73,8 +73,6 @@ export default {
   },
   data () {
     return {
-      formData: {
-      },
       ruleFormData: {
         username: [
           { required: true, message: '用户名不能为空', trigger: 'blur' }
@@ -181,7 +179,7 @@ export default {
         }
 
       ],
-      list: [],
+    
       title: {
         addTitle: '添加用户',
         editTitle: '编辑用户',

@@ -75,8 +75,6 @@ export default {
   mixins: [defaultValue, list, page],
   data () {
     return {
-      formData: {
-      },
       ruleFormData: {
         roleName: [
           { required: true, message: '角色名称不能为空', trigger: 'blur' }
@@ -178,13 +176,6 @@ export default {
           }
         }
 
-      ],
-      list: [
-        {
-          id: 0,
-          roleName: '',
-          roleDesc: '',
-        },
       ],
       title: {
         addTitle: '添加角色',
