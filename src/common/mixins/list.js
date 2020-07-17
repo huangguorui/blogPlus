@@ -14,7 +14,7 @@ export default {
     },
     watch: {
         delList: function () {
-            console.log(123333)
+
             if (this.delList.length == 0) {
                 this.isBtnDisable = true
             } else {
@@ -57,15 +57,26 @@ export default {
         },
         //数据提交
         submitData(e) {
-            this.isCloseDrawer = false
-            //添加新的数据，拉取列表
-            this.apiList.postSaveApi(e).then(res => {
-                //数据处理
-                console.log(res)
-                this.getList(this.data)
-                this.$alertInfo.alertInfo(res.code, res.msg)
 
-            }).catch(err => console.log(err))
+
+
+            this.$refs["formData"].validate((valid) => {
+                if (valid) {
+                    this.isCloseDrawer = false
+                    //添加新的数据，拉取列表
+                    this.apiList.postSaveApi(e).then(res => {
+                        //数据处理
+                        console.log(res)
+                        this.getList(this.data)
+                        this.$alertInfo.alertInfo(res.code, res.msg)
+
+                    }).catch(err => console.log(err))
+                } else {
+                    this.$Message.error(this.$constV.inputTextRule);
+                }
+            })
+
+
 
         },
         //选中表格

@@ -34,7 +34,7 @@ export default {
       isCloseModal: false,
       pageInfo: {
         currentPage: 1,
-        size: this.$constDefault.page, //初始页数，10页  
+        size: this.$constV.page, //初始页数，10页  
         pages: 1,
         total: 1,
       },

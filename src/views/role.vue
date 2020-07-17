@@ -31,15 +31,18 @@
 
       <template slot="formData">
         <Form :model="formData"
-              ref="formData">
+              ref="formData"
+              :rules="ruleFormData">
           <FormItem label="角色名称"
-                    label-position="top">
+                    label-position="top"
+                    prop="roleName">
             <Input v-model="formData.roleName"
                    placeholder="角色名称称" />
           </FormItem>
 
           <FormItem label="角色描述"
-                    label-position="top">
+                    label-position="top"
+                    prop="roleDesc">
             <Input type="textarea"
                    v-model="formData.roleDesc"
                    :rows="4"
@@ -73,8 +76,14 @@ export default {
   data () {
     return {
       formData: {
-        permissionName: "",
-        url: "",
+      },
+      ruleFormData: {
+        roleName: [
+          { required: true, message: '角色名称不能为空', trigger: 'blur' }
+        ],
+        roleDesc: [
+          { required: true, message: '角色描述不能为空', trigger: 'blur' },
+        ]
       },
       rowTitle: [
         {
@@ -187,8 +196,6 @@ export default {
     this.getApi(api)
   },
   methods: {
-
-
     addUserAndRole () {
       if (this.$route.query.id == null) {
         return false

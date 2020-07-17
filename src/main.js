@@ -13,12 +13,12 @@ import 'view-design/dist/styles/iview.css';
 Vue.use(ViewUI);
 
 //导入默认数据
-import constDefault from './utils/constDefault';
+import constV from './utils/constV';
 
 //封装的弹框方法
 import alertInfo from './utils/utis';
 //注入原型，全局通用
-Vue.prototype.$constDefault = constDefault.constDefaule
+Vue.prototype.$constV = constV.constDefaule
 Vue.prototype.$alertInfo = alertInfo
 
 //elementui引入

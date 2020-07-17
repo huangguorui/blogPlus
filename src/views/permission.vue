@@ -31,24 +31,21 @@
 
       <template slot="formData">
         <Form :model="formData"
-              ref="formData">
+              ref="formData"
+              :rules="ruleFormData">
           <FormItem label="资源名称"
-                    label-position="top">
+                    label-position="top"
+                    prop="permissionName">
             <Input v-model="formData.permissionName"
                    placeholder="请输入资源名" />
           </FormItem>
           <FormItem label="资源路径"
+                    prop="url"
                     label-position="top">
             <Input v-model="formData.url"
                    placeholder="请输入资源路径" />
           </FormItem>
-          <FormItem label="Description"
-                    label-position="top">
-            <Input type="textarea"
-                   v-model="formData.permissionName"
-                   :rows="4"
-                   placeholder="permissionName" />
-          </FormItem>
+
         </Form>
       </template>
 
@@ -82,6 +79,15 @@ export default {
       formData: {
         permissionName: "",
         url: "",
+      },
+      ruleFormData: {
+        permissionName: [
+          { required: true, message: '资源名称', trigger: 'blur' }
+        ],
+        url: [
+          { required: true, message: '资源地址不可为空', trigger: 'blur' },
+        ],
+
       },
       rowTitle: [
         {

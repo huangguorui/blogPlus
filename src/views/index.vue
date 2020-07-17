@@ -156,15 +156,18 @@ h2 {
 import Banner from '@/components/banner/banner.vue'
 // import Slide from '@/components/slide/slide.vue'
 import page from "../common/mixins/page"
+import defaultValue from "../common/mixins/defaultValue"
 
 export default {
   name: 'Index',
-  mixins: [page],
+  mixins: [defaultValue, page],
   components: {
     Banner,
     // Slide,
   },
-
+  created () {
+    this.getList(this.pageInfo)
+  },
   data () {
     return {
       list: [
@@ -191,8 +194,9 @@ export default {
       console.log(e)
     },
     getList (data) {
+      console.log(data)
       this.$axios({
-        url: "http://localhost:8081/blogs?currentPage=" + data.currentPage + "&size=" + data.size,
+        url: "http://localhost:8081/blogs?currentPage=" + data.currentPage,
         method: "get",
         params: {}
       }).then(res => {

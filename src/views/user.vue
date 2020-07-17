@@ -28,14 +28,17 @@
 
       <template slot="formData">
         <Form :model="formData"
-              ref="formData">
+              ref="formData"
+              :rules="ruleFormData">
           <FormItem label="用户昵称"
-                    label-position="top">
+                    label-position="top"
+                    prop="username">
             <Input v-model="formData.username"
                    placeholder="用户昵称" />
           </FormItem>
           <FormItem label="用户邮箱"
-                    label-position="top">
+                    label-position="top"
+                    prop="email">
             <Input v-model="formData.email"
                    placeholder="用户邮箱" />
           </FormItem>
@@ -71,6 +74,15 @@ export default {
   data () {
     return {
       formData: {
+      },
+      ruleFormData: {
+        username: [
+          { required: true, message: '用户名不能为空', trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: '邮箱不能为空', trigger: 'blur' },
+          { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }
+        ],
       },
       rowTitle: [
         {
@@ -169,10 +181,7 @@ export default {
         }
 
       ],
-      list: [
-        {
-        },
-      ],
+      list: [],
       title: {
         addTitle: '添加用户',
         editTitle: '编辑用户',
