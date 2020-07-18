@@ -4,7 +4,7 @@
             :disabled="isBtnDisable">删除</Button>
 
     <Button @click="addData('formData')"
-            type="primary">添加角色</Button>
+            type="primary">{{title.addTitle}}</Button>
     <!-- @on-change="searchData" -->
     <Input v-model="pageInfo.permissionName"
            placeholder="请输入需要搜索的文字"
@@ -179,7 +179,6 @@ export default {
         }
 
       ],
-    
       title: {
         addTitle: '添加用户',
         editTitle: '编辑用户',
@@ -188,7 +187,6 @@ export default {
   },
 
   methods: {
-
 
 
   }
